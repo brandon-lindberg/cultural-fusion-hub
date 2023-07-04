@@ -15,7 +15,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <div className="flex flex-col min-h-screen">
-      <header className="w-full p-4 flex justify-between items-center">
+      <header className="bg-slate-50 w-full p-4 flex justify-between items-center">
         <h3 className="text-black pl-1">Cultural Fusion Hub</h3>
         <nav>
           <Link href="/">Home</Link> | <Link href="/about">About</Link>
