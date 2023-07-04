@@ -4,13 +4,19 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import dynamic from 'next/dynamic';
 import { LocaleInput } from '@fullcalendar/core';
 import jaLocale from '@fullcalendar/core/locales/ja';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
 // This component will be rendered on the client side only
 class CalendarComponent extends React.Component {
   eventClick = (info) => {
+    const startDate = info.event.start;
+    const formattedStartDate = startDate ? startDate.toLocaleString() : 'N/A';
     alert(
       'Event: ' +
         info.event.title +
+        '\n' +
+        'Start: ' +
+        formattedStartDate +
         '\n' +
         'Description: ' +
         info.event.extendedProps.description,
@@ -19,18 +25,23 @@ class CalendarComponent extends React.Component {
   render() {
     return (
       <FullCalendar
-        plugins={[dayGridPlugin]}
+        plugins={[dayGridPlugin, timeGridPlugin]}
         initialView="dayGridMonth"
+        // initialView="timeGridWeek"
         locale={jaLocale}
         events={[
           {
             title: 'Get Together',
-            date: '2023-07-22',
+            start: '2023-07-22T14:00:00', // Start time of the event
+            end: '2023-07-22T15:30:00', // End time of the event
+            // date: '2023-07-22',
             description: 'This is a get together event.',
           },
           {
             title: 'Fusion Event',
-            date: '2023-07-19',
+            start: '2023-07-19T18:00:00', // Start time of the event
+            end: '2023-07-19T20:30:00', // End time of the event
+            // date: '2023-07-19',
             description: 'This is a fusion event.',
           },
         ]}
