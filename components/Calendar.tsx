@@ -2,11 +2,12 @@ import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import dynamic from 'next/dynamic';
+import { LocaleInput } from '@fullcalendar/core';
+import jaLocale from '@fullcalendar/core/locales/ja';
 
 // This component will be rendered on the client side only
 class CalendarComponent extends React.Component {
   eventClick = (info) => {
-    // Use the information from the event that was clicked
     alert(
       'Event: ' +
         info.event.title +
@@ -20,6 +21,7 @@ class CalendarComponent extends React.Component {
       <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
+        locale={jaLocale}
         events={[
           {
             title: 'Get Together',
@@ -32,7 +34,7 @@ class CalendarComponent extends React.Component {
             description: 'This is a fusion event.',
           },
         ]}
-        eventClick={this.eventClick} // Add the eventClick handler
+        eventClick={this.eventClick}
       />
     );
   }
@@ -45,10 +47,8 @@ const DynamicCalendarComponent = dynamic(
   },
 );
 
-// This function checks if we're on the client side before rendering the component
 const Calendar = () => (
   <div>
-    {/* {typeof window !== 'undefined' && <CalendarComponent />} */}
     <DynamicCalendarComponent />
   </div>
 );
