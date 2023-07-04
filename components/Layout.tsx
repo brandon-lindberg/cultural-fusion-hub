@@ -22,12 +22,10 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
         </nav>
       </header>
 
-      <main className="flex-grow">
-        {children}
-      </main>
+      <main className="flex-grow">{children}</main>
 
       <footer className="w-full text-center border-t border-grey p-4 pin-b bg-gray-100">
-        <span >Cultural Fusion Hub</span>
+        <span>Cultural Fusion Hub</span>
       </footer>
     </div>
   </div>
