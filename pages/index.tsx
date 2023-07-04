@@ -18,11 +18,10 @@ const IndexPage = () => (
       <div className="bg-gray-100 p-4">
         <article className=" p-5 text-justify">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius alias inventore repellendus sit quia architecto praesentium commodi deserunt consectetur. Totam molestias tempora soluta iste, rerum dicta nihil assumenda eveniet? Hic?
-
         </article>
       </div>
     </main>
-    <div>
+    <div className="p-3">
       <Calendar />
     </div>
   </Layout>
