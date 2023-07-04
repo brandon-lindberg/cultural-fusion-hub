@@ -10,7 +10,12 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 class CalendarComponent extends React.Component {
   eventClick = (info) => {
     const startDate = info.event.start;
-    const formattedStartDate = startDate ? startDate.toLocaleString() : 'N/A';
+    const formattedStartDate = startDate
+      ? `${startDate.toLocaleDateString()} ${startDate.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        })}`
+      : 'N/A';
     alert(
       'Event: ' +
         info.event.title +
