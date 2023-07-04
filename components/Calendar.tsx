@@ -5,14 +5,20 @@ import dynamic from 'next/dynamic';
 
 // This component will be rendered on the client side only
 class CalendarComponent extends React.Component {
+  eventClick = (info) => {
+    // Use the information from the event that was clicked
+    alert('Event: ' + info.event.title + '\n' + 'Description: ' + info.event.extendedProps.description);
+  }
   render() {
     return (
       <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         events={[
-          { title: 'Get Together', date: '2023-07-22' },
+          { title: 'Get Together', date: '2023-07-22', description: 'This is a get together event.' },
+          { title: 'Fusion Event', date: '2023-07-19', description: 'This is a fusion event.' },
         ]}
+        eventClick={this.eventClick}  // Add the eventClick handler
       />
     );
   }

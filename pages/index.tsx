@@ -22,7 +22,9 @@ const IndexPage = () => (
       </div>
     </main>
     <div className="p-3">
-      <Calendar />
+      <div className="p-3">
+        <Calendar />
+      </div>
     </div>
   </Layout>
 );
