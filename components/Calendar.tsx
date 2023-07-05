@@ -20,21 +20,29 @@ class CalendarComponent extends React.Component {
           minute: '2-digit',
         })}`
       : 'N/A';
-    
-      const modalContent = (
-        <div>
-          <h2>{info.event.title}</h2>
-          <p>
-            <strong>Start:</strong> {formattedStartDate}<br />
-            <strong>Location:</strong> {info.event.extendedProps.location}<br />
-            <strong>Description:</strong> {info.event.extendedProps.description}<br />
-            <strong>Google Maps:</strong>
-            <a href={info.event.extendedProps.googleMapsUrl} target="_blank" rel="noreferrer" className="w-full p-2 bg-green-500 text-white rounded block text-center mt-2">
-              Open directions in Google Maps
-            </a>
-          </p>
-        </div>
-      );
+
+    const modalContent = (
+      <div>
+        <h2>{info.event.title}</h2>
+        <p>
+          <strong>Start:</strong> {formattedStartDate}
+          <br />
+          <strong>Location:</strong> {info.event.extendedProps.location}
+          <br />
+          <strong>Description:</strong> {info.event.extendedProps.description}
+          <br />
+          <strong>Google Maps:</strong>
+          <a
+            href={info.event.extendedProps.googleMapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full p-2 bg-green-500 text-white rounded block text-center mt-2"
+          >
+            Open directions in Google Maps
+          </a>
+        </p>
+      </div>
+    );
 
     this.setState({ modalVisible: true, modalContent });
   };
@@ -76,7 +84,12 @@ class CalendarComponent extends React.Component {
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full space-y-4">
               {modalContent}
-              <button onClick={this.closeModal} className="w-full p-2 bg-blue-500 text-white rounded">Close</button>
+              <button
+                onClick={this.closeModal}
+                className="w-full p-2 bg-blue-500 text-white rounded"
+              >
+                Close
+              </button>
             </div>
           </div>
         )}
@@ -84,7 +97,6 @@ class CalendarComponent extends React.Component {
     );
   }
 }
-
 
 const DynamicCalendarComponent = dynamic(
   () => Promise.resolve(CalendarComponent),
