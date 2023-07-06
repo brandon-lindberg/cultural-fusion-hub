@@ -30,17 +30,23 @@ class CalendarComponent extends React.Component {
           <strong>Location:</strong> {info.event.extendedProps.location}
           <br />
           <strong>Description:</strong> {info.event.extendedProps.description}
-          <br />
-          <strong>Google Maps:</strong>
+        </p>
+        <div className="flex justify-between mt-4">
           <a
             href={info.event.extendedProps.googleMapsUrl}
             target="_blank"
             rel="noreferrer"
-            className="w-full p-2 bg-green-500 text-white rounded block text-center mt-2"
+            className="w-1/2 p-2 bg-green-500 text-white rounded text-center mx-2"
           >
-            Open directions in Google Maps
+            Open Maps
           </a>
-        </p>
+          <button
+            onClick={this.closeModal}
+            className="w-1/2 p-2 bg-blue-500 text-white rounded text-center mx-2"
+          >
+            Close
+          </button>
+        </div>
       </div>
     );
 
@@ -65,7 +71,7 @@ class CalendarComponent extends React.Component {
               title: 'Get Together',
               start: '2023-07-22T14:00:00',
               end: '2023-07-22T15:30:00',
-              location: 'Park',
+              location: '代沢地区会館',
               googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
               description: 'This is a get together event.',
             },
@@ -73,7 +79,7 @@ class CalendarComponent extends React.Component {
               title: 'Fusion Event',
               start: '2023-07-19T18:00:00',
               end: '2023-07-19T20:30:00',
-              location: 'Mall',
+              location: '代沢地区会館',
               googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
               description: 'This is a fusion event.',
             },
@@ -84,12 +90,6 @@ class CalendarComponent extends React.Component {
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full space-y-4">
               {modalContent}
-              <button
-                onClick={this.closeModal}
-                className="w-full p-2 bg-blue-500 text-white rounded"
-              >
-                Close
-              </button>
             </div>
           </div>
         )}
