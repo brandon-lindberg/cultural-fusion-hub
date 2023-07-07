@@ -1,37 +1,29 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import styles from '../styles/Carousel.module.scss';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-const Carousel = () => {
-  const images = ['four.jpg', 'five.jpg'];
-  const [activeImage, setActiveImage] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveImage(
-        (prevActiveImage) => (prevActiveImage + 1) % images.length,
-      );
-    }, 3000); // change images every 3 seconds
-
-    return () => clearInterval(interval); // clean up on component unmount
-  }, []);
-
-  const fixedHeight = 500; // Specify the height
-  const fixedWidth = 2000; // Specify the width
-
+const ImageCarousel = () => {
   return (
-    <div className="relative w-full">
-      {' '}
-      {/* You can adjust the height according to your needs */}
-      <Image
-        src={`/${images[activeImage]}`}
-        alt="carousel-image"
-        width={fixedWidth}
-        height={fixedHeight} // dummy value
-        quality={100}
-      />
-    </div>
-  );
+    <Carousel autoPlay interval={2000} infiniteLoop useKeyboardArrows showThumbs={false}>
+      <div>
+          <img src="/one.jpg" alt="" />
+      </div>
+      <div>
+          <img src="/two.jpg" alt="" />
+      </div>
+      <div>
+          <img src="/three.jpg" alt="" />
+      </div>
+      <div>
+          <img src="/four.jpg" alt="" />
+      </div>
+      <div>
+          <img src="/five.jpg" alt="" />
+      </div>
+    </Carousel>
+  )
 };
 
-export default Carousel;
+export default ImageCarousel;
