@@ -11,6 +11,7 @@ const ImageCarousel = () => {
       infiniteLoop
       useKeyboardArrows
       showThumbs={false}
+      showStatus={false}
     >
       <div>
         <img src="/one.jpg" alt="" />

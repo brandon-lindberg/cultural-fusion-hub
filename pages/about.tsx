@@ -31,9 +31,6 @@ const AboutPage = () => (
       </div>
     </div>
     <br />
-    <p>
-      <Link href="/">Go home</Link>
-    </p>
   </Layout>
 );
 
