@@ -6,10 +6,10 @@ const AboutPage = () => (
   <Layout title="About | Next.js + TypeScript Example">
     <div>
       <div className="profile m-3">
-        <ProfileCard 
+        <ProfileCard
           name="Obikane Yuka"
-          image="/profile_one.jpg" 
-          position="Founder" 
+          image="/profile_one.jpg"
+          position="Founder"
           description="I am Yuka and this is my description"
           instagram="https://www.instagram.com/"
           twitter="https://twitter.com/"
@@ -18,10 +18,10 @@ const AboutPage = () => (
         />
       </div>
       <div className="profile m-3">
-        <ProfileCard 
+        <ProfileCard
           name="Saho Petersen"
-          image="/profile_two.jpg"  
-          position="Founder" 
+          image="/profile_two.jpg"
+          position="Founder"
           description="I am Saho and this is my description"
           instagram="https://www.instagram.com/"
           twitter="https://twitter.com/"
