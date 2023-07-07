@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import Image from 'next/image';
 import Calendar from '../components/Calendar';
+import Carousel from '../components/Carousel';
 
 const IndexPage = () => (
   <Layout title="Cultural Fusion Hub">
@@ -10,14 +11,7 @@ const IndexPage = () => (
         style={{ maxHeight: '1000px', overflow: 'hidden' }}
         className="relative w-full"
       >
-        <Image
-          src="/fusion.jpeg"
-          alt="pic"
-          height={1000}
-          width={2000}
-          style={{ objectFit: 'cover' }}
-          quality={100}
-        />
+        <Carousel />
         <div className="absolute bottom-1/4 right-1/2 transform translate-x-1/2">
           {/* <h1 className="text-white text-4xl">Welcome to The Cultural Fusion Hub</h1> */}
         </div>
