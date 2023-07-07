@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Carousel.module.scss';
 
 const Carousel = () => {
-  const images = ['two.jpg', 'three.jpg', 'four.jpg', 'five.jpg'];
+  const images = ['four.jpg', 'five.jpg'];
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
