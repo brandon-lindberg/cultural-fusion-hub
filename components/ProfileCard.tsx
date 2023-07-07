@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 export default function ProfileCard(props) {
   return (
-    <div className="card bg-white shadow rounded-lg p-6 max-w-xs mx-auto h-72">
+    <div className="card bg-white shadow rounded-lg p-6 max-w-xs mx-auto">
       <div className="flex flex-col items-center mb-4">
         <Image
           src={props.image}
           alt="pic"
-          height={50}
-          width={50}
+          height={150}
+          width={150}
           className="rounded-full"
           quality={100}
         />
