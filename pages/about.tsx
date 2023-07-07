@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import ProfileCard from '../components/ProfileCard';
 
 const AboutPage = () => (
-  <Layout title="About | Next.js + TypeScript Example">
+  <Layout title="About">
     <div>
       <div className="profile m-3">
         <ProfileCard
