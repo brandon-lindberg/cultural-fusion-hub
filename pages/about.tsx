@@ -11,29 +11,31 @@ const AboutPage = () => (
           私たちの目標は、このコミュニティを通じて子供たちが居場所を見つけ、互いに理解し合い、共に成長していくことです。また、より広い社会全体が多様性を受け入れる社会になるための一助になればと考えています。
         </article>
       </div>
-      <div className="profile m-3">
-        <ProfileCard
-          name="Obikane Yuka"
-          image="/profile_one.jpg"
-          position="Founder"
-          description="I am Yuka and this is my description"
-          instagram="https://www.instagram.com/culturalfusionhub/"
-          // twitter="https://twitter.com/"
-          // linkedin="https://www.linkedin.com/"
-          // facebook="https://www.facebook.com/"
-        />
-      </div>
-      <div className="profile m-3">
-        <ProfileCard
-          name="Saho Petersen"
-          image="/profile_two.jpg"
-          position="Founder"
-          description="I am Saho and this is my description"
-          instagram="https://www.instagram.com/culturalfusionhub/"
-          // twitter="https://twitter.com/"
-          // linkedin="https://www.linkedin.com/"
-          // facebook="https://www.facebook.com/"
-        />
+      <div className="md:flex md:justify-center">
+        <div className="profile m-3">
+          <ProfileCard
+            name="Obikane Yuka"
+            image="/profile_one.jpg"
+            position="Founder"
+            description="I am Yuka and this is my description"
+            instagram="https://www.instagram.com/culturalfusionhub/"
+            // twitter="https://twitter.com/"
+            // linkedin="https://www.linkedin.com/"
+            // facebook="https://www.facebook.com/"
+          />
+        </div>
+        <div className="profile m-3">
+          <ProfileCard
+            name="Saho Petersen"
+            image="/profile_two.jpg"
+            position="Founder"
+            description="I am Saho and this is my description"
+            instagram="https://www.instagram.com/culturalfusionhub/"
+            // twitter="https://twitter.com/"
+            // linkedin="https://www.linkedin.com/"
+            // facebook="https://www.facebook.com/"
+          />
+        </div>
       </div>
       <div className="p-5 text-center text-justify">
         <article>
