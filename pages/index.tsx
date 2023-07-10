@@ -39,7 +39,7 @@ const IndexPage = () => {
       </header>
       <main className="height-30vh">
         <div className="p-4">
-          <article className=" p-5 text-justify">
+          <article className=" p-5 text-justify text-zinc-400">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius alias
             inventore repellendus sit quia architecto praesentium commodi
             deserunt consectetur. Totam molestias tempora soluta iste, rerum

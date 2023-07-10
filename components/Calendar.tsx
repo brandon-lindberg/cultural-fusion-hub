@@ -68,12 +68,12 @@ class CalendarComponent extends React.Component {
           locale={jaLocale}
           events={[
             {
-              title: 'Ge together',
+              title: 'Meet Up',
               start: '2023-07-15T09:00:00',
               end: '2023-07-15T12:00:00',
               location: '代沢地区会館',
               googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-              description: 'July get together',
+              description: 'July Meet Up',
             },
             // {
             //   title: 'Get Together',

@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function ProfileCard(props) {
   return (
-    <div className="card bg-white shadow rounded-lg p-6 max-w-xs mx-auto">
+    <div className="card bg-gray-50 shadow rounded-lg p-6 max-w-xs mx-auto">
       <div className="flex flex-col items-center mb-4">
         <Image
           src={props.image}
@@ -24,18 +24,18 @@ export default function ProfileCard(props) {
       </div>
 
       <div className="flex justify-center gap-2">
-        <a href={props.instagram}>
-          <i className="fa fa-instagram"></i>
+        <a href={props.instagram} target="_blank">
+          <i className="fa fa-instagram text-mainPink"></i>
         </a>
-        <a href={props.twitter}>
-          <i className="fa fa-twitter"></i>
+        {/* <a href={props.twitter} target="_blank">
+          <i className="fa fa-twitter text-mainPink"></i>
         </a>
-        <a href={props.linkedin}>
-          <i className="fa fa-linkedin"></i>
+        <a href={props.linkedin} target="_blank">
+          <i className="fa fa-linkedin text-mainPink"></i>
         </a>
-        <a href={props.facebook}>
-          <i className="fa fa-facebook"></i>
-        </a>
+        <a href={props.facebook} target="_blank">
+          <i className="fa fa-facebook text-mainPink"></i>
+        </a> */}
       </div>
     </div>
   );

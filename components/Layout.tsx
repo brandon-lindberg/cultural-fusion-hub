@@ -42,11 +42,11 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
         ></link>
       </Head>
       <div className="flex flex-col min-h-screen">
-        <header className="bg-slate-50 w-full p-4 flex justify-between items-center">
-          <button onClick={openModal} className="text-xl">
+        <header className="linear-gradient w-full p-4 flex justify-between items-center">
+          <button onClick={openModal} className="text-xl text-zinc-400">
             <i className="fa fa-bars"></i>
           </button>
-          <h3 className="text-black pl-1">Cultural Fusion Hub</h3>
+          <h3 className="text-zinc-400 pl-1">Cultural Fusion Hub</h3>
         </header>
 
         <Modal
@@ -77,10 +77,13 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           </button>
         </Modal>
 
-        <main className="flex-grow">{children}</main>
+        <main>{children}</main>
 
-        <footer className="w-full text-center border-t border-grey p-4 pin-b bg-gray-100">
-          <span>Cultural Fusion Hub</span>
+        <footer className="w-full flex justify-between items-center border-t border-grey p-4 pin-b linear-gradient2">
+          <span className="text-zinc-400">Cultural Fusion Hub</span>
+          <a href="https://www.instagram.com/culturalfusionhub/" target="_blank">
+            <i className="fa fa-instagram text-mainGreen"></i>
+          </a>
         </footer>
       </div>
     </div>

@@ -1,3 +1,15 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.radial-gradient {
+  background: radial-gradient(#ffc8d2, #aafbdc);
+}
+
+.linear-gradient {
+  background: linear-gradient(to left, #aafbdc81, #ffc8d288);
+}
+
+.linear-gradient2 {
+  background: linear-gradient(to right, #aafbdc81, #ffc8d288);
+}
