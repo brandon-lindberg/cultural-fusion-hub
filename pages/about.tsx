@@ -6,10 +6,10 @@ const AboutPage = () => (
   <Layout title="About">
     <div>
       <div className="p-5 text-center text-justify">
-        <p>
+        <article>
           私たちの子供たちは異なる文化や背景を持ち、それが彼らの一部となっています。このコミュニティを通じて、子供たちが自身のアイデンティティを誇りに思い、他の子供たちや家族とつながり、共有することができるように願っています。
           私たちの目標は、このコミュニティを通じて子供たちが居場所を見つけ、互いに理解し合い、共に成長していくことです。また、より広い社会全体が多様性を受け入れる社会になるための一助になればと考えています。
-        </p>
+        </article>
       </div>
       <div className="profile m-3">
         <ProfileCard
