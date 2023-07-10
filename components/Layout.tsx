@@ -59,13 +59,16 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           <nav>
             <ul className="space-y-2 text-zinc-400">
               <li>
-                <Link href="/">ホーム</Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/about">アバウト</Link>
+                <Link href="/about">About</Link>
               </li>
               <li>
-                <Link href="/contact">コンタクト</Link>
+                <Link href="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
               </li>
             </ul>
           </nav>
@@ -73,7 +76,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
             onClick={closeModal}
             className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded"
           >
-            クローズ
+            Close
           </button>
         </Modal>
 
@@ -85,7 +88,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
             href="https://www.instagram.com/culturalfusionhub/"
             target="_blank"
           >
-            <i className="fa fa-instagram text-mainGreen"></i>
+            <i className="fa fa-instagram text-zinc-400"> Instagram</i>
           </a>
         </footer>
       </div>

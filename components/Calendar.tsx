@@ -38,13 +38,13 @@ class CalendarComponent extends React.Component {
             rel="noreferrer"
             className="w-1/2 p-2 bg-buttonColor1 text-white rounded text-center mx-2"
           >
-            マップを開く
+            Open Maps
           </a>
           <button
             onClick={this.closeModal}
             className="w-1/2 p-2 bg-buttonColor2 text-white rounded text-center mx-2"
           >
-            クローズ
+            Close
           </button>
         </div>
       </div>

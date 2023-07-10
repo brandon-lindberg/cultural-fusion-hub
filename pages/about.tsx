@@ -1,45 +1,19 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import ProfileCard from '../components/ProfileCard';
 
 const AboutPage = () => (
   <Layout title="About">
-    <div>
-      <div className="p-5 text-center text-justify">
+    <div className='md-p-9'>
+      <h1 className='p-5'>Cultural Fusion Hub Mission Statement</h1>
+      <div className="p-5 text-center text-justify md-p-9">
         <article>
           私たちの子供たちは異なる文化や背景を持ち、それが彼らの一部となっています。このコミュニティを通じて、子供たちが自身のアイデンティティを誇りに思い、他の子供たちや家族とつながり、共有することができるように願っています。
           私たちの目標は、このコミュニティを通じて子供たちが居場所を見つけ、互いに理解し合い、共に成長していくことです。また、より広い社会全体が多様性を受け入れる社会になるための一助になればと考えています。
         </article>
       </div>
-      <div className="md:flex md:justify-center">
-        <div className="profile m-3">
-          <ProfileCard
-            name="Obikane Yuka"
-            image="/profile_one.jpg"
-            position="Founder"
-            description="I am Yuka and this is my description"
-            instagram="https://www.instagram.com/culturalfusionhub/"
-            // twitter="https://twitter.com/"
-            // linkedin="https://www.linkedin.com/"
-            // facebook="https://www.facebook.com/"
-          />
-        </div>
-        <div className="profile m-3">
-          <ProfileCard
-            name="Saho Petersen"
-            image="/profile_two.jpg"
-            position="Founder"
-            description="I am Saho and this is my description"
-            instagram="https://www.instagram.com/culturalfusionhub/"
-            // twitter="https://twitter.com/"
-            // linkedin="https://www.linkedin.com/"
-            // facebook="https://www.facebook.com/"
-          />
-        </div>
-      </div>
-      <div className="p-5 text-center text-justify">
+      <div className="p-5 text-center text-justify md-p-9">
+          <h1 className='p-5'>ミッション サポートと情報提供</h1>
         <article>
-          ミッション サポートと情報提供:
           ミックスの子供たちやその親が、アイデンティティの探求や困難に直面した際に、相互のサポートや情報提供ができる場所です。アイデンティティ形成や認識の違い、カルチャーショック、言語の学習などに関する情報や経験を共有し、支え合うことができます。
           コミュニティの形成:
           ミックスの子供たちが同じような経験や背景を持つ仲間とつながることは重要です。ミックスの子供たちが集まるコミュニティや交流会、サポートグループの設立や支援を行うことで、互いに支え合い、共通の課題や経験を共有できる場を提供します。
@@ -54,7 +28,6 @@ const AboutPage = () => (
         </article>
       </div>
     </div>
-    <br />
   </Layout>
 );
 

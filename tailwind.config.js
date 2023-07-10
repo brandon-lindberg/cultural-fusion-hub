@@ -14,6 +14,7 @@ module.exports = {
         buttonColor1: '#aafbdc',
         buttonColor2: '#ffc8d2',
         fadedGreen: '#aafbdc1f',
+        darkGreen: '#38c28d',
       },
       gradients: {
         radial: {
