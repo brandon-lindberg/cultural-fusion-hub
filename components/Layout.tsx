@@ -57,7 +57,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           className="w-36 h-48 bg-white rounded-lg p-4 space-y-4 text-center"
         >
           <nav>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-zinc-400">
               <li>
                 <Link href="/">Home</Link>
               </li>

@@ -13,3 +13,28 @@
 .linear-gradient2 {
   background: linear-gradient(to right, #aafbdc81, #ffc8d288);
 }
+
+.fc .fc-button-primary:disabled {
+  background-color: #ffc8d2;
+  border: none;
+}
+
+.fc .fc-button-primary {
+  background-color: #ffd6e4;
+  border: none;
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+  background-color: #aafbdc;
+  border: none;
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+  background-color: #aafbdc;
+  border: none;
+}
+
+.fc .fc-toolbar-title {
+  color: rgb(161 161 170);
+  --tw-text-opacity: 1;
+}
