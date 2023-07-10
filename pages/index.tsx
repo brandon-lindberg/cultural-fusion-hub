@@ -5,9 +5,11 @@ import Layout from '../components/Layout';
 import Image from 'next/image';
 import Calendar from '../components/Calendar';
 import ImageCarousel from '../components/Carousel';
+import { useTranslation } from 'react-i18next';
 
 const IndexPage = () => {
   const router = useRouter();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -40,7 +42,7 @@ const IndexPage = () => {
       <main className="height-30vh">
         <div className="p-4">
           <article className=" p-5 text-justify text-zinc-400">
-            このコミュニティでは、ミックスの子供たちやその両親が集まり、情報交換やサポートを通じて共に成長していける場を提供しています。情報提供やイベントの開催告知を定期的に行っています。子供たちの成長をサポートするためのワークショップやセミナー、交流会などを企画していますので、ぜひ参加してください！
+          {t('greeting')}
           </article>
         </div>
       </main>

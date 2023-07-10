@@ -2,6 +2,7 @@ import React, { useState, ReactNode } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import Modal from 'react-modal';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   children?: ReactNode;
@@ -29,7 +30,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
       bottom: 'auto',
     },
   };
-
+  const { t, i18n } = useTranslation();
   return (
     <div>
       <Head>
@@ -46,44 +47,49 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           <button onClick={openModal} className="text-xl text-zinc-400">
             <i className="fa fa-bars"></i>
           </button>
-          <h3 className="text-zinc-400 pl-1">Cultural Fusion Hub</h3>
+          <h3 className="text-zinc-400 pl-1">{t('CFH')}</h3>
         </header>
 
         <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Menu Modal"
-          style={customStyles}
-          className="w-36 h-48 bg-white rounded-lg p-4 space-y-4 text-center"
-        >
-          <nav>
-            <ul className="space-y-2 text-zinc-400">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/about">About</Link>
-              </li>
-              {/* <li>
-                <Link href="/profile">Profile</Link>
-              </li> */}
-              <li>
-                <Link href="/contact">Contact</Link>
-              </li>
-            </ul>
-          </nav>
-          <button
-            onClick={closeModal}
-            className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded"
-          >
-            Close
-          </button>
-        </Modal>
+    isOpen={modalIsOpen}
+    onRequestClose={closeModal}
+    contentLabel="Menu Modal"
+    style={customStyles}
+    className="w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center"
+>
+    <nav>
+        <ul className="space-y-2 text-zinc-400">
+            <li>
+                <Link href="/">{t('home')}</Link>
+            </li>
+            <li>
+                <Link href="/about">{t('about')}</Link>
+            </li>
+            <li>
+                <Link href="/contact">{t('contact')}</Link>
+            </li>
+        </ul>
+        <div className="flex justify-evenly mt-4">
+            <button onClick={() => i18n.changeLanguage('en')} className="focus:outline-none mr-2 bg-subGreen text-white px-1 py-1 rounded">
+              ENG
+            </button>
+            <button onClick={() => i18n.changeLanguage('ja')} className="focus:outline-none ml-2 bg-subGreen text-white px-1 py-1 rounded">
+                日本語
+            </button>
+        </div>
+    </nav>
+    <button
+        onClick={closeModal}
+        className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded"
+    >
+        Close
+    </button>
+</Modal>
 
         <main className="flex-grow">{children}</main>
 
         <footer className="w-full flex justify-between items-center border-t border-grey p-4 pin-b linear-gradient2">
-          <span className="text-zinc-400">Cultural Fusion Hub</span>
+          <span className="text-zinc-400">{t('CFH')}</span>
           <a
             href="https://www.instagram.com/culturalfusionhub/"
             target="_blank"

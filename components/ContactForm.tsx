@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ContactForm = () => {
   const [formState, setFormState] = useState({
@@ -26,6 +27,7 @@ const ContactForm = () => {
       message: '',
     });
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-lg">
@@ -35,7 +37,7 @@ const ContactForm = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-first-name"
           >
-            {/* First Name */}氏
+            {/* First Name */}{t('first-name')}
           </label>
           <input
             className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -53,7 +55,7 @@ const ContactForm = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-last-name"
           >
-            {/* Last Name */}名
+            {/* Last Name */}{t('last-name')}
           </label>
           <input
             className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -74,7 +76,7 @@ const ContactForm = () => {
             htmlFor="grid-password"
           >
             {/* Message */}
-            問い合わせ内容
+            {t('message')}
           </label>
           <textarea
             className="no-resize appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
@@ -92,7 +94,7 @@ const ContactForm = () => {
             className="shadow bg-subGreen hover:bg-subGreen focus:shadow-outline focus:outline-none text-zinc-400 py-2 px-4 rounded"
             type="submit"
           >
-            Send
+            {t('send')}
           </button>
         </div>
       </div>

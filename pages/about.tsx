@@ -1,58 +1,55 @@
-import Link from 'next/link';
 import Layout from '../components/Layout';
+import { useTranslation } from 'react-i18next';
 
-const AboutPage = () => (
-  <Layout title="About">
-    <div>
+const AboutPage = () => {
+  const { t, i18n } = useTranslation();
+
+  return (
+    <Layout title="About">
       <div>
-        <img src='/about-banner.jpg' alt='banner' />
-      </div>
-      <div className='md-p-9'>
-        <div className="p-5 text-center text-justify md-p-9 bg-gray-50">
-          <h1 className='p-5'>Cultural Fusion Hub Mission Statement</h1>
-          <article>
-            <ul className='p-1'>
-              <li className='p-3'>
-                私たちの子供たちは異なる文化や背景を持ち、それが彼らの一部となっています。このコミュニティを通じて、子供たちが自身のアイデンティティを誇りに思い、他の子供たちや家族とつながり、共有することができるように願っています。
-                私たちの目標は、このコミュニティを通じて子供たちが居場所を見つけ、互いに理解し合い、共に成長していくことです。また、より広い社会全体が多様性を受け入れる社会になるための一助になればと考えています。
-              </li>
-            </ul>
-          </article>
+        <div>
+          <img src='/about-banner.jpg' alt='banner' />
         </div>
-        <div className="p-5 text-center text-justify md-p-9 bg-gray-50">
-          <h1 className='p-5'>ミッション</h1>
-          <article>
-            <ul className='p-2'>
-              <li className='p-3'>
-                サポートと情報提供:
-                ミックスの子供たちやその親が、アイデンティティの探求や困難に直面した際に、相互のサポートや情報提供ができる場所です。アイデンティティ形成や認識の違い、カルチャーショック、言語の学習などに関する情報や経験を共有し、支え合うことができます。
-              </li>
-              <li className='p-3'>
-                コミュニティの形成:
-                ミックスの子供たちが同じような経験や背景を持つ仲間とつながることは重要です。ミックスの子供たちが集まるコミュニティや交流会、サポートグループの設立や支援を行うことで、互いに支え合い、共通の課題や経験を共有できる場を提供します。
-              </li>
-              <li className='p-3'>
-                カルチャーブリッジの提供:
-                ミックスの子供たちは異なる文化間で育つため、日本の文化と他の文化とのつながりをサポートする必要があります。言語学習プログラムや文化交流イベント、異文化理解教育などを通じて、異なる文化間の橋渡しを支援します。
-              </li>
-              <li className='p-3'>
-                アイデンティティの受容と肯定:
-                ミックスの子供たちが自身のアイデンティティを受け入れ、肯定するための支援を提供します。自己啓発プログラムやカウンセリング、アイデンティティに関するワークショップなどを通じて、アイデンティティクライシスや自己肯定感の向上を支援します。
-              </li>
-              <li className='p-3'>
-                子供と親の交流と情報共有:
-                ミックスの子供たちの親同士がつながり、情報や経験を共有する場を提供します。子育ての相談や教育に関する情報交換、地域のイベントや活動の参加などを通じて、親同士のコミュニティを形成します。
-              </li>
-              <li className='p-3'>
-                偏見や差別への対応と啓蒙活動:
-                ミックスの子供たちが直面する偏見や差別に対して、コミュニティがサポートし、啓蒙活動を行います。差別に対する情報提供や対話の場を提供し、ミックスの存在と多様性の価値を広める活動を行います。
-              </li>
-            </ul>
-          </article>
+        <div className='md-p-9'>
+          <div className="p-5 text-center text-justify md-p-9 bg-gray-50">
+            <h1 className='p-5'>{t('CFHmission')}</h1>
+            <article>
+              <ul className='p-1'>
+                <li className='p-3'>
+                  {t('mission-statement-one')}
+                </li>
+              </ul>
+            </article>
+          </div>
+          <div className="p-5 text-center text-justify md-p-9 bg-gray-50">
+            <h1 className='p-5'>{t('mission')}</h1>
+            <article>
+              <ul className='p-2'>
+                <li className='p-3'>
+                  {t('mission-statment-two')}
+                </li>
+                <li className='p-3'>
+                  {t('mission-statment-three')}
+                </li>
+                <li className='p-3'>
+                  {t('mission-statment-four')}
+                </li>
+                <li className='p-3'>
+                  {t('mission-statment-five')}
+                </li>
+                <li className='p-3'>
+                  {t('mission-statment-six')}
+                </li>
+                <li className='p-3'>
+                  {t('mission-statment-seven')}
+                </li>
+              </ul>
+            </article>
+          </div>
         </div>
       </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default AboutPage;

@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import dynamic from 'next/dynamic';
 import { LocaleInput } from '@fullcalendar/core';
 import jaLocale from '@fullcalendar/core/locales/ja';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import { useTranslation } from 'react-i18next';
 
-class CalendarComponent extends React.Component {
-  state = {
-    modalVisible: false,
-    modalContent: null,
-  };
+const CalendarComponent = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const { t, i18n } = useTranslation();
 
-  eventClick = (info) => {
+  const eventClick = (info) => {
     const startDate = info.event.start;
     const formattedStartDate = startDate
       ? `${startDate.toLocaleDateString()} ${startDate.toLocaleTimeString([], {
@@ -21,15 +21,15 @@ class CalendarComponent extends React.Component {
         })}`
       : 'N/A';
 
-    const modalContent = (
+    const content = (
       <div>
-        <h2>{info.event.title}</h2>
+        <h1 className='text-center'>{info.event.title}</h1>
         <p>
-          <strong>スタート:</strong> {formattedStartDate}
+          <strong>{t('start')}:</strong> {formattedStartDate}
           <br />
-          <strong>ロケーション:</strong> {info.event.extendedProps.location}
+          <strong>{t('location')}:</strong> {info.event.extendedProps.location}
           <br />
-          <strong>叙述:</strong> {info.event.extendedProps.description}
+          <strong>{t('description')}:</strong> {info.event.extendedProps.description}
         </p>
         <div className="flex justify-between mt-4">
           <a
@@ -38,73 +38,66 @@ class CalendarComponent extends React.Component {
             rel="noreferrer"
             className="w-1/2 p-2 bg-buttonColor1 text-white rounded text-center mx-2"
           >
-            Open Maps
+            {t('maps')}
           </a>
           <button
-            onClick={this.closeModal}
+            onClick={() => setModalVisible(false)}
             className="w-1/2 p-2 bg-buttonColor2 text-white rounded text-center mx-2"
           >
-            Close
+            {t('close')}
           </button>
         </div>
       </div>
     );
 
-    this.setState({ modalVisible: true, modalContent });
+    setModalVisible(true);
+    setModalContent(content);
   };
 
-  closeModal = () => {
-    this.setState({ modalVisible: false, modalContent: null });
-  };
-
-  render() {
-    const { modalVisible, modalContent } = this.state;
-
-    return (
-      <div>
-        <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin]}
-          initialView="dayGridMonth"
-          locale={jaLocale}
-          events={[
-            {
-              title: 'Cultural Fusion Hub Meet up!',
-              start: '2023-07-15T09:00:00',
-              end: '2023-07-15T12:00:00',
-              location: '代沢地区会館',
-              googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-              description:
-                'ミックスキッズとそのママさん、パパさんの交流会。英語の本の読み聞かせもあります！おもちゃもたくさん準備していますので、お子様を連れて、お気軽にお越しください。お時間のある方は、交流会の後にランチや近場の夏祭りに行きましょう！',
-            },
-            // {
-            //   title: 'Get Together',
-            //   start: '2023-07-22T14:00:00',
-            //   end: '2023-07-22T15:30:00',
-            //   location: '代沢地区会館',
-            //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-            //   description: 'This is a get together event.',
-            // },
-            // {
-            //   title: 'Fusion Event',
-            //   start: '2023-07-19T18:00:00',
-            //   end: '2023-07-19T20:30:00',
-            //   location: '代沢地区会館',
-            //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-            //   description: 'This is a fusion event.',
-            // },
-          ]}
-          eventClick={this.eventClick}
-        />
-        {modalVisible && (
-          <div className="fixed inset-0 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full space-y-4">
-              {modalContent}
-            </div>
+  return (
+    <div>
+      <FullCalendar
+        plugins={[dayGridPlugin, timeGridPlugin]}
+        initialView="dayGridMonth"
+        locale={jaLocale}
+        events={[
+          {
+            title: 'Cultural Fusion Hub Meet up!',
+            start: '2023-07-15T09:00:00',
+            end: '2023-07-15T12:00:00',
+            location: '代沢地区会館',
+            googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
+            description:
+              'ミックスキッズとそのママさん、パパさんの交流会。英語の本の読み聞かせもあります！おもちゃもたくさん準備していますので、お子様を連れて、お気軽にお越しください。お時間のある方は、交流会の後にランチや近場の夏祭りに行きましょう！',
+          },
+          // {
+          //   title: 'Get Together',
+          //   start: '2023-07-22T14:00:00',
+          //   end: '2023-07-22T15:30:00',
+          //   location: '代沢地区会館',
+          //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
+          //   description: 'This is a get together event.',
+          // },
+          // {
+          //   title: 'Fusion Event',
+          //   start: '2023-07-19T18:00:00',
+          //   end: '2023-07-19T20:30:00',
+          //   location: '代沢地区会館',
+          //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
+          //   description: 'This is a fusion event.',
+          // },
+        ]}
+        eventClick={eventClick}
+      />
+      {modalVisible && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full space-y-4">
+            {modalContent}
           </div>
-        )}
-      </div>
-    );
-  }
+        </div>
+      )}
+    </div>
+  );
 }
 
 const DynamicCalendarComponent = dynamic(
