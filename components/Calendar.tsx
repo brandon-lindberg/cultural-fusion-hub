@@ -25,11 +25,11 @@ class CalendarComponent extends React.Component {
       <div>
         <h2>{info.event.title}</h2>
         <p>
-          <strong>Start:</strong> {formattedStartDate}
+          <strong>スタート:</strong> {formattedStartDate}
           <br />
-          <strong>Location:</strong> {info.event.extendedProps.location}
+          <strong>ロケーション:</strong> {info.event.extendedProps.location}
           <br />
-          <strong>Description:</strong> {info.event.extendedProps.description}
+          <strong>叙述:</strong> {info.event.extendedProps.description}
         </p>
         <div className="flex justify-between mt-4">
           <a
@@ -38,13 +38,13 @@ class CalendarComponent extends React.Component {
             rel="noreferrer"
             className="w-1/2 p-2 bg-buttonColor1 text-white rounded text-center mx-2"
           >
-            Open Maps
+            マップを開く
           </a>
           <button
             onClick={this.closeModal}
             className="w-1/2 p-2 bg-buttonColor2 text-white rounded text-center mx-2"
           >
-            Close
+            クローズ
           </button>
         </div>
       </div>

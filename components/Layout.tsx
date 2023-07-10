@@ -59,13 +59,13 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           <nav>
             <ul className="space-y-2 text-zinc-400">
               <li>
-                <Link href="/">Home</Link>
+                <Link href="/">ホーム</Link>
               </li>
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/about">アバウト</Link>
               </li>
               <li>
-                <Link href="/contact">Contact</Link>
+                <Link href="/contact">コンタクト</Link>
               </li>
             </ul>
           </nav>
@@ -73,7 +73,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
             onClick={closeModal}
             className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded"
           >
-            Close
+            クローズ
           </button>
         </Modal>
 
