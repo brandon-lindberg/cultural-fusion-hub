@@ -77,7 +77,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           </button>
         </Modal>
 
-        <main>{children}</main>
+        <main className="flex-grow">{children}</main>
 
         <footer className="w-full flex justify-between items-center border-t border-grey p-4 pin-b linear-gradient2">
           <span className="text-zinc-400">Cultural Fusion Hub</span>
