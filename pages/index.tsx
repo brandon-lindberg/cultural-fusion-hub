@@ -38,7 +38,7 @@ const IndexPage = () => {
         </div>
       </header>
       <main className="height-30vh">
-        <div className="bg-slate-50 p-4">
+        <div className="p-4">
           <article className=" p-5 text-justify">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius alias
             inventore repellendus sit quia architecto praesentium commodi

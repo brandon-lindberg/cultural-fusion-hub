@@ -4,7 +4,12 @@ module.exports = {
   media: false, // or 'media' or 'class'
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        buttonColor1: '#aafbdc',
+        buttonColor2: '#ffc8d2'
+      }
+    },
   },
   plugins: [],
 };

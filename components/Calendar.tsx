@@ -32,21 +32,21 @@ class CalendarComponent extends React.Component {
           <strong>Description:</strong> {info.event.extendedProps.description}
         </p>
         <div className="flex justify-between mt-4">
-          <a
-            href={info.event.extendedProps.googleMapsUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="w-1/2 p-2 bg-green-500 text-white rounded text-center mx-2"
-          >
-            Open Maps
-          </a>
-          <button
-            onClick={this.closeModal}
-            className="w-1/2 p-2 bg-blue-500 text-white rounded text-center mx-2"
-          >
-            Close
-          </button>
-        </div>
+  <a
+    href={info.event.extendedProps.googleMapsUrl}
+    target="_blank"
+    rel="noreferrer"
+    className="w-1/2 p-2 bg-buttonColor1 text-white rounded text-center mx-2"
+  >
+    Open Maps
+  </a>
+  <button
+    onClick={this.closeModal}
+    className="w-1/2 p-2 bg-buttonColor2 text-white rounded text-center mx-2"
+  >
+    Close
+  </button>
+</div>
       </div>
     );
 
@@ -68,29 +68,29 @@ class CalendarComponent extends React.Component {
           locale={jaLocale}
           events={[
             {
-              title: 'EVENTO',
-              start: '2023-07-15T14:00:00',
-              end: '2023-07-15T15:30:00',
+              title: 'Ge together',
+              start: '2023-07-15T09:00:00',
+              end: '2023-07-15T12:00:00',
               location: '代沢地区会館',
               googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-              description: 'This is an EVENTO',
+              description: 'July get together',
             },
-            {
-              title: 'Get Together',
-              start: '2023-07-22T14:00:00',
-              end: '2023-07-22T15:30:00',
-              location: '代沢地区会館',
-              googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-              description: 'This is a get together event.',
-            },
-            {
-              title: 'Fusion Event',
-              start: '2023-07-19T18:00:00',
-              end: '2023-07-19T20:30:00',
-              location: '代沢地区会館',
-              googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-              description: 'This is a fusion event.',
-            },
+            // {
+            //   title: 'Get Together',
+            //   start: '2023-07-22T14:00:00',
+            //   end: '2023-07-22T15:30:00',
+            //   location: '代沢地区会館',
+            //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
+            //   description: 'This is a get together event.',
+            // },
+            // {
+            //   title: 'Fusion Event',
+            //   start: '2023-07-19T18:00:00',
+            //   end: '2023-07-19T20:30:00',
+            //   location: '代沢地区会館',
+            //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
+            //   description: 'This is a fusion event.',
+            // },
           ]}
           eventClick={this.eventClick}
         />
