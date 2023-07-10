@@ -64,9 +64,9 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
               <li>
                 <Link href="/about">About</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/profile">Profile</Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact">Contact</Link>
               </li>
