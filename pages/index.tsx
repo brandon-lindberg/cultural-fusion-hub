@@ -40,10 +40,7 @@ const IndexPage = () => {
       <main className="height-30vh">
         <div className="p-4">
           <article className=" p-5 text-justify text-zinc-400">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius alias
-            inventore repellendus sit quia architecto praesentium commodi
-            deserunt consectetur. Totam molestias tempora soluta iste, rerum
-            dicta nihil assumenda eveniet? Hic?
+            このコミュニティでは、ミックスの子供たちやその両親が集まり、情報交換やサポートを通じて共に成長していける場を提供しています。情報提供やイベントの開催告知を定期的に行っています。子供たちの成長をサポートするためのワークショップやセミナー、交流会などを企画していますので、ぜひ参加してください！
           </article>
         </div>
       </main>

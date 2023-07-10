@@ -32,21 +32,21 @@ class CalendarComponent extends React.Component {
           <strong>Description:</strong> {info.event.extendedProps.description}
         </p>
         <div className="flex justify-between mt-4">
-  <a
-    href={info.event.extendedProps.googleMapsUrl}
-    target="_blank"
-    rel="noreferrer"
-    className="w-1/2 p-2 bg-buttonColor1 text-white rounded text-center mx-2"
-  >
-    Open Maps
-  </a>
-  <button
-    onClick={this.closeModal}
-    className="w-1/2 p-2 bg-buttonColor2 text-white rounded text-center mx-2"
-  >
-    Close
-  </button>
-</div>
+          <a
+            href={info.event.extendedProps.googleMapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="w-1/2 p-2 bg-buttonColor1 text-white rounded text-center mx-2"
+          >
+            Open Maps
+          </a>
+          <button
+            onClick={this.closeModal}
+            className="w-1/2 p-2 bg-buttonColor2 text-white rounded text-center mx-2"
+          >
+            Close
+          </button>
+        </div>
       </div>
     );
 
@@ -68,12 +68,13 @@ class CalendarComponent extends React.Component {
           locale={jaLocale}
           events={[
             {
-              title: 'Meet Up',
+              title: 'Cultural Fusion Hub Meet up!',
               start: '2023-07-15T09:00:00',
               end: '2023-07-15T12:00:00',
               location: '代沢地区会館',
               googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-              description: 'July Meet Up',
+              description:
+                'ミックスキッズとそのママさん、パパさんの交流会。英語の本の読み聞かせもあります！おもちゃもたくさん準備していますので、お子様を連れて、お気軽にお越しください。お時間のある方は、交流会の後にランチや近場の夏祭りに行きましょう！',
             },
             // {
             //   title: 'Get Together',

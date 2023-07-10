@@ -35,13 +35,13 @@ const ContactForm = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-first-name"
           >
-            First Name
+            {/* First Name */}氏
           </label>
           <input
             className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
-            placeholder="John"
+            placeholder="Taro"
             value={formState.firstName}
             onChange={handleInput}
             name="firstName"
@@ -53,13 +53,13 @@ const ContactForm = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-last-name"
           >
-            Last Name
+            {/* Last Name */}名
           </label>
           <input
             className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-last-name"
             type="text"
-            placeholder="Doe"
+            placeholder="Yamada"
             value={formState.lastName}
             onChange={handleInput}
             name="lastName"
@@ -73,7 +73,8 @@ const ContactForm = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-password"
           >
-            Message
+            {/* Message */}
+            問い合わせ内容
           </label>
           <textarea
             className="no-resize appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"

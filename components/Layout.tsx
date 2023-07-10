@@ -81,7 +81,10 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
 
         <footer className="w-full flex justify-between items-center border-t border-grey p-4 pin-b linear-gradient2">
           <span className="text-zinc-400">Cultural Fusion Hub</span>
-          <a href="https://www.instagram.com/culturalfusionhub/" target="_blank">
+          <a
+            href="https://www.instagram.com/culturalfusionhub/"
+            target="_blank"
+          >
             <i className="fa fa-instagram text-mainGreen"></i>
           </a>
         </footer>

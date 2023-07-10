@@ -13,15 +13,15 @@ module.exports = {
         mainPink: '#ffc8d2',
         buttonColor1: '#aafbdc',
         buttonColor2: '#ffc8d2',
-        fadedGreen: '#aafbdc1f'
+        fadedGreen: '#aafbdc1f',
       },
       gradients: {
-        'radial': {
+        radial: {
           type: 'radial',
-          colors: ['#aafbdc', '#ffc8d2']
-        }
-      }
+          colors: ['#aafbdc', '#ffc8d2'],
+        },
+      },
     },
   },
-  plugins: [require('tailwindcss-gradients'),],
+  plugins: [require('tailwindcss-gradients')],
 };
