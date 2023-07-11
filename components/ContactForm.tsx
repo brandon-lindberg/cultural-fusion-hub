@@ -18,7 +18,7 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const mailtoLink = `mailto:culturalfusionhub@gmail.com?subject=Contact form submission from ${formState.firstName} ${formState.lastName}&body=${formState.message}`;
+    const mailtoLink = `mailto:culturalfusionhub@gmail.com?subject=Contact form submission from ${formState.lastName} ${formState.firstName}&body=${formState.message}`;
     window.location.href = mailtoLink;
 
     setFormState({
