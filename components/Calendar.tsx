@@ -23,7 +23,7 @@ const CalendarComponent = () => {
 
     const content = (
       <div>
-        <h1 className='text-center'>{info.event.title}</h1>
+        <h1 className='text-center font-bold'>{info.event.title}</h1>
         <p>
           <strong>{t('start')}:</strong> {formattedStartDate}
           <br />
