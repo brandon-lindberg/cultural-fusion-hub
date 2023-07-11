@@ -37,7 +37,8 @@ const ContactForm = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-first-name"
           >
-            {/* First Name */}{t('last-name')}
+            {/* First Name */}
+            {t('last-name')}
           </label>
           <input
             className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -55,7 +56,8 @@ const ContactForm = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-last-name"
           >
-            {/* Last Name */}{t('first-name')}
+            {/* Last Name */}
+            {t('first-name')}
           </label>
           <input
             className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"

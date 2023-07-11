@@ -42,7 +42,7 @@ const IndexPage = () => {
       <main className="height-30vh">
         <div className="p-4">
           <article className=" p-5 text-justify text-zinc-400">
-          {t('greeting')}
+            {t('greeting')}
           </article>
         </div>
       </main>

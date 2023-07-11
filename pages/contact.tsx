@@ -14,6 +14,7 @@ const ContactPage = () => {
         </div>
       </div>
     </Layout>
-  )};
+  );
+};
 
 export default ContactPage;

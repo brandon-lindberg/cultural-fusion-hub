@@ -23,13 +23,14 @@ const CalendarComponent = () => {
 
     const content = (
       <div>
-        <h1 className='text-center font-bold'>{info.event.title}</h1>
+        <h1 className="text-center font-bold">{info.event.title}</h1>
         <p>
           <strong>{t('start')}:</strong> {formattedStartDate}
           <br />
           <strong>{t('location')}:</strong> {info.event.extendedProps.location}
           <br />
-          <strong>{t('description')}:</strong> {info.event.extendedProps.description}
+          <strong>{t('description')}:</strong>{' '}
+          {info.event.extendedProps.description}
         </p>
         <div className="flex justify-between mt-4">
           <a
@@ -98,7 +99,7 @@ const CalendarComponent = () => {
       )}
     </div>
   );
-}
+};
 
 const DynamicCalendarComponent = dynamic(
   () => Promise.resolve(CalendarComponent),
