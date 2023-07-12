@@ -41,6 +41,18 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         ></link>
+        <link
+          href="https://fullcalendar.io/releases/main/core/main.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fullcalendar.io/releases/main/daygrid/main.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fullcalendar.io/releases/main/timegrid/main.css"
+          rel="stylesheet"
+        />
       </Head>
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4 flex justify-between items-center">
