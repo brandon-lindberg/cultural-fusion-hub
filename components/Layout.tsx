@@ -92,13 +92,13 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
             <div className="flex justify-evenly mt-4">
               <button
                 onClick={() => i18n.changeLanguage('en')}
-                className="focus:outline-none mr-2 bg-subGreen text-white px-1 py-1 rounded"
+                className="focus:outline-none mr-2 bg-subGreen text-zinc-400 px-1 py-1 rounded"
               >
                 ENG
               </button>
               <button
                 onClick={() => i18n.changeLanguage('ja')}
-                className="focus:outline-none ml-2 bg-subGreen text-white px-1 py-1 rounded"
+                className="focus:outline-none ml-2 bg-subGreen text-zinc-400 px-1 py-1 rounded"
               >
                 日本語
               </button>

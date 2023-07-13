@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function ProfileCard(props) {
   return (
     <div className="card bg-gray-50 shadow rounded-lg p-6 max-w-xs mx-auto">
-      <div className="flex flex-col items-center mb-4 h-40">
+      <div className="flex flex-col items-center">
         <Image
           src={props.image}
           alt="pic"
