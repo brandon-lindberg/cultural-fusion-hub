@@ -32,18 +32,31 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
       bottom: 'auto',
     },
   };
-  
+
   const { t, i18n } = useTranslation();
-  
+
   return (
     <div>
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        ></link>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col min-h-screen">
@@ -77,28 +90,42 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
               </li>
             </ul>
             <div className="flex justify-evenly mt-4">
-              <button onClick={() => i18n.changeLanguage('en')} className="focus:outline-none mr-2 bg-subGreen text-white px-1 py-1 rounded">
+              <button
+                onClick={() => i18n.changeLanguage('en')}
+                className="focus:outline-none mr-2 bg-subGreen text-white px-1 py-1 rounded"
+              >
                 ENG
               </button>
-              <button onClick={() => i18n.changeLanguage('ja')} className="focus:outline-none ml-2 bg-subGreen text-white px-1 py-1 rounded">
+              <button
+                onClick={() => i18n.changeLanguage('ja')}
+                className="focus:outline-none ml-2 bg-subGreen text-white px-1 py-1 rounded"
+              >
                 日本語
               </button>
             </div>
           </nav>
-          <button onClick={closeModal} className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded">
+          <button
+            onClick={closeModal}
+            className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded"
+          >
             Close
           </button>
         </Modal>
 
         <main className="flex-grow">
-          {React.Children.map(children, child =>
-            React.isValidElement(child) ? React.cloneElement(child, { key: calendarKey }) : child
+          {React.Children.map(children, (child) =>
+            React.isValidElement(child)
+              ? React.cloneElement(child, { key: calendarKey })
+              : child,
           )}
         </main>
 
         <footer className="w-full flex justify-between items-center border-t border-grey p-4 pin-b linear-gradient2">
           <span className="text-zinc-400">{t('CFH')}</span>
-          <a href="https://www.instagram.com/culturalfusionhub/" target="_blank">
+          <a
+            href="https://www.instagram.com/culturalfusionhub/"
+            target="_blank"
+          >
             <i className="fa fa-instagram text-zinc-400"> Instagram</i>
           </a>
         </footer>
@@ -108,4 +135,3 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
 };
 
 export default Layout;
-

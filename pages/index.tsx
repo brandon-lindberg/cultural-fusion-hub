@@ -11,21 +11,6 @@ const IndexPage = () => {
   const router = useRouter();
   const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      if (url === '/') {
-        window.location.reload();
-      }
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    // Cleanup function
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router]);
-
   return (
     <Layout title="Cultural Fusion Hub">
       <header>
