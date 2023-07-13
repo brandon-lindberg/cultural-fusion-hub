@@ -15,11 +15,10 @@ export default function ProfileCard(props) {
         />
         <h1 className="text-lg mt-2">{props.name}</h1>
       </div>
-      <br />
+      <h3 className="title text-center mb-2">{props.position}</h3>
       <div className="border-t border-gray-200 mt-2 mb-4"></div>
 
       <div className="mb-4">
-        <h3 className="title text-center mb-2">{props.position}</h3>
         <p className="mx-4 text-justify text-center overflow-auto max-h-48 no-scrollbar">
           {props.description}
         </p>
