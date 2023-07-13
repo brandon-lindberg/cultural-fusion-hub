@@ -70,6 +70,9 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
                 <Link href="/about">{t('about')}</Link>
               </li>
               <li>
+                <Link href="/profile">{t('profile')}</Link>
+              </li>
+              <li>
                 <Link href="/contact">{t('contact')}</Link>
               </li>
             </ul>

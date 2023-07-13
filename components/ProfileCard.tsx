@@ -20,7 +20,7 @@ export default function ProfileCard(props) {
 
       <div className="mb-4">
         <h3 className="title text-center mb-2">{props.position}</h3>
-        <p className="mx-4 text-center">{props.description}</p>
+        <p className="mx-4 text-justify text-center overflow-auto max-h-48 no-scrollbar">{props.description}</p>
       </div>
 
       <div className="flex justify-center gap-2">

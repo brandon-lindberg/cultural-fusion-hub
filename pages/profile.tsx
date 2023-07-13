@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import ProfileCard from '../components/ProfileCard';
+import { t } from 'i18next';
 
 const ProfilePage = () => (
   <Layout title="Profile">
@@ -10,7 +11,7 @@ const ProfilePage = () => (
           name="Obikane Yuka"
           image="/profile_one.jpg"
           position="Founder"
-          description="I am Yuka and this is my description"
+          description={t('yuka-description')}
           instagram="https://www.instagram.com/culturalfusionhub/"
           // twitter="https://twitter.com/"
           // linkedin="https://www.linkedin.com/"
@@ -20,9 +21,9 @@ const ProfilePage = () => (
       <div className="profile m-3">
         <ProfileCard
           name="Saho Petersen"
-          image="/profile_two.jpg"
+          image="/profile_three.jpg"
           position="Founder"
-          description="I am Saho and this is my description"
+          description={t('saho-description')}
           instagram="https://www.instagram.com/culturalfusionhub/"
           // twitter="https://twitter.com/"
           // linkedin="https://www.linkedin.com/"
