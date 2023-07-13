@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import dynamic from 'next/dynamic';
 import jaLocale from '@fullcalendar/core/locales/ja';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import eventsData from './events';
 import { useTranslation } from 'react-i18next';
 
 const CalendarComponent = () => {
@@ -60,33 +61,7 @@ const CalendarComponent = () => {
         plugins={[dayGridPlugin, timeGridPlugin]}
         initialView="dayGridMonth"
         locale={jaLocale}
-        events={[
-          {
-            title: 'Cultural Fusion Hub Meet up!',
-            start: '2023-07-15T09:00:00',
-            end: '2023-07-15T12:00:00',
-            location: '代沢地区会館',
-            googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-            description:
-              'ミックスキッズとそのママさん、パパさんの交流会。英語の本の読み聞かせもあります！おもちゃもたくさん準備していますので、お子様を連れて、お気軽にお越しください。お時間のある方は、交流会の後にランチや近場の夏祭りに行きましょう！',
-          },
-          // {
-          //   title: 'Get Together',
-          //   start: '2023-07-22T14:00:00',
-          //   end: '2023-07-22T15:30:00',
-          //   location: '代沢地区会館',
-          //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-          //   description: 'This is a get together event.',
-          // },
-          // {
-          //   title: 'Fusion Event',
-          //   start: '2023-07-19T18:00:00',
-          //   end: '2023-07-19T20:30:00',
-          //   location: '代沢地区会館',
-          //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
-          //   description: 'This is a fusion event.',
-          // },
-        ]}
+        events={eventsData}
         eventClick={eventClick}
       />
       {modalVisible && (
