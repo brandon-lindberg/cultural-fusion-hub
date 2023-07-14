@@ -18,10 +18,10 @@ export default function ProfileCard(props) {
       <h3 className="title text-center mb-2">{props.position}</h3>
       <div className="border-t border-gray-200 mt-2 mb-4"></div>
 
-      <div className="mb-4">
-        <p className="mx-4 text-justify text-center overflow-auto max-h-48 no-scrollbar">
-          {props.description}
-        </p>
+      <div className="mx-4 text-justify text-center overflow-auto max-h-48 no-scrollbar">
+        {props.description && 
+          <div dangerouslySetInnerHTML={{ __html: props.description }} />
+        }
       </div>
 
       <div className="flex justify-center gap-2">

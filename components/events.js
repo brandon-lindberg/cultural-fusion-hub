@@ -1,4 +1,12 @@
 export default [
+  // {
+  //   title: 'Example Title',
+  //   start: '2023-07-22T14:00:00',
+  //   end: '2023-07-22T15:30:00',
+  //   location: '代沢地区会館',
+  //   googleMapsUrl: 'https://goo.gl/maps/6Vu8mX3HmBWbEU8n8',
+  //   description: 'Example description',
+  // },
   {
     title: 'Cultural Fusion Hub Meet up!',
     start: '2023-07-15T09:00:00',
