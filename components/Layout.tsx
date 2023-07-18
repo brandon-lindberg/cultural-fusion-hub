@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 type Props = {
   children?: ReactNode;
   title?: string;
+  description?: string;
+  image?: string;
 };
 
 Modal.setAppElement('#__next'); // Important for accessibility
@@ -41,6 +43,11 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content={process.env.BASE_URL} />
+        <meta name="twitter:title" content={title} />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
