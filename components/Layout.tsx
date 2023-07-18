@@ -41,7 +41,10 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
     <div>
       <Head>
         <title>{title}</title>
-        <meta name="google-site-verification" content="KStqInBSo49y2ngUfeVdBP81kOYD-mq03q1M8SnXyrA" />
+        <meta
+          name="google-site-verification"
+          content="KStqInBSo49y2ngUfeVdBP81kOYD-mq03q1M8SnXyrA"
+        />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:type" content="website" />
