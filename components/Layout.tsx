@@ -49,6 +49,10 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
+        <meta
+          name="description"
+          content="Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください！"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content={process.env.BASE_URL} />
         <meta name="twitter:title" content={title} />
