@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
+import styles from '../styles/ModalMenu.module.scss'
 
 const customStyles = {
   content: {
@@ -27,7 +28,7 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
       onRequestClose={onRequestClose}
       contentLabel="Menu Modal"
       style={customStyles}
-      className="modal-menu w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center"
+      className={`${styles.modalMenu} w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center`}
     >
       <nav>
         <ul className="space-y-2 text-zinc-400">
