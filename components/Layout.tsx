@@ -13,7 +13,7 @@ type Props = {
 
 Modal.setAppElement('#__next'); // Important for accessibility
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => {
+const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [calendarKey, setCalendarKey] = useState(0);
 
