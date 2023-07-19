@@ -6,6 +6,7 @@ import jaLocale from '@fullcalendar/core/locales/ja';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import eventsData from './events';
 import { useTranslation } from 'react-i18next';
+import styles from '../styles/Calendar.module.scss';
 
 const CalendarComponent = () => {
   const [modalVisible, setModalVisible] = useState(false);

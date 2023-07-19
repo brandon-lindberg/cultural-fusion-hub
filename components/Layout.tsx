@@ -1,8 +1,8 @@
 import React, { useState, ReactNode, cloneElement } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
+import ModalMenu from './ModalMenu';
 
 type Props = {
   children?: ReactNode;
@@ -10,8 +10,6 @@ type Props = {
   description?: string;
   image?: string;
 };
-
-Modal.setAppElement('#__next'); // Important for accessibility
 
 const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -26,16 +24,7 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
     setCalendarKey((prevKey) => prevKey + 1);
   };
 
-  const customStyles = {
-    content: {
-      top: '10px',
-      left: 'auto',
-      right: '10px',
-      bottom: 'auto',
-    },
-  };
-
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -82,50 +71,7 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
           <h3 className="text-zinc-400 pl-1">{t('CFH')}</h3>
         </header>
 
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Menu Modal"
-          style={customStyles}
-          className="w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center"
-        >
-          <nav>
-            <ul className="space-y-2 text-zinc-400">
-              <li>
-                <Link href="/">{t('home')}</Link>
-              </li>
-              <li>
-                <Link href="/about">{t('about')}</Link>
-              </li>
-              <li>
-                <Link href="/profile">{t('profile')}</Link>
-              </li>
-              <li>
-                <Link href="/contact">{t('contact')}</Link>
-              </li>
-            </ul>
-            <div className="flex justify-evenly mt-4">
-              <button
-                onClick={() => i18n.changeLanguage('en')}
-                className="focus:outline-none mr-2 bg-subGreen text-zinc-400 px-1 py-1 rounded"
-              >
-                ENG
-              </button>
-              <button
-                onClick={() => i18n.changeLanguage('ja')}
-                className="focus:outline-none ml-2 bg-subGreen text-zinc-400 px-1 py-1 rounded"
-              >
-                日本語
-              </button>
-            </div>
-          </nav>
-          <button
-            onClick={closeModal}
-            className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded"
-          >
-            Close
-          </button>
-        </Modal>
+        <ModalMenu isOpen={modalIsOpen} onRequestClose={closeModal} t={t} />
 
         <main className="flex-grow">
           {React.Children.map(children, (child) =>
