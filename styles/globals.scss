@@ -49,3 +49,12 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* For Modal Menu */
+.modal-menu .fc .fc-button-primary:disabled,
+.modal-menu .fc .fc-button-primary,
+.modal-menu .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child),
+.modal-menu .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child),
+.modal-menu .fc .fc-toolbar-title {
+  /* Override styles here */
+}

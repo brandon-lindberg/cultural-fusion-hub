@@ -27,7 +27,7 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
       onRequestClose={onRequestClose}
       contentLabel="Menu Modal"
       style={customStyles}
-      className="w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center"
+      className="modal-menu w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center"
     >
       <nav>
         <ul className="space-y-2 text-zinc-400">
