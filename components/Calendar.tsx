@@ -6,6 +6,7 @@ import jaLocale from '@fullcalendar/core/locales/ja';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import eventsData from './events';
 import { useTranslation } from 'react-i18next';
+import Script from 'next/script';
 import styles from '../styles/Calendar.module.scss';
 
 const CalendarComponent = () => {
@@ -83,6 +84,7 @@ const DynamicCalendarComponent = dynamic(
 
 const Calendar = () => (
   <div>
+    <Script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" />
     <DynamicCalendarComponent />
   </div>
 );
