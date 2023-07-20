@@ -62,6 +62,8 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
           href="/favicon-16x16.png"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" />
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
       </Head>
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4 flex justify-between items-center">
