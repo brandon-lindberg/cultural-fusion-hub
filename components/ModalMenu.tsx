@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
-import styles from '../styles/ModalMenu.module.scss'
+import styles from '../styles/ModalMenu.module.scss';
 
 const customStyles = {
   content: {

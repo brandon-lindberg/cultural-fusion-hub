@@ -1,0 +1,62 @@
+/* Calendar.module.scss */
+
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn {
+  width: 50%;
+  padding: 0.5rem;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.btn--color1 {
+  background-color: #aafbdc;
+}
+
+.btn--color2 {
+  background-color: #ffc8d2;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 24rem;
+  width: 100%;
+}
+
+.modal-content > * + * {
+  margin-top: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}

@@ -24,7 +24,7 @@ const CalendarComponent = () => {
 
     const content = (
       <div>
-        <h1 className="text-center font-bold">{info.event.title}</h1>
+        <h1 className={styles.title}>{info.event.title}</h1>
         <p>
           <strong>{t('start')}:</strong> {formattedStartDate}
           <br />
@@ -33,18 +33,20 @@ const CalendarComponent = () => {
           <strong>{t('description')}:</strong>{' '}
           {info.event.extendedProps.description}
         </p>
-        <div className="flex justify-between mt-4">
+        <div
+          className={`${styles.flex} ${styles['justify-between']} ${styles['mt-4']}`}
+        >
           <a
             href={info.event.extendedProps.googleMapsUrl}
             target="_blank"
             rel="noreferrer"
-            className="w-1/2 p-2 bg-buttonColor1 text-white rounded text-center mx-2"
+            className={`${styles.btn} ${styles['btn--color1']}`}
           >
             {t('maps')}
           </a>
           <button
             onClick={() => setModalVisible(false)}
-            className="w-1/2 p-2 bg-buttonColor2 text-white rounded text-center mx-2"
+            className={`${styles.btn} ${styles['btn--color2']}`}
           >
             {t('close')}
           </button>
@@ -66,10 +68,8 @@ const CalendarComponent = () => {
         eventClick={eventClick}
       />
       {modalVisible && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full space-y-4">
-            {modalContent}
-          </div>
+        <div className={styles.modal}>
+          <div className={styles['modal-content']}>{modalContent}</div>
         </div>
       )}
     </div>
