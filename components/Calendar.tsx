@@ -9,8 +9,7 @@ import { useTranslation } from 'react-i18next';
 import styles from '../styles/Calendar.module.scss';
 
 const CalendarComponent = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
+  const [modal, setModal] = useState({ visible: false, content: null });
   const { t, i18n } = useTranslation();
 
   const eventClick = (info) => {
@@ -45,7 +44,7 @@ const CalendarComponent = () => {
             {t('maps')}
           </a>
           <button
-            onClick={() => setModalVisible(false)}
+            onClick={() => setModal({ visible: false, content: null })}
             className={`${styles.btn} ${styles['btn--color2']}`}
           >
             {t('close')}
@@ -54,8 +53,7 @@ const CalendarComponent = () => {
       </div>
     );
 
-    setModalVisible(true);
-    setModalContent(content);
+    setModal({ visible: true, content });
   };
 
   return (
@@ -67,9 +65,9 @@ const CalendarComponent = () => {
         events={eventsData}
         eventClick={eventClick}
       />
-      {modalVisible && (
+      {modal.visible && (
         <div className={styles.modal}>
-          <div className={styles['modal-content']}>{modalContent}</div>
+          <div className={styles['modal-content']}>{modal.content}</div>
         </div>
       )}
     </div>
