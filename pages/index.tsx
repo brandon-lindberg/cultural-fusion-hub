@@ -31,7 +31,7 @@ const IndexPage = () => {
           </article>
         </div>
       </main>
-      <div className="p-3">
+      <div className="flex justify-center p-3">
         <div className="p-3">
           <Calendar />
         </div>
