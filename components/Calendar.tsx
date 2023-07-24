@@ -1,89 +1,79 @@
+// Calendar.tsx
+
 import React, { useState } from 'react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import dynamic from 'next/dynamic';
-import jaLocale from '@fullcalendar/core/locales/ja';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import eventsData from './events';
+import DatePicker from 'react-datepicker';
+import Modal from './Modal';
 import { useTranslation } from 'react-i18next';
+import eventsData from './events';
 import styles from '../styles/Calendar.module.scss';
+import { format } from 'date-fns';
+import ja from 'date-fns/locale/ja';
+import { registerLocale, setDefaultLocale } from 'react-datepicker';
+
+// Register the locale
+registerLocale('ja', ja);
+setDefaultLocale('ja');
 
 const CalendarComponent = () => {
-  const [modal, setModal] = useState({ visible: false, content: null });
+  const [startDate, setStartDate] = useState(new Date());
+  const [selectedEvent, setSelectedEvent] = useState(null);
   const { t, i18n } = useTranslation();
 
-  const eventClick = (info) => {
-    const startDate = info.event.start;
-    const formattedStartDate = startDate
-      ? `${startDate.toLocaleDateString()} ${startDate.toLocaleTimeString([], {
-          hour: '2-digit',
-          minute: '2-digit',
-        })}`
-      : 'N/A';
+  const handleDateChange = (date: Date) => {
+    setStartDate(date);
+    const selectedEventData = eventsData.find(
+      (event) => new Date(event.start).toDateString() === date.toDateString(),
+    );
+    setSelectedEvent(selectedEventData);
+  };
 
-    const content = (
-      <div>
-        <h1 className={styles.title}>{info.event.title}</h1>
-        <p>
-          <strong>{t('start')}:</strong> {formattedStartDate}
-          <br />
-          <strong>{t('location')}:</strong> {info.event.extendedProps.location}
-          <br />
-          <strong>{t('description')}:</strong>{' '}
-          {info.event.extendedProps.description}
-        </p>
-        <div
-          className={`${styles.flex} ${styles['justify-between']} ${styles['mt-4']}`}
-        >
-          <a
-            href={info.event.extendedProps.googleMapsUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={`${styles.btn} ${styles['btn--color1']}`}
-          >
-            {t('maps')}
-          </a>
-          <button
-            onClick={() => setModal({ visible: false, content: null })}
-            className={`${styles.btn} ${styles['btn--color2']}`}
-          >
-            {t('close')}
-          </button>
-        </div>
-      </div>
+  const renderDayContents = (day: number, date: Date) => {
+    const formattedDate = format(date, 'yyyy-MM-dd');
+    const eventForThisDay = eventsData.find(
+      (event) => format(new Date(event.start), 'yyyy-MM-dd') === formattedDate,
     );
 
-    setModal({ visible: true, content });
+    if (eventForThisDay) {
+      return (
+        <div className={styles.dayContainer}>
+          {day}
+          <div className={styles.eventIndicator}></div>
+        </div>
+      );
+    }
+    return day;
   };
 
   return (
-    <div>
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin]}
-        initialView="dayGridMonth"
-        locale={jaLocale}
-        events={eventsData}
-        eventClick={eventClick}
-      />
-      {modal.visible && (
-        <div className={styles.modal}>
-          <div className={styles['modal-content']}>{modal.content}</div>
-        </div>
-      )}
+    <div className={`${styles.customCalendar}`}>
+      <div className={`${styles.calendarLarge}`}>
+        <DatePicker
+          selected={startDate}
+          onChange={handleDateChange}
+          inline
+          renderDayContents={renderDayContents}
+          locale="ja"
+        />
+        <Modal
+          isOpen={selectedEvent !== null}
+          onClose={() => setSelectedEvent(null)}
+          onOpenMaps={() => window.open(selectedEvent.googleMapsUrl, '_blank')}
+        >
+          {selectedEvent && (
+            <div>
+              <h2 className="text-center font-bold">{selectedEvent.title}</h2>
+              <p className="p-3">{selectedEvent.description}</p>
+            </div>
+          )}
+        </Modal>
+      </div>
     </div>
   );
 };
 
-const DynamicCalendarComponent = dynamic(
-  () => Promise.resolve(CalendarComponent),
-  {
-    ssr: false, // This line is important. It's what prevents server-side rendering.
-  },
-);
-
 const Calendar = () => (
   <div>
-    <DynamicCalendarComponent />
+    <CalendarComponent />
   </div>
 );
 

@@ -1,62 +1,32 @@
-/* Calendar.module.scss */
+// /* Calendar.module.scss */
 
-.title {
-  text-align: center;
-  font-weight: bold;
-}
-
-.btn {
-  width: 50%;
-  padding: 0.5rem;
-  color: #ffffff;
-  border-radius: 0.25rem;
-  text-align: center;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.btn--color1 {
-  background-color: #aafbdc;
-}
-
-.btn--color2 {
-  background-color: #ffc8d2;
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.dayContainer {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  z-index: 50;
+  align-items: center;
+  height: 30px; // Adjust the height as necessary
+  position: relative;
 }
 
-.modal-content {
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border-radius: 0.25rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  max-width: 24rem;
-  width: 100%;
+.eventIndicator {
+  height: 8px;
+  width: 8px;
+  background-color: #aafbdc;
+  border-radius: 50%;
+  position: relative;
+  margin-top: -6px; // Adjust as necessary to position the dot
 }
 
-.modal-content > * + * {
-  margin-top: 1rem;
+.react-datepicker
+  > .react-datepicker__month-container
+  > .react-datepicker__header {
+  background: linear-gradient(to left, #aafbdc81, #ffc8d288) !important;
 }
 
-.flex {
-  display: flex;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.mt-4 {
-  margin-top: 1rem;
+@media (min-width: 1024px) {
+  .calendarLarge {
+    width: 70%; // Adjust this as needed
+    margin: 0 auto;
+  }
 }
