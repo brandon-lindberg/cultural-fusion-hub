@@ -62,7 +62,11 @@ const CalendarComponent = () => {
           {selectedEvent && (
             <div>
               <h2 className="text-center font-bold">{selectedEvent.title}</h2>
-              <p className="p-3">{selectedEvent.description}</p>
+              <div className="p-1">
+                <p><span className='font-bold'>Start Time:</span> {new Date(selectedEvent.start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                <p><span className='font-bold'>Location:</span> {selectedEvent.location}</p>
+              </div>
+              <p className="p-1">{selectedEvent.description}</p>
             </div>
           )}
         </Modal>

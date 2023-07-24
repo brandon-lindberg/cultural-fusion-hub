@@ -1,3 +1,5 @@
+//events.js
+
 export default [
   // {
   //   title: 'Example Title',
@@ -28,7 +30,7 @@ export default [
     title: 'Cultural Fusion Hub Meet up!',
     start: '2023-08-26T09:30:00',
     end: '2023-08-26T12:00:00',
-    location: '池尻地区会館　第二会議室',
+    location: '池尻地区会館 第二会議室',
     googleMapsUrl: 'https://goo.gl/maps/eJ61w1NwFYnbgyqp7',
     description: '参加料500円',
   },
