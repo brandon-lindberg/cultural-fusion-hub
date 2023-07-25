@@ -40,7 +40,7 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
         <meta property="og:title" content={title} />
         <meta
           name="description"
-          content="Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください！"
+          content="Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content={process.env.BASE_URL} />
@@ -62,6 +62,8 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
           href="/favicon-16x16.png"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000" />
       </Head>
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4 flex justify-between items-center">
