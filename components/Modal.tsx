@@ -9,7 +9,7 @@ const Modal = ({ isOpen, onClose, onOpenMaps, children }) => {
   return (
     <div className={styles.modal}>
       <p id="event-start-time"></p>
-      <p id="event-location"></p> 
+      <p id="event-location"></p>
       <div className={styles.modalContent}>
         {children}
         <div className={styles.buttonContainer}>
