@@ -62,7 +62,7 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
       </nav>
       <button
         onClick={onRequestClose}
-        className="mt-4 bg-buttonColor2 text-white px-4 py-2 rounded"
+        className="mt-4 bg-buttonColor2 text-zinc-400 px-4 py-2 rounded"
       >
         Close
       </button>
