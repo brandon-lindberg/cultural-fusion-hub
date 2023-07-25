@@ -29,43 +29,25 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
   return (
     <div>
       <Head>
-        <title>{title}</title>
-        <meta
-          name="google-site-verification"
-          content="KStqInBSo49y2ngUfeVdBP81kOYD-mq03q1M8SnXyrA"
-        />
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta
-          name="description"
-          content="Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content={process.env.BASE_URL} />
-        <meta name="twitter:title" content={title} />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        ></link>
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000" />
-      </Head>
+  <title>{title}</title>
+  <meta name="google-site-verification" content="KStqInBSo49y2ngUfeVdBP81kOYD-mq03q1M8SnXyrA" />
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta name="description" content="Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:domain" content={process.env.BASE_URL} />
+  <meta name="twitter:title" content={title} />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="mask-icon" href="../public/safari-pinned-tab.svg" color="#5bbad5" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="theme-color" content="#ffffff" />
+</Head>
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4 flex justify-between items-center">
           <button onClick={openModal} className="text-xl text-zinc-400">
