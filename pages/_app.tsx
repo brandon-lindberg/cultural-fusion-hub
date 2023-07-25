@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import '../i18n';
 import 'react-datepicker/dist/react-datepicker.css';
+import '../styles/DatePickerOverride.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 30px; // Adjust the height as necessary
+  height: 36px; // Adjust the height as necessary
   position: relative;
 }
 
@@ -16,12 +16,6 @@
   border-radius: 50%;
   position: relative;
   margin-top: -6px; // Adjust as necessary to position the dot
-}
-
-.react-datepicker
-  > .react-datepicker__month-container
-  > .react-datepicker__header {
-  background: linear-gradient(to left, #aafbdc81, #ffc8d288) !important;
 }
 
 @media (min-width: 1024px) {

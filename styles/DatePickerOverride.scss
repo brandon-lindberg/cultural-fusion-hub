@@ -1,0 +1,27 @@
+.react-datepicker
+  > .react-datepicker__month-container
+  > .react-datepicker__header {
+  background: linear-gradient(to left, #aafbdc81, #ffc8d288);
+  padding: 16px;
+  border-bottom: none;
+}
+
+.react-datepicker {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: none;
+}
+.react-datepicker__day--selected {
+  border-radius: 0.3rem;
+  background-color: #ffc8d288;
+  color: #a1a1aa;
+}
+
+.react-datepicker__day--keyboard-selected {
+  border-radius: 0.3rem;
+  background-color: #ffc8d288;
+  color: rgb(0, 0, 0);
+}
+
+.react-datepicker__navigation {
+  top: 14px;
+}

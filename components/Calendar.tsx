@@ -9,6 +9,7 @@ import styles from '../styles/Calendar.module.scss';
 import { format } from 'date-fns';
 import ja from 'date-fns/locale/ja';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 // Register the locale
 registerLocale('ja', ja);
