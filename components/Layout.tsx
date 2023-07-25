@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 import ModalMenu from './ModalMenu';
+import Image from 'next/image';
 
 type Props = {
   children?: ReactNode;
@@ -80,7 +81,9 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
           <button onClick={openModal} className="text-xl text-zinc-400">
             <i className="fa fa-bars"></i>
           </button>
-          <h3 className="text-zinc-400 pl-1">{t('CFH')}</h3>
+          <div className="rounded-full overflow-hidden">
+            <Image src="/CFH-logo-vector.png" alt={''} width="50" height="50" />
+          </div>
         </header>
 
         <ModalMenu isOpen={modalIsOpen} onRequestClose={closeModal} t={t} />
@@ -94,7 +97,9 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
         </main>
 
         <footer className="w-full flex justify-between items-center border-t border-grey p-4 pin-b linear-gradient2">
-          <span className="text-zinc-400">{t('CFH')}</span>
+          <div className="rounded-full overflow-hidden">
+            <Image src="/CFH-logo-vector.png" alt={''} width="50" height="50" />
+          </div>
           <a
             href="https://www.instagram.com/culturalfusionhub/"
             target="_blank"
