@@ -22,7 +22,6 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setCalendarKey((prevKey) => prevKey + 1);
   };
 
   const { t } = useTranslation();

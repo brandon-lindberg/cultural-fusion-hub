@@ -25,3 +25,11 @@
 .react-datepicker__navigation {
   top: 14px;
 }
+
+.react-datepicker__day--selected:hover, .react-datepicker__day--keyboard-selected:hover {
+  background: linear-gradient(to left, #aafbdc81, #ffc8d288);
+}
+
+.react-datepicker__day:hover {
+  background-color: #aafbdc81;
+}
