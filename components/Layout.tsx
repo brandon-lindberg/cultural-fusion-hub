@@ -81,7 +81,7 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
             <button onClick={openModal} className="text-xl text-zinc-400">
               <i className="fa fa-bars"></i>
             </button>
-            <h1 className='text-zinc-400'>Cultural Fusion Hub</h1>
+            <h1 className='text-zinc-400'>{t('CFH')}</h1>
           </div>
           <div className="rounded-full overflow-hidden">
             <Image src="/CFH-logo-vector.png" alt={''} width="50" height="50" />
