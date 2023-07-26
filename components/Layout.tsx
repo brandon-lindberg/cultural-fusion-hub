@@ -77,9 +77,12 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
       </Head>
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4 flex justify-between items-center">
-          <button onClick={openModal} className="text-xl text-zinc-400">
-            <i className="fa fa-bars"></i>
-          </button>
+          <div className='space-x-2 flex items-center'>
+            <button onClick={openModal} className="text-xl text-zinc-400">
+              <i className="fa fa-bars"></i>
+            </button>
+            <h1 className='text-zinc-400'>Cultural Fusion Hub</h1>
+          </div>
           <div className="rounded-full overflow-hidden">
             <Image src="/CFH-logo-vector.png" alt={''} width="50" height="50" />
           </div>
@@ -95,7 +98,7 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
           )}
         </main>
 
-        <footer className="w-full flex justify-between items-center border-t border-grey p-4 pin-b linear-gradient2">
+        <footer className="w-full flex justify-between items-center p-4 pin-b linear-gradient2">
           <div className="rounded-full overflow-hidden">
             <Image src="/CFH-logo-vector.png" alt={''} width="50" height="50" />
           </div>
