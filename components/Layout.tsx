@@ -84,7 +84,7 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
             <h1 className='text-zinc-400'>{t('CFH')}</h1>
           </div>
           <div className="rounded-full overflow-hidden">
-            <Image src="/CFH-logo-vector.png" alt={''} width="50" height="50" />
+            <Image src="/CFH-logo-vector.png" alt={'logo'} width="50" height="50" />
           </div>
         </header>
 
@@ -100,7 +100,7 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
 
         <footer className="w-full flex justify-between items-center p-4 pin-b linear-gradient2">
           <div className="rounded-full overflow-hidden">
-            <Image src="/CFH-logo-vector.png" alt={''} width="50" height="50" />
+            <Image src="/CFH-logo-vector.png" alt={'logo'} width="50" height="50" />
           </div>
           <a
             href="https://www.instagram.com/culturalfusionhub/"
