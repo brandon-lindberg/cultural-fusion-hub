@@ -24,7 +24,7 @@ export default [
     end: '2023-08-06T12:00:00',
     location: '消防博物館',
     googleMapsUrl: 'https://goo.gl/maps/f1qV9NSW5iTZgPuAA',
-    description: '消防博物館',
+    description: 'ミックスの子供たちとパパさん、ママさんのための交流フィールドトリップ開催。歴代の消防車を見たり、ヘリコプターに乗ったりして子供たちを交流させましょう。',
   },
   {
     title: 'Cultural Fusion Hub Meet up!',
@@ -32,7 +32,7 @@ export default [
     end: '2023-08-26T12:00:00',
     location: '池尻地区会館 第二会議室',
     googleMapsUrl: 'https://goo.gl/maps/eJ61w1NwFYnbgyqp7',
-    description: '参加料500円',
+    description: 'ミックスの子供たちとパパさん、ママさんのための交流会。英語でお歌を歌ったり バイリンガル教育についてお話したりしませんか？おもちゃ、お菓子飲み物（大人用）有。参加料500円',
   },
   // {
   //   title: 'Fusion Event',
