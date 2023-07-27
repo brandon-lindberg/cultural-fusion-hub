@@ -25,7 +25,11 @@ const CalendarComponent = () => {
     const selectedEventData = eventsData.find(
       (event) => new Date(event.start).toDateString() === date.toDateString(),
     );
-    setSelectedEvent(selectedEventData);
+    if (selectedEventData) {
+      setSelectedEvent(selectedEventData);
+    } else {
+      setSelectedEvent(null);
+    }
   };
 
   const renderDayContents = (day: number, date: Date) => {
