@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import '../i18n';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/DatePickerOverride.scss';
+import '../public/flag-icon-css/css/flag-icons.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

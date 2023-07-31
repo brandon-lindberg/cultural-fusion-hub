@@ -28,7 +28,7 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
       onRequestClose={onRequestClose}
       contentLabel="Menu Modal"
       style={customStyles}
-      className={`${styles.modalMenu} w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center`}
+      className={`${styles.modalMenu} bg-zinc-50 w-40 h-auto bg-white rounded-lg p-4 space-y-4 text-center`}
     >
       <nav>
         <ul className="space-y-2 text-zinc-400">
@@ -48,15 +48,15 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
         <div className="flex justify-evenly mt-4">
           <button
             onClick={() => i18n.changeLanguage('en')}
-            className="focus:outline-none mr-2 bg-subGreen text-zinc-400 px-1 py-1 rounded"
+            className="focus:outline-none mr-2 px-1 py-1"
           >
-            ENG
+            <span className="flag-icon flag-icon-gb"></span>
           </button>
           <button
             onClick={() => i18n.changeLanguage('ja')}
-            className="focus:outline-none ml-2 bg-subGreen text-zinc-400 px-1 py-1 rounded"
+            className="focus:outline-none ml-2 px-1 py-1"
           >
-            日本語
+            <span className="flag-icon flag-icon-jp"></span>
           </button>
         </div>
       </nav>
