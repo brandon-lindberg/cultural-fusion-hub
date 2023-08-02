@@ -3,8 +3,16 @@
 import React from 'react';
 import styles from '../styles/Modal.module.scss';
 
-const Modal = ({ isOpen, onClose, onOpenMaps, children }) => {
+const Modal = ({ isOpen, onClose, onOpenMaps, children, event }) => {
   if (!isOpen) return null;
+
+  const handleButtonClick = () => {
+    if (event.stream) {
+      window.open(event.instagramUrl, '_blank');
+    } else {
+      onOpenMaps();
+    }
+  };
 
   return (
     <div className={styles.modal}>
@@ -16,8 +24,8 @@ const Modal = ({ isOpen, onClose, onOpenMaps, children }) => {
           <button className={styles.closeButton} onClick={onClose}>
             Close
           </button>
-          <button onClick={onOpenMaps} className={styles.mapsButton}>
-            Open in Google Maps
+          <button onClick={handleButtonClick} className={styles.mapsButton}>
+            {event.stream ? 'Open Instagram' : 'Open Google Maps'}
           </button>
         </div>
       </div>

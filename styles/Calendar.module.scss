@@ -18,6 +18,15 @@
   margin-top: -6px; // Adjust as necessary to position the dot
 }
 
+.streamEventIndicator {
+  height: 8px;
+  width: 8px;
+  background-color: #ffc8d288;
+  border-radius: 50%;
+  position: relative;
+  margin-top: -6px; // Adjust as necessary to position the dot
+}
+
 @media (min-width: 1024px) {
   .calendarLarge {
     width: 70%; // Adjust this as needed

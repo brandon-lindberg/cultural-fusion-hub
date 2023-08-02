@@ -11,7 +11,6 @@ import ja from 'date-fns/locale/ja';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-// Register the locale
 registerLocale('ja', ja);
 setDefaultLocale('ja');
 
@@ -42,7 +41,7 @@ const CalendarComponent = () => {
       return (
         <div className={styles.dayContainer}>
           {day}
-          <div className={styles.eventIndicator}></div>
+          <div className={eventForThisDay.stream ? styles.streamEventIndicator : styles.eventIndicator}></div>
         </div>
       );
     }
@@ -63,6 +62,7 @@ const CalendarComponent = () => {
           isOpen={selectedEvent !== null}
           onClose={() => setSelectedEvent(null)}
           onOpenMaps={() => window.open(selectedEvent.googleMapsUrl, '_blank')}
+          event={selectedEvent}
         >
           {selectedEvent && (
             <div>
