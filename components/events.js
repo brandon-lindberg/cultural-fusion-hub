@@ -50,6 +50,16 @@ export default [
     instagramUrl: null,
     description: 'ミックスの子供たちとパパさん、ママさんのための交流会。英語でお歌を歌ったり バイリンガル教育についてお話したりしませんか？おもちゃ、お菓子飲み物（大人用）有。参加料500円',
   },
+  {
+    title: 'Field Trip',
+    start: '2023-08-20T11:00:00',
+    end: '2023-08-20T14:00:00',
+    stream: false,
+    location: '世田谷区立中央図書館プラネタリウム',
+    googleMapsUrl: 'https://goo.gl/maps/r2xHgTyLUWPjuNes6',
+    instagramUrl: null,
+    description: '世界最高クラス1億4000万個の星々を見て涼しい時間を過ごしましょう。価格：大人 400円、子供（小学生・中学生）：100円 幼児（膝上に座る場合）：無料',
+  },
   // {
   //   title: 'Instagram Live',
   //   start: '2023-08-19T18:00:00',
