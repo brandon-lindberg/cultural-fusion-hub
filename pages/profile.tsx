@@ -13,7 +13,7 @@ const ProfilePage = () => {
           <ProfileCard
             name="Obikane Yuka"
             image="/profile_one.jpg"
-            position={<strong>Founder</strong>}
+            position={<strong>ファシリテーター</strong>}
             description={t('yuka-description')}
             instagram="https://www.instagram.com/culturalfusionhub/"
             // twitter="https://twitter.com/"
@@ -25,7 +25,7 @@ const ProfilePage = () => {
           <ProfileCard
             name="Saho Petersen"
             image="/profile_three.jpg"
-            position={<strong>Founder</strong>}
+            position={<strong>ファシリテーター</strong>}
             description={t('saho-description')}
             instagram="https://www.instagram.com/culturalfusionhub/"
             // twitter="https://twitter.com/"
