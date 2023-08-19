@@ -48,7 +48,7 @@ export default [
     location: 'Instagram',
     googleMapsUrl: null,
     instagramUrl: 'https://www.instagram.com/culturalfusionhub/',
-    description: 'インスタライブイベント',
+    description: 'テーマ：カルチャルフュージョンハブを立ち上げたきっかけについて',
   },
   {
     title: 'Cultural Fusion Hub Meet up!',
