@@ -41,14 +41,14 @@ export default [
     description: 'ミックスの子供たちとパパさん、ママさんのための交流フィールドトリップ開催。歴代の消防車を見たり、ヘリコプターに乗ったりして子供たちを交流させましょう。',
   },
   {
-    title: 'Instagram Live',
-    start: '2023-08-20T18:00:00',
-    end: '2023-08-20T20:30:00',
+    title: 'インスタライブ',
+    start: '2023-08-20T09:30:00',
+    end: '2023-08-20T10:30:00',
     stream: true,
     location: 'Instagram',
     googleMapsUrl: null,
     instagramUrl: 'https://www.instagram.com/culturalfusionhub/',
-    description: 'This is an Instagram Live Stream.',
+    description: 'インスタライブイベント',
   },
   {
     title: 'Cultural Fusion Hub Meet up!',
