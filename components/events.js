@@ -82,7 +82,7 @@ export default [
   },
   {
     title: 'Meetup！',
-    start: '2023-09-17T10:00:00',
+    start: '2023-09-17T09:30:00',
     end: '2023-09-17T12:00:00',
     stream: false,
     location: '池尻地区会館',
@@ -92,7 +92,7 @@ export default [
   },
   {
     title: 'ナイトアウト',
-    start: '2023-09-28T18:30:00',
+    start: '2023-09-28T17:30:00',
     end: '2023-09-28T20:00:00',
     stream: false,
     location: '下北沢エリア',
