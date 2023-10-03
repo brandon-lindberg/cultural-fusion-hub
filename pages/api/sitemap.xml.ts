@@ -13,22 +13,22 @@ const createSitemap = () => {
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             <url>
                 <loc>https://stupendous-longma-517c11.netlify.app</loc>
-                <changefreq>weekly</changefreq>
+                <changefreq>daily</changefreq>
                 <priority>0.7</priority>
             </url>
             <url>
                 <loc>https://stupendous-longma-517c11.netlify.app/about</loc>
-                <changefreq>weekly</changefreq>
+                <changefreq>daily</changefreq>
                 <priority>0.7</priority>
             </url>
             <url>
                 <loc>https://stupendous-longma-517c11.netlify.app/profile</loc>
-                <changefreq>weekly</changefreq>
+                <changefreq>daily</changefreq>
                 <priority>0.7</priority>
             </url>
             <url>
                 <loc>https://stupendous-longma-517c11.netlify.app/contact</loc>
-                <changefreq>never</changefreq>
+                <changefreq>daily</changefreq>
                 <priority>0.7</priority>
             </url>
         </urlset>
