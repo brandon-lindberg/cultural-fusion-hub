@@ -41,7 +41,13 @@ const CalendarComponent = () => {
       return (
         <div className={styles.dayContainer}>
           {day}
-          <div className={eventForThisDay.stream ? styles.streamEventIndicator : styles.eventIndicator}></div>
+          <div
+            className={
+              eventForThisDay.stream
+                ? styles.streamEventIndicator
+                : styles.eventIndicator
+            }
+          ></div>
         </div>
       );
     }
