@@ -129,4 +129,26 @@ export default [
     description:
       'ミックスキッズとその両親のためのMeet Up。今回は、ハローウィンをテーマに実施します。皆さん、コスチュームを着て是非ご参加ください！ハローウィンをみんなで楽しみましょう！',
   },
+  {
+    title: 'Cultural Fusion Hub Meet Up',
+    start: '2023-11-19T09:30:00',
+    end: '2023-11-19T12:00:00',
+    stream: false,
+    location: '池尻地区会館　第2会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/auGpAFa9tnuLeYE47',
+    instagramUrl: '',
+    description:
+      'ミックスキッズを遊ばせながら、パパさんママさんで交流しませんか？ミックスキッズを育てていく上で特有な悩みや情報交換をしたり、キッズをつなげてコミュニティを楽しんだりしましょう！',
+  },
+  {
+    title: 'Thanksgiving Potluck Party',
+    start: '2023-11-26T09:30:00',
+    end: '2023-11-26T12:30:00',
+    stream: false,
+    location: '代田区民センター　第１会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/4idweMhM7DjT2NZN9',
+    instagramUrl: '',
+    description:
+      'Thanksgivingをお祝いしましょう！それぞれのご家庭に受け継がれるレシピで作った料理を持ち寄り、シェアしながらワイワイ楽しく過ごしましょう！',
+  },
 ];
