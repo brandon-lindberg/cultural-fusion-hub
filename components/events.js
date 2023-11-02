@@ -142,8 +142,8 @@ export default [
   },
   {
     title: 'Thanksgiving Potluck Party',
-    start: '2023-11-26T09:30:00',
-    end: '2023-11-26T12:30:00',
+    start: '2023-11-26T12:30:00',
+    end: '2023-11-26T17:30:00',
     stream: false,
     location: '代田区民センター　第１会議室',
     googleMapsUrl: 'https://maps.app.goo.gl/4idweMhM7DjT2NZN9',
