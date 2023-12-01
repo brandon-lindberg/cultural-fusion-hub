@@ -151,4 +151,15 @@ export default [
     description:
       'Thanksgivingをお祝いしましょう！それぞれのご家庭に受け継がれるレシピで作った料理を持ち寄り、シェアしながらワイワイ楽しく過ごしましょう！',
   },
+  {
+    title: 'Christmas Meet Up! クリスマス会をします',
+    start: '2023-12-16T09:30:00',
+    end: '2023-12-16T12:00:00',
+    stream: false,
+    location: '代田区民センター　第１会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/4idweMhM7DjT2NZN9',
+    instagramUrl: '',
+    description:
+      'ミックスの子供たちと両親で交流しましょう！',
+  },
 ];
