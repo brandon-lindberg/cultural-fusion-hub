@@ -162,4 +162,15 @@ export default [
     description:
       'ミックスの子供たちと両親で交流しましょう！',
   },
+  {
+    title: 'Cultural Fusion Hub Meet Up',
+    start: '2024-02-11T09:30:00',
+    end: '2024-02-11T12:00:00',
+    stream: false,
+    location: '池尻地区会館　第2会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/auGpAFa9tnuLeYE47',
+    instagramUrl: '',
+    description:
+      'ミックスキッズを遊ばせながら、パパさんママさんで交流しませんか？ミックスキッズを育てていく上で特有な悩みや情報交換をしたり、キッズをつなげてコミュニティを楽しんだりしましょう！',
+  },
 ];
