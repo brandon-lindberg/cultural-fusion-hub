@@ -173,4 +173,15 @@ export default [
     description:
       'ミックスキッズを遊ばせながら、パパさんママさんで交流しませんか？ミックスキッズを育てていく上で特有な悩みや情報交換をしたり、キッズをつなげてコミュニティを楽しんだりしましょう！',
   },
+  {
+    title: 'Cultural Fusion Hub Meet Up',
+    start: '2024-03-10T09:30:00',
+    end: '2024-03-10T12:00:00',
+    stream: false,
+    location: '池尻会館　2階　第二会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/auGpAFa9tnuLeYE47',
+    instagramUrl: '',
+    description:
+      '【参加費】1家族2名まで500円、2名以上は1人＋200円, 【テーマ】子どもの個性、性格について、世田谷区多文化共生行政の取り組み, ※飲み物、お菓子有, ※事前予約お願いします',
+  },
 ];
