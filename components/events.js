@@ -184,4 +184,15 @@ export default [
     description:
       '【参加費】1家族2名まで500円、2名以上は1人＋200円, 【テーマ】子どもの個性、性格について、世田谷区多文化共生行政の取り組み, ※飲み物、お菓子有, ※事前予約お願いします',
   },
+  {
+    title: 'お花見',
+    start: '2024-04-14T11:30:00',
+    end: '2024-04-14T15:00:00',
+    stream: false,
+    location: '新宿御苑',
+    googleMapsUrl: 'https://maps.app.goo.gl/RDebpTBHswNRdzKw7',
+    instagramUrl: '',
+    description:
+      '※各自、飲み物、ランチ、マットをお持ちください。※当日、詳しい場所をお知らせしますので、事前予約をお願いします。※雨天時は、都内の屋内施設で遊びます',
+  },
 ];
