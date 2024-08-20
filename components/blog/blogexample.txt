@@ -1,0 +1,14 @@
+// {
+  //   "title": "Event Example Title",
+  //   "date": "2023-02-22T14:00:00",
+  //   "author": "Obikane Yuka",
+  //   "entry": "",
+  //   "tags": ["mixed-race", "international"]
+  // },
+  // {
+  //   "title": "Event Example Title",
+  //   "date": "2024-02-22T14:00:00",
+  //   "author": "Petersen Saho",
+  //   "entry": "",
+  //   "tags": ["mixed-race", "children"]
+  // },

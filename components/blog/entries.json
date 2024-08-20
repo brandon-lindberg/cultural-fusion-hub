@@ -1,23 +1,9 @@
 [
   {
-    "title": "Event Example Title",
-    "date": "2023-02-22T14:00:00",
-    "author": "Obikane Yuka",
-    "entry": "Hello, Mai (design team) and I are using Kurrant for a demo to local leads and found issues - I think we will discover more as we use deeper, and wonder if we could share those findings in a specific channel or tool. (@ Doug) For today, could we change the setting of chat behavior for JP input not to immediately submit text after tapping Enter key? We expect the same behavior as the original ChatGPT - for English text or any other alphabetical language, Enter key = immediately submit makes sense, but for Japanese or other languages that need the “convert, we use Enter key for that.",
-    "tags": ["mixed-race", "international"]
-  },
-  {
-    "title": "Event Example Title",
-    "date": "2024-02-22T14:00:00",
-    "author": "Petersen Saho",
-    "entry": "Hello, Mai (design team) and I are using Kurrant for a demo to local leads and found issues - I think we will discover more as we use deeper, and wonder if we could share those findings in a specific channel or tool. (@ Doug) For today, could we change the setting of chat behavior for JP input not to immediately submit text after tapping Enter key? We expect the same behavior as the original ChatGPT - for English text or any other alphabetical language, Enter key = immediately submit makes sense, but for Japanese or other languages that need the “convert, we use Enter key for that.",
-    "tags": ["mixed-race", "children"]
-  },
-  {
-    "title": "Event Example Title",
-    "date": "2024-07-22T14:00:00",
-    "author": "Obikane Yuka",
-    "entry": "Ipsum lorem",
-    "tags": ["japanese", "canadian"]
+    "title": "New Blog Page",
+    "date": "2024-08-20T16:00:00",
+    "author": "System Admin",
+    "entry": "This is the start of the New Blog Page.  Blogs coming soon from Yuka and Saho.",
+    "tags": ["bridging culture", "mixed-race", "international"]
   }
 ]
