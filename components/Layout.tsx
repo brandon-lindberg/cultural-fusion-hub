@@ -116,8 +116,8 @@ const Layout = ({
               />
             </div>
             <div className="flex">
-              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500">EN</button>
-              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500">JP</button>
+              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg">EN</button>
+              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500 p-2 text-lg">JP</button>
             </div>
           </div>
           <a
