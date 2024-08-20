@@ -33,7 +33,7 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
       <nav>
         <ul className="space-y-2 text-zinc-400">
           <li>
-            <Link href="/">{t('home')}</Link>
+            <Link href="/"> {t('home')}</Link>
           </li>
           <li>
             <Link href="/about">{t('about')}</Link>
@@ -43,6 +43,9 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
           </li>
           <li>
             <Link href="/contact">{t('contact')}</Link>
+          </li>
+          <li>
+            <Link href="/blog">{t('blog')}</Link>
           </li>
         </ul>
         <div className="flex justify-evenly mt-4">
