@@ -5,6 +5,7 @@ import { User } from '../../interfaces';
 import { sampleUserData } from '../../utils/sample-data';
 import Layout from '../../components/Layout';
 import List from '../../components/List';
+import StructuredData from '../../components/StructuredData';
 
 type Props = {
   items: User[];
@@ -12,6 +13,13 @@ type Props = {
 
 const WithStaticProps = ({ items }: Props) => (
   <Layout title="Users List | Next.js + TypeScript Example">
+    <StructuredData
+      type="WebPage"
+      data={{
+        name: "Users List",
+        description: "Example users list page for Cultural Fusion Hub",
+      }}
+    />
     <h1>Users List</h1>
     <p>
       Example fetching data from inside <code>getStaticProps()</code>.

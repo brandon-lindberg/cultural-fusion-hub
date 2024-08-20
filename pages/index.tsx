@@ -8,6 +8,7 @@ import ImageCarousel from '../components/Carousel';
 import { useTranslation } from 'react-i18next';
 import blogPosts from '../components/blog/entries.json';
 import BlogCard from '../components/blog/blogCards';
+import StructuredData from '../components/StructuredData';
 
 const IndexPage = () => {
   const router = useRouter();
@@ -20,7 +21,18 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <Layout title="Cultural Fusion Hub">
+    <Layout 
+      title="Cultural Fusion Hub - Home"
+      description={t('greeting')}
+      image="/path-to-home-image.jpg"
+    >
+      <StructuredData
+        type="WebPage"
+        data={{
+          name: "Cultural Fusion Hub",
+          description: t('greeting'),
+        }}
+      />
       <header>
         <div
           style={{ maxHeight: '600px', overflow: 'hidden' }}
@@ -56,8 +68,7 @@ const IndexPage = () => {
                 author={post.author}
                 entry={post.entry}
                 tags={post.tags}
-                onTagClick={() => {}}
-              />
+                onTagClick={() => { } } id={''}              />
             </div>
           ))}
           <div className="mt-4">

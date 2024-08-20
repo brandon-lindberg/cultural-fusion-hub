@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 interface BlogCardProps {
   title: string;
@@ -6,11 +8,13 @@ interface BlogCardProps {
   author: string;
   entry: string;
   tags: string[];
+  id: string;
   onTagClick: (tag: string) => void;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, onTagClick }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, id, onTagClick }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const { t } = useTranslation();
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { 

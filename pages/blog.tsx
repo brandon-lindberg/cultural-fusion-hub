@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import BlogCardList from '../components/blog/BlogCardList';
 import blogPosts from '../components/blog/entries.json';
 import { useTranslation } from 'react-i18next';
+import StructuredData from '../components/StructuredData';
 
 const Blog: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -37,6 +38,13 @@ const Blog: React.FC = () => {
 
   return (
     <Layout title={t('blog')}>
+      <StructuredData
+        type="WebPage"
+        data={{
+          name: t('blog'),
+          description: "Blog posts from Cultural Fusion Hub",
+        }}
+      />
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-zinc-400">{t('blog')}</h1>
         <div className="mb-6">

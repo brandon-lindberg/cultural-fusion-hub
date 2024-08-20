@@ -16,15 +16,16 @@ const ImageCarousel = () => {
       <div className="relative h-60 sm:h-96 md:h-128 lg:h-160 xl:h-192 w-full">
         <Image
           src="/one.jpg"
-          alt="Image One Description"
+          alt="Cultural event showcasing diversity"
           layout="fill"
           objectFit="cover"
+          priority
         />
       </div>
       <div className="relative h-60 sm:h-96 md:h-128 lg:h-160 xl:h-192 w-full">
         <Image
           src="/two.jpg"
-          alt="Image Two Description"
+          alt="Community gathering at Cultural Fusion Hub"
           layout="fill"
           objectFit="cover"
         />
@@ -32,7 +33,7 @@ const ImageCarousel = () => {
       <div className="relative h-60 sm:h-96 md:h-128 lg:h-160 xl:h-192 w-full">
         <Image
           src="/three.jpg"
-          alt="Image Three Description"
+          alt="Children participating in cultural activities"
           layout="fill"
           objectFit="cover"
         />
@@ -40,7 +41,7 @@ const ImageCarousel = () => {
       <div className="relative h-60 sm:h-96 md:h-128 lg:h-160 xl:h-192 w-full">
         <Image
           src="/four.jpg"
-          alt="Image Four Description"
+          alt="Multicultural celebration event"
           layout="fill"
           objectFit="cover"
         />
@@ -48,7 +49,7 @@ const ImageCarousel = () => {
       <div className="relative h-60 sm:h-96 md:h-128 lg:h-160 xl:h-192 w-full">
         <Image
           src="/five.jpg"
-          alt="Image Five Description"
+          alt="Diverse group of people at Cultural Fusion Hub"
           layout="fill"
           objectFit="cover"
         />

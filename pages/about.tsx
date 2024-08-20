@@ -1,14 +1,28 @@
 import Layout from '../components/Layout';
 import { useTranslation } from 'react-i18next';
+import StructuredData from '../components/StructuredData';
+import Image from 'next/image';
 
 const AboutPage = () => {
   const { t, i18n } = useTranslation();
 
   return (
     <Layout title="About">
+      <StructuredData
+        type="WebPage"
+        data={{
+          name: "About Cultural Fusion Hub",
+          description: t('CFHmission'),
+        }}
+      />
       <div>
-        <div>
-          <img src="/about-banner.jpg" alt="banner" />
+        <div className="relative w-full h-[300px]">
+          <Image
+            src="/about-banner.jpg"
+            alt="Cultural Fusion Hub About Banner"
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div className="md-p-9">
           <div className="p-5 text-center text-justify md-p-9 bg-gray-50">
