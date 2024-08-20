@@ -37,6 +37,8 @@ const CalendarComponent = () => {
       (event) => format(new Date(event.start), 'yyyy-MM-dd') === formattedDate,
     );
 
+    console.log(`Rendering day ${formattedDate}, event:`, eventForThisDay);
+
     if (eventForThisDay) {
       return (
         <div className={styles.dayContainer}>
@@ -55,19 +57,20 @@ const CalendarComponent = () => {
   };
 
   return (
-    <div className={`${styles.customCalendar}`}>
-      <div className={`${styles.calendarLarge}`}>
+    <div className={`${styles.customCalendar} w-full`}>
+      <div className={`${styles.calendarLarge} w-full`}>
         <DatePicker
           selected={startDate}
           onChange={handleDateChange}
           inline
           renderDayContents={renderDayContents}
           locale="ja"
+          calendarClassName={styles.responsiveCalendar}
         />
         <Modal
           isOpen={selectedEvent !== null}
           onClose={() => setSelectedEvent(null)}
-          onOpenMaps={() => window.open(selectedEvent.googleMapsUrl, '_blank')}
+          onOpenMaps={() => window.open(selectedEvent?.googleMapsUrl, '_blank')}
           event={selectedEvent}
         >
           {selectedEvent && (
