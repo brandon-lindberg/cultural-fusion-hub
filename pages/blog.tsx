@@ -36,13 +36,13 @@ const Blog: React.FC = () => {
   };
 
   return (
-    <Layout title={t('blog-posts')}>
+    <Layout title={t('blog')}>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6 text-zinc-400">{t('blog-posts')}</h1>
+        <h1 className="text-3xl font-bold mb-6 text-zinc-400">{t('blog')}</h1>
         <div className="mb-6">
           <input
             type="text"
-            placeholder={t('search-posts')}
+            placeholder={t('search')}
             className="w-full p-2 border rounded bg-gray-50 text-gray-700 focus:outline-none focus:border-blue-500"
             value={searchTerm}
             onChange={handleSearchChange}

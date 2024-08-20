@@ -45,7 +45,7 @@ const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onRequestClose, t }) => {
             <Link href="/contact">{t('contact')}</Link>
           </li>
           <li>
-            <Link href="/blog">{t('blog')}</Link>
+            <Link href="/blog">{t('blogMenu')}</Link>
           </li>
         </ul>
         <div className="flex justify-evenly mt-4">
