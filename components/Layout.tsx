@@ -1,35 +1,45 @@
-import React, { useState, ReactNode, cloneElement } from 'react';
-import Link from 'next/link';
+import React, { useState, ReactNode } from 'react';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
-import ModalMenu from './ModalMenu';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Navigation from './navigation/Navigation';
 
 type Props = {
   children?: ReactNode;
   title?: string;
   description?: string;
   image?: string;
+  canonicalUrl?: string;
 };
 
-const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [calendarKey, setCalendarKey] = useState(0);
+const Layout = ({ 
+  children, 
+  title = 'Cultural Fusion Hub',
+  description = "Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!",
+  image = '/path-to-default-image.jpg',
+  canonicalUrl
+}: Props) => {
+  const router = useRouter();
+  const { t, i18n } = useTranslation();
 
-  const openModal = () => {
-    setModalIsOpen(true);
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
   };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-
-  const { t } = useTranslation();
 
   return (
     <div>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+        <link rel="canonical" href={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${router.asPath}`} />
         <meta
           name="google-site-verification"
           content="KStqInBSo49y2ngUfeVdBP81kOYD-mq03q1M8SnXyrA"
@@ -39,14 +49,10 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
         <meta
           name="description"
           content="Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!"
         />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content={process.env.BASE_URL} />
-        <meta name="twitter:title" content={title} />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -78,45 +84,46 @@ const Layout = ({ children, title = 'Cultural Fusion Hub' }: Props) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <div className="flex flex-col min-h-screen">
-        <header className="linear-gradient w-full p-4 flex justify-between items-center">
-          <div className="space-x-2 flex items-center">
-            <button onClick={openModal} className="text-xl text-zinc-400">
-              <i className="fa fa-bars"></i>
-            </button>
-            <h1 className="text-zinc-400">{t('CFH')}</h1>
-          </div>
-          <div className="rounded-full overflow-hidden">
-            <Image
-              src="/CFH-logo-vector.png"
-              alt={'logo'}
-              width="50"
-              height="50"
-            />
+        <header className="linear-gradient w-full p-4">
+          <div className="flex justify-between items-center">
+            <Navigation />
+            <div className="flex-1 text-center">
+              <span className="font-semibold text-gray-500 text-lg">Cultural Fusion Hub</span>
+            </div>
+            <div className="rounded-full overflow-hidden">
+              <Image
+                src="/CFH-logo-vector.png"
+                alt={'logo'}
+                width="50"
+                height="50"
+              />
+            </div>
           </div>
         </header>
 
-        <ModalMenu isOpen={modalIsOpen} onRequestClose={closeModal} t={t} />
-
         <main className="flex-grow">
-          {React.Children.map(children, (child) =>
-            React.isValidElement(child)
-              ? React.cloneElement(child, { key: calendarKey })
-              : child,
-          )}
+          {children}
         </main>
 
         <footer className="w-full flex justify-between items-center p-4 pin-b linear-gradient2">
-          <div className="rounded-full overflow-hidden">
-            <Image
-              src="/CFH-logo-vector.png"
-              alt={'logo'}
-              width="50"
-              height="50"
-            />
+          <div className="flex items-center">
+            <div className="rounded-full overflow-hidden mr-4">
+              <Image
+                src="/CFH-logo-vector.png"
+                alt={'logo'}
+                width="50"
+                height="50"
+              />
+            </div>
+            <div className="flex">
+              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500">EN</button>
+              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500">JP</button>
+            </div>
           </div>
           <a
             href="https://www.instagram.com/culturalfusionhub/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <i className="fa fa-instagram text-zinc-400"> Instagram</i>
           </a>
