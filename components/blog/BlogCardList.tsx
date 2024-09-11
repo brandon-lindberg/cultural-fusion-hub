@@ -19,7 +19,16 @@ const BlogCardList: React.FC<BlogCardListProps> = ({ posts, onTagClick }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.map((post) => (
-        <BlogCard key={post.id} title={post.title} author={post.author} entry={post.entry} tags={post.tags} date={post.date} onTagClick={onTagClick} id={''} />
+        <BlogCard 
+          key={post.id} 
+          title={post.title} 
+          author={post.author} 
+          entry={post.entry} 
+          tags={post.tags} 
+          date={post.date} 
+          onTagClick={onTagClick} 
+          id={post.id} // Ensure the ID is passed correctly
+        />
       ))}
     </div>
   );

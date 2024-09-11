@@ -72,12 +72,19 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
               ))}
             </div>
             <p className="text-gray-800 mb-6 whitespace-pre-wrap">{entry}</p>
-            <button 
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => setIsPopupOpen(false)}
-            >
-              Close
-            </button>
+            <div className="flex justify-between">
+              <Link href={`/blog/${id}`}>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  View Full Post
+                </button>
+              </Link>
+              <button 
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => setIsPopupOpen(false)}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -68,7 +68,9 @@ const IndexPage = () => {
                 author={post.author}
                 entry={post.entry}
                 tags={post.tags}
-                onTagClick={() => { } } id={''}              />
+                onTagClick={() => { } } 
+                id={post.id}
+              />
             </div>
           ))}
           <div className="mt-4">
