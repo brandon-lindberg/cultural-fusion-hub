@@ -10,12 +10,19 @@ const BlogPost = ({ post }) => {
     return <p>{t('no-posts-found')}</p>;
   }
 
+  // Format the date consistently
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
+
   return (
     <Layout title={post.title}>
       <article className="max-w-3xl mx-auto p-4">
         <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
         <p className="text-gray-600 mb-2">
-          {new Date(post.date).toLocaleDateString()} | {post.author}
+          {formattedDate} | {post.author}
         </p>
         <div className="prose mb-6 whitespace-pre-wrap"> {/* Preserve whitespace */}
           {post.entry}
