@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import SocialShare from './SocialShare';
 
 interface BlogCardProps {
   title: string;
@@ -56,7 +57,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <h2 className="text-2xl font-bold mb-4">{title}</h2>
-            <p className="text-gray-600 mb-2">{formatDate(date)} | {author}</p>
+            <div className="flex justify-between">
+              <p className="text-gray-600 mb-2">{formatDate(date)} | {author}</p>
+              <SocialShare title={title} url={`https://culturalfusionhub.com/blog/${id}`} />
+            </div>
             <div className="mb-4 flex flex-wrap">
               {tags.map((tag, index) => (
                 <span 

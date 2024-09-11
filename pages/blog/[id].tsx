@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import blogPosts from '../../components/blog/entries.json';
 import Layout from '../../components/Layout';
 import { useTranslation } from 'react-i18next';
+import SocialShare from '../../components/blog/SocialShare';
 
 const BlogPost = ({ post }) => {
   const { t } = useTranslation();
@@ -21,9 +22,12 @@ const BlogPost = ({ post }) => {
     <Layout title={post.title}>
       <article className="max-w-3xl mx-auto p-4">
         <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-        <p className="text-gray-600 mb-2">
-          {formattedDate} | {post.author}
-        </p>
+        <div className="flex justify-between items-center mb-2">
+          <p className="text-gray-600">
+            {formattedDate} | {post.author}
+          </p>
+          <SocialShare title={post.title} url={`https://yourwebsite.com/blog/${post.id}`} />
+        </div>
         <div className="prose mb-6 whitespace-pre-wrap"> {/* Preserve whitespace */}
           {post.entry}
         </div>
