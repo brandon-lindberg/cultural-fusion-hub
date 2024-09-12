@@ -16,7 +16,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ title, url }) => {
   return (
     <div className="flex space-x-2">
       <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500">
-        <i className="fa fa-twitter fa-lg" aria-hidden="true"></i>
+        <img src="/x-twitter-brands-solid.svg" alt="X" className="w-6 h-6" />
       </a>
       <a href={linkedinShareUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700">
         <i className="fa fa-linkedin fa-lg" aria-hidden="true"></i>
