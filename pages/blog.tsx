@@ -10,15 +10,12 @@ const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { t } = useTranslation();
 
+  // Sort posts by date
   const sortedPosts = useMemo(() => {
-    return [...blogPosts]
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .map(post => ({
-        ...post,
-        id: `${post.title.toLowerCase().replace(/\s+/g, '-')}-${post.date}`,
-      }));
+    return [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, []);
 
+  // Filter posts based on selected tag and search term
   const filteredPosts = useMemo(() => {
     return sortedPosts.filter(post => 
       (!selectedTag || post.tags.includes(selectedTag)) &&
@@ -29,7 +26,7 @@ const Blog: React.FC = () => {
   }, [sortedPosts, selectedTag, searchTerm]);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTag(prevTag => prevTag === tag ? null : tag);
+    setSelectedTag(prevTag => (prevTag === tag ? null : tag));
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
