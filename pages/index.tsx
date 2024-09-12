@@ -46,19 +46,19 @@ const IndexPage = () => {
       </header>
       <main className="height-30vh">
         <div className="p-4">
-          <article className="p-5 text-justify text-zinc-400">
+          <article className="p-5 text-justify text-zinc-400 max-w-4xl mx-auto">
             {t('greeting')}
           </article>
         </div>
       </main>
-      <div className="flex flex-col lg:flex-row items-start justify-between p-3 gap-8">
-        <div className="w-full lg:w-1/2 min-h-[400px]">
+      <div className="flex flex-col lg:flex-row items-start justify-center p-3 gap-8">
+        <div className="w-full lg:w-1/2 min-h-[400px] lg:mr-4">
           <h2 className="text-2xl font-bold mb-4">Events Calendar</h2>
           <div className="calendar-wrapper" style={{ width: '100%', height: '100%' }}>
             <Calendar />
           </div>
         </div>
-        <div className="flex flex-col w-full lg:w-1/2">
+        <div className="flex flex-col w-full lg:w-1/3 lg:ml-4">
           <h2 className="text-2xl font-bold mb-4">Latest Blog Posts</h2>
           {latestTwoPosts.map((post, index) => (
             <div key={index} className={index === 0 ? 'mb-6' : ''}>
