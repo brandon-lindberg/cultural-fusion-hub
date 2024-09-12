@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 interface SocialShareProps {
   title: string;
@@ -15,7 +16,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ title, url }) => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(url).then(() => {
-      alert('Link copied to clipboard!');
+      toast.success('Link copied to clipboard!');
     }).catch(err => {
       console.error('Failed to copy: ', err);
     });

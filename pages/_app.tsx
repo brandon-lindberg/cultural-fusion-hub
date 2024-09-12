@@ -5,6 +5,8 @@ import '../i18n';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/DatePickerOverride.scss';
 import '../public/flag-icon-css/css/flag-icons.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -25,7 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />
+      <ToastContainer />
+    </>
+  );
 }
 
 export default MyApp;
