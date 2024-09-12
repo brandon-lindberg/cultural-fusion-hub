@@ -26,7 +26,7 @@ const BlogPost = ({ post }) => {
           <p className="text-gray-600">
             {formattedDate} | {post.author}
           </p>
-          <SocialShare title={post.title} url={`https://yourwebsite.com/blog/${post.id}`} />
+          <SocialShare title={post.title} url={`https://www.culturalfusionhub.com/blog/${post.id}`} />
         </div>
         <div className="prose mb-6 whitespace-pre-wrap"> {/* Preserve whitespace */}
           {post.entry}
