@@ -40,7 +40,7 @@ export default function ProfileCard(props) {
   return (
     <div className="card bg-gray-50 shadow rounded-lg p-6 max-w-xs mx-auto md:max-w-md lg:max-w-lg xl:max-w-xl">
       <div className="flex flex-col items-center">
-        <div className="relative h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 xl:h-64 xl:w-64">
+        <div className="relative h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 xl:h-64 xl:w-64 max-w-full max-h-full">
           <Image
             src={props.image}
             alt="pic"
@@ -48,6 +48,7 @@ export default function ProfileCard(props) {
             objectFit="cover"
             className="rounded-full"
             quality={100}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <h1 className="text-lg mt-2 md:text-xl lg:text-2xl">{props.name}</h1>
