@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function ProfileCard(props) {
+  const descriptionRef = useRef(null);
+  const [canScrollUp, setCanScrollUp] = useState(false);
+  const [canScrollDown, setCanScrollDown] = useState(true);
+
+  const handleScrollDown = () => {
+    if (descriptionRef.current) {
+      descriptionRef.current.scrollBy({ top: 100, behavior: 'smooth' });
+    }
+  };
+
+  const handleScrollUp = () => {
+    if (descriptionRef.current) {
+      descriptionRef.current.scrollBy({ top: -100, behavior: 'smooth' });
+    }
+  };
+
+  const checkScrollPosition = () => {
+    if (descriptionRef.current) {
+      setCanScrollUp(descriptionRef.current.scrollTop > 0);
+      setCanScrollDown(
+        descriptionRef.current.scrollHeight - descriptionRef.current.scrollTop !==
+          descriptionRef.current.clientHeight
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (descriptionRef.current) {
+      descriptionRef.current.addEventListener('scroll', checkScrollPosition);
+      return () => {
+        descriptionRef.current.removeEventListener('scroll', checkScrollPosition);
+      };
+    }
+  }, []);
+
   return (
     <div className="card bg-gray-50 shadow rounded-lg p-6 max-w-xs mx-auto md:max-w-md lg:max-w-lg xl:max-w-xl">
       <div className="flex flex-col items-center">
@@ -20,7 +55,7 @@ export default function ProfileCard(props) {
       <h3 className="title text-center mb-2 md:text-lg lg:text-xl">{props.position}</h3>
       <div className="border-t border-gray-200 mt-2 mb-4"></div>
 
-      <div className="mx-4 text-justify text-center overflow-auto max-h-48 no-scrollbar">
+      <div ref={descriptionRef} className="mx-4 text-justify overflow-auto max-h-48 no-scrollbar">
         {props.description && (
           <div dangerouslySetInnerHTML={{ __html: props.description }} />
         )}
@@ -39,7 +74,20 @@ export default function ProfileCard(props) {
         <a href={props.facebook} target="_blank">
           <i className="fa fa-facebook text-mainPink"></i>
         </a> */}
-        <i className="fa fa-arrow-down text-gray-400 animate-bounce absolute right-0"></i>
+        <div className="absolute right-0 flex flex-col items-center">
+          {canScrollUp && (
+            <i
+              className="fa fa-arrow-up text-gray-400 animate-bounce cursor-pointer"
+              onClick={handleScrollUp}
+            ></i>
+          )}
+          {canScrollDown && (
+            <i
+              className="fa fa-arrow-down text-gray-400 animate-bounce cursor-pointer"
+              onClick={handleScrollDown}
+            ></i>
+          )}
+        </div>
       </div>
     </div>
   );
