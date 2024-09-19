@@ -29,10 +29,12 @@ export default function ProfileCard(props) {
   };
 
   useEffect(() => {
-    if (descriptionRef.current) {
-      descriptionRef.current.addEventListener('scroll', checkScrollPosition);
+    const currentRef = descriptionRef.current;
+    if (currentRef) {
+      currentRef.addEventListener('scroll', checkScrollPosition);
+      checkScrollPosition(); // Initial check
       return () => {
-        descriptionRef.current.removeEventListener('scroll', checkScrollPosition);
+        currentRef.removeEventListener('scroll', checkScrollPosition);
       };
     }
   }, []);
@@ -56,7 +58,7 @@ export default function ProfileCard(props) {
       <h3 className="title text-center mb-2 md:text-lg lg:text-xl">{props.position}</h3>
       <div className="border-t border-gray-200 mt-2 mb-4"></div>
 
-      <div ref={descriptionRef} className="mx-4 text-justify overflow-auto max-h-48 no-scrollbar">
+      <div ref={descriptionRef} className="mx-4 text-justify text-center overflow-auto max-h-48 no-scrollbar">
         {props.description && (
           <div dangerouslySetInnerHTML={{ __html: props.description }} />
         )}
@@ -66,15 +68,6 @@ export default function ProfileCard(props) {
         <a href={props.instagram} target="_blank" className="z-10">
           <i className="fa fa-instagram text-mainPink"></i>
         </a>
-        {/* <a href={props.twitter} target="_blank">
-          <i className="fa fa-twitter text-mainPink"></i>
-        </a>
-        <a href={props.linkedin} target="_blank">
-          <i className="fa fa-linkedin text-mainPink"></i>
-        </a>
-        <a href={props.facebook} target="_blank">
-          <i className="fa fa-facebook text-mainPink"></i>
-        </a> */}
         <div className="absolute right-0 flex flex-col items-center">
           {canScrollUp && (
             <i
