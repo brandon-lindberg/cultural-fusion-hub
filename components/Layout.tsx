@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Navigation from './navigation/Navigation';
 import SocialMetaTags from './SocialMetaTags';
+import { useState } from 'react';
 
 type Props = {
   children?: ReactNode;
@@ -23,6 +24,7 @@ const Layout = ({
 }: Props) => {
   const router = useRouter();
   const { t, i18n } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -55,6 +57,14 @@ const Layout = ({
             <div className="flex-1 text-center">
               <span className="font-semibold text-gray-500 text-lg">Cultural Fusion Hub</span>
             </div>
+            <div className="hidden sm:flex mr-2">
+              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg">
+                <span className="flag-icon flag-icon-gb"></span>
+              </button>
+              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500 p-2 text-lg">
+                <span className="flag-icon flag-icon-jp"></span>
+              </button>
+            </div>
             <div className="rounded-full overflow-hidden">
               <Image
                 src="/CFH-logo-vector.png"
@@ -81,8 +91,12 @@ const Layout = ({
               />
             </div>
             <div className="flex">
-              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg">EN</button>
-              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500 p-2 text-lg">JP</button>
+              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg">
+                <span className="flag-icon flag-icon-gb"></span>
+              </button>
+              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500 p-2 text-lg">
+                <span className="flag-icon flag-icon-jp"></span>
+              </button>
             </div>
           </div>
           <a

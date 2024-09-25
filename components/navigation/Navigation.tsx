@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const Navigation = () => {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -44,6 +44,20 @@ const Navigation = () => {
               {item.label}
             </Link>
           ))}
+          <div className="flex justify-evenly mt-4">
+            <button
+              onClick={() => i18n.changeLanguage('en')}
+              className="focus:outline-none mr-2 px-1 py-1"
+            >
+              <span className="flag-icon flag-icon-gb"></span>
+            </button>
+            <button
+              onClick={() => i18n.changeLanguage('ja')}
+              className="focus:outline-none ml-2 px-1 py-1"
+            >
+              <span className="flag-icon flag-icon-jp"></span>
+            </button>
+          </div>
         </div>
       )}
     </nav>
