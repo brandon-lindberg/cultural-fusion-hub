@@ -68,7 +68,7 @@ const Layout = ({
                   >
                     <span className="flag-icon flag-icon-gb"></span>
                   </button>
-                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
                     Change language to English
                   </span>
                 </div>
@@ -80,7 +80,7 @@ const Layout = ({
                   >
                     <span className="flag-icon flag-icon-jp"></span>
                   </button>
-                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
                     言語を日本語に変更
                   </span>
                 </div>
@@ -120,7 +120,7 @@ const Layout = ({
                   >
                     <span className="flag-icon flag-icon-gb"></span>
                   </button>
-                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
                     Change language to English
                   </span>
                 </div>
@@ -132,7 +132,7 @@ const Layout = ({
                   >
                     <span className="flag-icon flag-icon-jp"></span>
                   </button>
-                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
                     言語を日本語に変更
                   </span>
                 </div>
