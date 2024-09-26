@@ -30,6 +30,8 @@ const Layout = ({
     i18n.changeLanguage(lng);
   };
 
+  const currentLanguage = i18n.language;
+
   return (
     <div>
       <Head>
@@ -58,12 +60,31 @@ const Layout = ({
               <span className="font-semibold text-gray-500 text-lg">Cultural Fusion Hub</span>
             </div>
             <div className="hidden sm:flex mr-2">
-              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg">
-                <span className="flag-icon flag-icon-gb"></span>
-              </button>
-              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500 p-2 text-lg">
-                <span className="flag-icon flag-icon-jp"></span>
-              </button>
+              {currentLanguage === 'ja' ? (
+                <div className="relative group">
+                  <button 
+                    onClick={() => changeLanguage('en')} 
+                    className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg"
+                  >
+                    <span className="flag-icon flag-icon-gb"></span>
+                  </button>
+                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Change language to English
+                  </span>
+                </div>
+              ) : (
+                <div className="relative group">
+                  <button 
+                    onClick={() => changeLanguage('ja')} 
+                    className="text-gray-500 hover:text-green-500 p-2 text-lg"
+                  >
+                    <span className="flag-icon flag-icon-jp"></span>
+                  </button>
+                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    言語を日本語に変更
+                  </span>
+                </div>
+              )}
             </div>
             <div className="rounded-full overflow-hidden">
               <Image
@@ -91,12 +112,31 @@ const Layout = ({
               />
             </div>
             <div className="flex">
-              <button onClick={() => changeLanguage('en')} className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg">
-                <span className="flag-icon flag-icon-gb"></span>
-              </button>
-              <button onClick={() => changeLanguage('ja')} className="text-gray-500 hover:text-green-500 p-2 text-lg">
-                <span className="flag-icon flag-icon-jp"></span>
-              </button>
+              {currentLanguage === 'ja' ? (
+                <div className="relative group">
+                  <button 
+                    onClick={() => changeLanguage('en')} 
+                    className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg"
+                  >
+                    <span className="flag-icon flag-icon-gb"></span>
+                  </button>
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Change language to English
+                  </span>
+                </div>
+              ) : (
+                <div className="relative group">
+                  <button 
+                    onClick={() => changeLanguage('ja')} 
+                    className="text-gray-500 hover:text-green-500 p-2 text-lg"
+                  >
+                    <span className="flag-icon flag-icon-jp"></span>
+                  </button>
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    言語を日本語に変更
+                  </span>
+                </div>
+              )}
             </div>
           </div>
           <a
