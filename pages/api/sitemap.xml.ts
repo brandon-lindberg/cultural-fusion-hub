@@ -1,13 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
+import rateLimiter from '../../utils/rateLimiter';
 
 const BASE_URL = 'https://stupendous-longma-517c11.netlify.app';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.setHeader('Content-Type', 'text/xml');
-  res.write(createSitemap());
-  res.end();
+  rateLimiter(req, res, () => {
+    res.setHeader('Content-Type', 'text/xml');
+    res.write(createSitemap());
+    res.end();
+  });
 }
 
 function createSitemap() {
