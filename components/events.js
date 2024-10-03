@@ -250,4 +250,15 @@ export default [
     description:
       '',
   },
+  {
+    title: '10月 Meetup！ Halloween Costume Party',
+    start: '2024-10-12T10:00:00',
+    end: '2024-10-12T11:30:00',
+    stream: false,
+    location: '池尻地区会館　第4会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/auGpAFa9tnuLeYE47',
+    instagramUrl: '',
+    description:
+      '１0月なので例年通りハロウィンコスチュームパーティーを開催します。少し早いですが、可能な限り、親子共にコスチュームをきて是非ご参加ください 【参加費】1家族2名迄500円、2名以上は1人追加で200円 ※飲み物、お菓子あり ※事前予約要。DMお待ちしています。',
+  },
 ];
