@@ -261,4 +261,26 @@ export default [
     description:
       '１0月なので例年通りハロウィンコスチュームパーティーを開催します。少し早いですが、可能な限り、親子共にコスチュームをきて是非ご参加ください 【参加費】1家族2名迄500円、2名以上は1人追加で200円 ※飲み物、お菓子あり ※事前予約要。DMお待ちしています。',
   },
+  {
+    title: 'Thanksgiving Potluck Party',
+    start: '2024-11-09T12:30:00',
+    end: '2024-11-09T17:30:00',
+    stream: false,
+    location: '代々木公園',
+    googleMapsUrl: '',
+    instagramUrl: '',
+    description:
+      'Thanksgiving Potluck Party',
+  },
+  {
+    title: 'クリスマスパーティーを開催します！🎅🎁',
+    start: '2024-12-15T13:00:00',
+    end: '2024-12-15T14:30:00',
+    stream: false,
+    location: '事前予約をいただいた',
+    googleMapsUrl: '',
+    instagramUrl: '',
+    description:
+      '🎨 みんなでクッキーをデコレーションしたり、🎁 子どもたちへのクリスマスプレゼント、☕ 飲み物付きでリラックスできるひとときをご用意しています♪ 💰 参加費：1家族 1,000円 📍 場所：事前予約をいただいた方にご案内します。🎟 必ず事前予約をお願いします！',
+  },
 ];
