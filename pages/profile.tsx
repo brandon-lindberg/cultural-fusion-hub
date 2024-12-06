@@ -16,6 +16,32 @@ const ProfilePage = () => {
           description: "Profiles of Cultural Fusion Hub facilitators",
         }}
       />
+      {/* JSON-LD for SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Cultural Fusion Hub Profiles",
+          "description": "Profiles of Cultural Fusion Hub facilitators",
+          "url": "https://culturalfusionhub.com/profile",
+          "mainEntity": [
+            {
+              "@type": "Person",
+              "name": "Obikane Yuka",
+              "image": "https://culturalfusionhub.com/profile_one.jpg",
+              "jobTitle": "ファシリテーター",
+              "sameAs": "https://www.instagram.com/culturalfusionhub/"
+            },
+            {
+              "@type": "Person",
+              "name": "Saho Petersen",
+              "image": "https://culturalfusionhub.com/profile_three.jpg",
+              "jobTitle": "ファシリテーター",
+              "sameAs": "https://www.instagram.com/culturalfusionhub/"
+            }
+          ]
+        })}
+      </script>
       <div className="md:flex md:justify-center md:items-center md:h-screen">
         <div className="profile m-3">
           <ProfileCard

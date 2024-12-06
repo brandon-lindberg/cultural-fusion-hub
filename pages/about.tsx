@@ -15,6 +15,15 @@ const AboutPage = () => {
           description: t('CFHmission'),
         }}
       />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "About Cultural Fusion Hub",
+          "description": t('CFHmission'),
+          "url": "https://culturalfusionhub.com/about"
+        })}
+      </script>
       <div>
         <div className="relative w-full h-[300px]">
           <Image
