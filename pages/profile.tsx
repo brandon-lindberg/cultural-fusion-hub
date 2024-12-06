@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import Layout from '../components/Layout';
 import ProfileCard from '../components/ProfileCard';
 import { useTranslation } from 'react-i18next';
 import StructuredData from '../components/StructuredData';
 
 const ProfilePage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Layout title="Profile">

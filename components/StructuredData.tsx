@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
 interface StructuredDataProps {
-  type: 'Article' | 'WebPage';
-  data: any;
+  type: 'BlogPosting' | 'WebPage';
+  data: Record<string, any>;
 }
 
 const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {

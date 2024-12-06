@@ -1,8 +1,6 @@
-import { useRouter } from 'next/router';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import Image from 'next/image';
 import Calendar from '../components/Calendar';
 import ImageCarousel from '../components/Carousel';
 import { useTranslation } from 'react-i18next';
@@ -11,14 +9,19 @@ import BlogCard from '../components/blog/blogCards';
 import StructuredData from '../components/StructuredData';
 
 const IndexPage = () => {
-  const router = useRouter();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const latestTwoPosts = useMemo(() => {
     return [...blogPosts]
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, 2);
   }, []);
+
+  const structuredData = {
+    name: "Cultural Fusion Hub",
+    description: t('greeting'),
+    url: "https://culturalfusionhub.com/",
+  };
 
   return (
     <Layout 
@@ -28,10 +31,7 @@ const IndexPage = () => {
     >
       <StructuredData
         type="WebPage"
-        data={{
-          name: "Cultural Fusion Hub",
-          description: t('greeting'),
-        }}
+        data={structuredData}
       />
       <header>
         <div
@@ -40,7 +40,7 @@ const IndexPage = () => {
         >
           <ImageCarousel />
           <div className="absolute bottom-1/4 right-1/2 transform translate-x-1/2">
-            {/* <h1 className="text-white text-4xl">Welcome to The Cultural Fusion Hub</h1> */}
+            {/* Optional Header Content */}
           </div>
         </div>
       </header>
@@ -61,14 +61,14 @@ const IndexPage = () => {
         <div className="flex flex-col w-full lg:w-1/3 lg:ml-4">
           <h2 className="text-2xl font-bold mb-4">Latest Blog Posts</h2>
           {latestTwoPosts.map((post, index) => (
-            <div key={index} className={index === 0 ? 'mb-6' : ''}>
+            <div key={post.id} className={index === 0 ? 'mb-6' : ''}>
               <BlogCard
                 title={post.title}
                 date={post.date}
                 author={post.author}
                 entry={post.entry}
                 tags={post.tags}
-                onTagClick={() => { } } 
+                onTagClick={() => {}} 
                 id={post.id}
               />
             </div>

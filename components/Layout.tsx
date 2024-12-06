@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Navigation from './navigation/Navigation';
 import SocialMetaTags from './SocialMetaTags';
-import { useState } from 'react';
 
 type Props = {
   children?: ReactNode;
@@ -23,8 +22,7 @@ const Layout = ({
   canonicalUrl = 'https://www.culturalfusionhub.com',
 }: Props) => {
   const router = useRouter();
-  const { t, i18n } = useTranslation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { i18n } = useTranslation();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);

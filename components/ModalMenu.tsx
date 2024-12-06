@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Link from 'next/link';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +15,7 @@ const customStyles = {
 interface ModalMenuProps {
   isOpen: boolean;
   onRequestClose: () => void;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   t: Function;
 }
 

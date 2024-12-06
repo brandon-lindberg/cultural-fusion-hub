@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Modal from './Modal';
-import { useTranslation } from 'react-i18next';
 import eventsData from './events';
 import styles from '../styles/Calendar.module.scss';
 import { format } from 'date-fns';
@@ -17,7 +16,6 @@ setDefaultLocale('ja');
 const CalendarComponent = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const { t, i18n } = useTranslation();
 
   const handleDateChange = (date: Date) => {
     setStartDate(date);

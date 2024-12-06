@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 import SocialShare from './SocialShare';
 
 interface BlogCardProps {
@@ -15,7 +14,6 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, id, onTagClick }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const { t } = useTranslation();
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { 
@@ -24,24 +22,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
       day: 'numeric'
     };
     return new Date(dateString).toLocaleString('en-US', options);
-  };
-
-  // Structured data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": title,
-    "author": {
-      "@type": "Person",
-      "name": author
-    },
-    "datePublished": date,
-    "description": entry.substring(0, 160), // Short description for SEO
-    "url": `https://culturalfusionhub.com/blog/${id}`,
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://culturalfusionhub.com/blog/${id}`
-    }
   };
 
   return (
@@ -70,7 +50,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
           ))}
         </div>
       </div>
-
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
@@ -95,10 +74,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
             </div>
             <p className="text-gray-800 mb-6 whitespace-pre-wrap">{entry}</p>
             <div className="flex justify-between">
-              <Link href={`/blog/${id}`}>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  View Full Post
-                </button>
+              <Link href={`/blog/${id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                View Full Post
               </Link>
               <button 
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -110,11 +87,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
           </div>
         </div>
       )}
-
-      {/* JSON-LD for SEO */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
     </>
   );
 };

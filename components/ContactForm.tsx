@@ -27,7 +27,7 @@ const ContactForm = () => {
       message: '',
     });
   };
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-lg">

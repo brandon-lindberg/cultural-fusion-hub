@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import Layout from '../components/Layout';
 import ContactForm from '../components/ContactForm';
 import { useTranslation } from 'react-i18next';
 import StructuredData from '../components/StructuredData';
 
 const ContactPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <Layout title="Contact">
       <StructuredData

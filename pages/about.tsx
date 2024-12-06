@@ -4,7 +4,7 @@ import StructuredData from '../components/StructuredData';
 import Image from 'next/image';
 
 const AboutPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Layout title="About">
