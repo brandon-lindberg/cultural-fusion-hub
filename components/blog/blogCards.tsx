@@ -26,6 +26,24 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
     return new Date(dateString).toLocaleString('en-US', options);
   };
 
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "author": {
+      "@type": "Person",
+      "name": author
+    },
+    "datePublished": date,
+    "description": entry.substring(0, 160), // Short description for SEO
+    "url": `https://culturalfusionhub.com/blog/${id}`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://culturalfusionhub.com/blog/${id}`
+    }
+  };
+
   return (
     <>
       <div 
@@ -92,6 +110,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
           </div>
         </div>
       )}
+
+      {/* JSON-LD for SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
     </>
   );
 };
