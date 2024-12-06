@@ -24,9 +24,11 @@ const Modal = ({ isOpen, onClose, onOpenMaps, children, event }) => {
           <button className={styles.closeButton} onClick={onClose}>
             Close
           </button>
-          <button onClick={handleButtonClick} className={styles.mapsButton}>
-            {event.stream ? 'Open Instagram' : 'Open Google Maps'}
-          </button>
+          {((event.stream && event.instagramUrl) || (!event.stream && event.googleMapsUrl)) && (
+            <button onClick={handleButtonClick} className={styles.mapsButton}>
+              {event.stream ? 'Open Instagram' : 'Open Google Maps'}
+            </button>
+          )}
         </div>
       </div>
     </div>
