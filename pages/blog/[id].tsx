@@ -3,8 +3,23 @@ import blogPosts from '../../components/blog/entries.json';
 import Layout from '../../components/Layout';
 import { useTranslation } from 'react-i18next';
 import SocialShare from '../../components/blog/SocialShare';
+import StructuredData from '../../components/StructuredData';
+import React from 'react';
 
-const BlogPost = ({ post }) => {
+interface BlogPost {
+  id: string;
+  title: string;
+  date: string;
+  author: string;
+  entry: string;
+  tags: string[];
+}
+
+interface BlogPostProps {
+  post: BlogPost;
+}
+
+const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
   const { t } = useTranslation();
 
   if (!post) {
@@ -14,12 +29,40 @@ const BlogPost = ({ post }) => {
   // Format the date consistently
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'numeric',
+    month: 'long',
     day: 'numeric',
   });
 
+  // Create structured data for BlogPosting
+  const blogStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "description": post.entry.substring(0, 160), // Short description
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.culturalfusionhub.com/blog/${post.id}`
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cultural Fusion Hub",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.culturalfusionhub.com/logo.png"
+      }
+    },
+    "image": "https://www.culturalfusionhub.com/path-to-blog-image.jpg" // Replace with actual image URL
+  };
+
   return (
     <Layout title={post.title}>
+      <StructuredData type="BlogPosting" data={blogStructuredData} />
       <article className="max-w-3xl mx-auto p-4">
         <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
         <div className="flex justify-between items-center mb-2">
@@ -52,8 +95,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = blogPosts.find(p => p.id === params.id);
-  return { props: { post } };
+  const post = blogPosts.find((p) => p.id === params?.id);
+  return { props: { post: post || null } };
 };
 
 export default BlogPost;
