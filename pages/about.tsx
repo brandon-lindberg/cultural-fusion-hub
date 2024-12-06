@@ -34,7 +34,7 @@ const AboutPage = () => {
           />
         </div>
         <div className="md-p-9">
-          <div className="p-5 text-center text-justify md-p-9 bg-gray-50">
+          <div className="p-5 text-justify md-p-9 bg-gray-50">
             <h1 className="p-3 font-bold">{t('CFHmission')}</h1>
             <article>
               <ul className="p-1">
@@ -42,7 +42,7 @@ const AboutPage = () => {
               </ul>
             </article>
           </div>
-          <div className="p-5 text-center text-justify md-p-9 bg-gray-50">
+          <div className="p-5 text-justify md-p-9 bg-gray-50">
             <h1 className="p-2 text-lg font-bold">{t('mission')}</h1>
             <article>
               <ul className="p-2">
