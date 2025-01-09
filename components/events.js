@@ -294,4 +294,15 @@ export default [
     description:
       '2025年第一弾meet upのお知らせです:sparkles:子供達を遊ばせながら親同士ゆっくりお話ししましょう:smiling_face_with_3_hearts:【日程】1月12日　10時〜12時【テーマ】習い事、年末年始の過ごし方について【参加費】１家族2名まで500円、2名以上1人＋200円【事前予約】要。DM、その他の連絡お願いします。※お菓子、飲み物あり',
   },
+  {
+    title: '2月 meet up',
+    start: '2025-02-15T10:00:00',
+    end: '2025-02-15T12:00:00',
+    stream: false,
+    location: '池尻会館　第4会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/auGpAFa9tnuLeYE47',
+    instagramUrl: '',
+    description:
+      '',
+  },
 ];
