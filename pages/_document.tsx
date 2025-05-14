@@ -15,7 +15,7 @@ class MyDocument extends Document {
           {/* Google Search Console HTML-tag verification */}
           <meta
             name="google-site-verification"
-            content="-EhP3-SW3r_T1NAGxrnMTt5IgD-pmHbfg3WDPP1Y2qM"
+            content="f_-HjQPLDKaJupI65Aq-PA2mslm4wMHj2Fdt_amze-w"
           />
         </Head>
         <body>
