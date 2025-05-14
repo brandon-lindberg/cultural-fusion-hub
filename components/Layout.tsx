@@ -34,7 +34,7 @@ const Layout = ({
     <div>
       <Head>
         <link rel="canonical" href={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${asPath}`} />
-        <meta name="google-site-verification" content="f_-HjQPLDKaJupI65Aq-PA2mslm4wMHj2Fdt_amze-w" />
+        <meta name="google-site-verification" content="-EhP3-SW3r_T1NAGxrnMTt5IgD-pmHbfg3WDPP1Y2qM" />
         {/* Hreflang alternate links for SEO */}
         {locales?.map((lng) => (
           <link
