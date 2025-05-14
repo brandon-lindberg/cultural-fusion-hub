@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import rateLimiter from '../../utils/rateLimiter';
 
-const BASE_URL = 'https://www.culturalfusionhub.com';
+const BASE_URL = 'https://culturalfusionhub.com';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   rateLimiter(req, res, () => {

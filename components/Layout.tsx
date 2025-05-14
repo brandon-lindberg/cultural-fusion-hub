@@ -19,7 +19,7 @@ const Layout = ({
   title = 'Cultural Fusion Hub',
   description = "Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!",
   image = 'https://www.culturalfusionhub.com/CFH-logo-vector.png', // Ensure this is an absolute URL
-  canonicalUrl = 'https://www.culturalfusionhub.com',
+  canonicalUrl = 'https://culturalfusionhub.com',
 }: Props) => {
   const { asPath, locale, locales, defaultLocale } = useRouter();
   const { i18n } = useTranslation();
@@ -33,7 +33,7 @@ const Layout = ({
   return (
     <div>
       <Head>
-        <link rel="canonical" href={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${asPath}`} />
+        <link rel="canonical" href={canonicalUrl || `https://culturalfusionhub.com${asPath}`} />
         <meta name="google-site-verification" content="-EhP3-SW3r_T1NAGxrnMTt5IgD-pmHbfg3WDPP1Y2qM" />
         {/* Hreflang alternate links for SEO */}
         {locales?.map((lng) => (
@@ -59,7 +59,7 @@ const Layout = ({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <SocialMetaTags title={title} description={description} image={image} url={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${asPath}`} />
+      <SocialMetaTags title={title} description={description} image={image} url={canonicalUrl || `https://culturalfusionhub.com${asPath}`} />
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4">
           <div className="flex justify-between items-center">
