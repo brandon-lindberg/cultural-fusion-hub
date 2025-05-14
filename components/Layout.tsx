@@ -14,14 +14,14 @@ type Props = {
   canonicalUrl?: string;
 };
 
-const Layout = ({ 
-  children, 
+const Layout = ({
+  children,
   title = 'Cultural Fusion Hub',
   description = "Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!",
   image = 'https://www.culturalfusionhub.com/CFH-logo-vector.png', // Ensure this is an absolute URL
   canonicalUrl = 'https://www.culturalfusionhub.com',
 }: Props) => {
-  const router = useRouter();
+  const { asPath, locale, locales, defaultLocale } = useRouter();
   const { i18n } = useTranslation();
 
   const changeLanguage = (lng: string) => {
@@ -33,8 +33,18 @@ const Layout = ({
   return (
     <div>
       <Head>
-        <link rel="canonical" href={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${router.asPath}`} />
-        <meta name="google-site-verification" content="KStqInBSo49y2ngUfeVdBP81kOYD-mq03q1M8SnXyrA" />
+        <link rel="canonical" href={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${asPath}`} />
+        <meta name="google-site-verification" content="f_-HjQPLDKaJupI65Aq-PA2mslm4wMHj2Fdt_amze-w" />
+        {/* Hreflang alternate links for SEO */}
+        {locales?.map((lng) => (
+          <link
+            key={lng}
+            rel="alternate"
+            hrefLang={lng}
+            href={`${canonicalUrl}/${lng === defaultLocale ? '' : lng}${asPath}`}
+          />
+        ))}
+        <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
         <meta name="robots" content="all" />
         <meta name="googlebot" content="all" />
         <meta charSet="utf-8" />
@@ -49,7 +59,7 @@ const Layout = ({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <SocialMetaTags title={title} description={description} image={image} url={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${router.asPath}`} />
+      <SocialMetaTags title={title} description={description} image={image} url={canonicalUrl || `https://stupendous-longma-517c11.netlify.app${asPath}`} />
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4">
           <div className="flex justify-between items-center">
@@ -60,8 +70,8 @@ const Layout = ({
             <div className="hidden sm:flex mr-2">
               {currentLanguage === 'ja' ? (
                 <div className="relative group">
-                  <button 
-                    onClick={() => changeLanguage('en')} 
+                  <button
+                    onClick={() => changeLanguage('en')}
                     className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg"
                   >
                     <span className="flag-icon flag-icon-gb"></span>
@@ -72,8 +82,8 @@ const Layout = ({
                 </div>
               ) : (
                 <div className="relative group">
-                  <button 
-                    onClick={() => changeLanguage('ja')} 
+                  <button
+                    onClick={() => changeLanguage('ja')}
                     className="text-gray-500 hover:text-green-500 p-2 text-lg"
                   >
                     <span className="flag-icon flag-icon-jp"></span>
@@ -112,8 +122,8 @@ const Layout = ({
             <div className="flex">
               {currentLanguage === 'ja' ? (
                 <div className="relative group">
-                  <button 
-                    onClick={() => changeLanguage('en')} 
+                  <button
+                    onClick={() => changeLanguage('en')}
                     className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg"
                   >
                     <span className="flag-icon flag-icon-gb"></span>
@@ -124,8 +134,8 @@ const Layout = ({
                 </div>
               ) : (
                 <div className="relative group">
-                  <button 
-                    onClick={() => changeLanguage('ja')} 
+                  <button
+                    onClick={() => changeLanguage('ja')}
                     className="text-gray-500 hover:text-green-500 p-2 text-lg"
                   >
                     <span className="flag-icon flag-icon-jp"></span>
