@@ -1,3 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /api/
+# Prevent accidental crawling of source code files
+Disallow: /*.ts$
 Sitemap: https://culturalfusionhub.com/sitemap.xml
