@@ -31,6 +31,8 @@ function traverseDir(dir) {
       if (route.endsWith('/index')) {
         route = route.replace(/\/index$/, '');
       }
+      // Skip user listing and dynamic user pages from sitemap
+      if (route.startsWith('/users')) continue;
       pages.push(route);
     }
   }
