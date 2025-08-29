@@ -44,28 +44,43 @@ function createSitemap() {
 }
 
 function getAllPages() {
-  const pagesDirectory = path.join(process.cwd(), 'pages');
-  const pages = [];
+  try {
+    const pagesDirectory = path.join(process.cwd(), 'pages');
+    const pages = [];
 
-  function traverseDirectory(dir) {
-    const files = fs.readdirSync(dir);
-    files.forEach((file) => {
-      const filePath = path.join(dir, file);
-      const stat = fs.statSync(filePath);
-      if (stat.isDirectory()) {
-        traverseDirectory(filePath);
-      } else if (path.extname(file) === '.tsx' || path.extname(file) === '.ts') {
-        let pagePath = filePath.replace(pagesDirectory, '').replace(/\.tsx?$/, '');
-        if (pagePath.endsWith('/index')) {
-          pagePath = pagePath.replace('/index', '');
-        }
-        if (!pagePath.includes('_app') && !pagePath.includes('_document') && !pagePath.includes('api/')) {
-          pages.push(pagePath);
-        }
+    const traverseDirectory = (dir: string) => {
+      try {
+        const files = fs.readdirSync(dir);
+        if (!Array.isArray(files)) return;
+
+        files.forEach((file) => {
+          try {
+            const filePath = path.join(dir, file);
+            const stat = fs.statSync(filePath);
+            if (stat.isDirectory()) {
+              traverseDirectory(filePath);
+            } else if (path.extname(file) === '.tsx' || path.extname(file) === '.ts') {
+              let pagePath = filePath.replace(pagesDirectory, '').replace(/\.tsx?$/, '');
+              if (pagePath.endsWith('/index')) {
+                pagePath = pagePath.replace('/index', '');
+              }
+              if (!pagePath.includes('_app') && !pagePath.includes('_document') && !pagePath.includes('api/')) {
+                pages.push(pagePath);
+              }
+            }
+          } catch (error) {
+            console.error(`Error processing file ${file}:`, error);
+          }
+        });
+      } catch (error) {
+        console.error(`Error reading directory ${dir}:`, error);
       }
-    });
-  }
+    };
 
-  traverseDirectory(pagesDirectory);
-  return pages;
+    traverseDirectory(pagesDirectory);
+    return pages;
+  } catch (error) {
+    console.error('Error in getAllPages:', error);
+    return [];
+  }
 }

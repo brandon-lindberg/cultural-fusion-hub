@@ -6,8 +6,17 @@ import SocialShare from '../../components/blog/SocialShare';
 import StructuredData from '../../components/StructuredData';
 import React from 'react';
 
-// Ensure blogPosts is always an array
-const safeBlogPosts = Array.isArray(blogPosts) ? blogPosts : [];
+// Ensure blogPosts is always an array with robust error handling
+const safeBlogPosts = (() => {
+  try {
+    if (!blogPosts) return [];
+    if (!Array.isArray(blogPosts)) return [];
+    return blogPosts;
+  } catch (error) {
+    console.error('Error processing blog posts:', error);
+    return [];
+  }
+})();
 
 interface BlogPost {
   id: string;

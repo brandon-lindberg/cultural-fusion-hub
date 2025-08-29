@@ -8,8 +8,17 @@ import blogPosts from '../components/blog/entries.json';
 import BlogCard from '../components/blog/blogCards';
 import StructuredData from '../components/StructuredData';
 
-// Ensure blogPosts is always an array
-const safeBlogPosts = Array.isArray(blogPosts) ? blogPosts : [];
+// Ensure blogPosts is always an array with robust error handling
+const safeBlogPosts = (() => {
+  try {
+    if (!blogPosts) return [];
+    if (!Array.isArray(blogPosts)) return [];
+    return blogPosts;
+  } catch (error) {
+    console.error('Error processing blog posts:', error);
+    return [];
+  }
+})();
 
 const IndexPage = () => {
   const { t } = useTranslation();

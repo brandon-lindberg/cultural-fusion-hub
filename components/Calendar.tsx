@@ -10,8 +10,24 @@ import ja from 'date-fns/locale/ja';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-// Ensure eventsData is always an array
-const safeEventsData = Array.isArray(eventsData) ? eventsData : [];
+// Ensure eventsData is always an array with robust error handling
+const safeEventsData = (() => {
+  try {
+    if (!eventsData) return [];
+    if (!Array.isArray(eventsData)) return [];
+    // Filter out any malformed events
+    return eventsData.filter(event =>
+      event &&
+      typeof event === 'object' &&
+      event.start &&
+      event.title &&
+      event.location
+    );
+  } catch (error) {
+    console.error('Error processing events data:', error);
+    return [];
+  }
+})();
 
 registerLocale('ja', ja);
 setDefaultLocale('ja');
@@ -22,39 +38,53 @@ const CalendarComponent = () => {
 
   const handleDateChange = (date: Date) => {
     setStartDate(date);
-    const selectedEventData = safeEventsData.find(
-      (event) => new Date(event.start).toDateString() === date.toDateString(),
-    );
-    if (selectedEventData) {
-      setSelectedEvent(selectedEventData);
-    } else {
+    try {
+      const selectedEventData = safeEventsData.find((event) => {
+        try {
+          return new Date(event.start).toDateString() === date.toDateString();
+        } catch (error) {
+          console.error('Error parsing event date:', error);
+          return false;
+        }
+      });
+      setSelectedEvent(selectedEventData || null);
+    } catch (error) {
+      console.error('Error finding selected event:', error);
       setSelectedEvent(null);
     }
   };
 
   const renderDayContents = (day: number, date: Date) => {
-    const formattedDate = format(date, 'yyyy-MM-dd');
-    const eventForThisDay = safeEventsData.find(
-      (event) => format(new Date(event.start), 'yyyy-MM-dd') === formattedDate,
-    );
+    try {
+      const formattedDate = format(date, 'yyyy-MM-dd');
+      const eventForThisDay = safeEventsData.find(      (event) => {
+        try {
+          return format(new Date(event.start), 'yyyy-MM-dd') === formattedDate;
+        } catch {
+          // Silently skip malformed events
+          return false;
+        }
+      });
 
-    console.log(`Rendering day ${formattedDate}, event:`, eventForThisDay);
-
-    if (eventForThisDay) {
-      return (
-        <div className={styles.dayContainer}>
-          {day}
-          <div
-            className={
-              eventForThisDay.stream
-                ? styles.streamEventIndicator
-                : styles.eventIndicator
-            }
-          ></div>
-        </div>
-      );
+      if (eventForThisDay) {
+        return (
+          <div className={styles.dayContainer}>
+            {day}
+            <div
+              className={
+                eventForThisDay.stream
+                  ? styles.streamEventIndicator
+                  : styles.eventIndicator
+              }
+            ></div>
+          </div>
+        );
+      }
+      return day;
+    } catch (error) {
+      console.error('Error rendering day contents:', error);
+      return day;
     }
-    return day;
   };
 
   return (
@@ -76,21 +106,33 @@ const CalendarComponent = () => {
         >
           {selectedEvent && (
             <div>
-              <h2 className="text-center font-bold">{selectedEvent.title}</h2>
+              <h2 className="text-center font-bold">{selectedEvent.title || 'Event'}</h2>
               <div className="p-1">
-                <p>
-                  <span className="font-bold">Start Time:</span>{' '}
-                  {new Date(selectedEvent.start).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
-                </p>
-                <p>
-                  <span className="font-bold">Location:</span>{' '}
-                  {selectedEvent.location}
-                </p>
+                {selectedEvent.start && (
+                  <p>
+                    <span className="font-bold">Start Time:</span>{' '}
+                    {(() => {
+                      try {
+                        return new Date(selectedEvent.start).toLocaleTimeString([], {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        });
+                      } catch {
+                        return 'Invalid time';
+                      }
+                    })()}
+                  </p>
+                )}
+                {selectedEvent.location && (
+                  <p>
+                    <span className="font-bold">Location:</span>{' '}
+                    {selectedEvent.location}
+                  </p>
+                )}
               </div>
-              <p className="p-1">{selectedEvent.description}</p>
+              {selectedEvent.description && (
+                <p className="p-1">{selectedEvent.description}</p>
+              )}
             </div>
           )}
         </Modal>

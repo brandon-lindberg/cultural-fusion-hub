@@ -5,8 +5,17 @@ import blogPosts from '../components/blog/entries.json';
 import { useTranslation } from 'react-i18next';
 import StructuredData from '../components/StructuredData';
 
-// Ensure blogPosts is always an array
-const safeBlogPosts = Array.isArray(blogPosts) ? blogPosts : [];
+// Ensure blogPosts is always an array with robust error handling
+const safeBlogPosts = (() => {
+  try {
+    if (!blogPosts) return [];
+    if (!Array.isArray(blogPosts)) return [];
+    return blogPosts;
+  } catch (error) {
+    console.error('Error processing blog posts:', error);
+    return [];
+  }
+})();
 
 const Blog: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
