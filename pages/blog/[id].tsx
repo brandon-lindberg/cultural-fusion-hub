@@ -90,16 +90,26 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = safeBlogPosts.map(post => ({
-    params: { id: post.id },
-  }));
+  try {
+    const paths = safeBlogPosts.map(post => ({
+      params: { id: post.id },
+    }));
 
-  return { paths, fallback: false };
+    return { paths, fallback: false };
+  } catch (error) {
+    console.error('Error generating static paths:', error);
+    return { paths: [], fallback: false };
+  }
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = safeBlogPosts.find((p) => p.id === params?.id) || null;
-  return { props: { post: post || null } };
+  try {
+    const post = safeBlogPosts.find((p) => p.id === params?.id) || null;
+    return { props: { post: post || null } };
+  } catch (error) {
+    console.error('Error in getStaticProps:', error);
+    return { props: { post: null } };
+  }
 };
 
 export default BlogPost;

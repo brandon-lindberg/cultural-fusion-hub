@@ -8,7 +8,7 @@ type Props = {
 
 const List = ({ items }: Props) => (
   <ul>
-    {items.map((item) => (
+    {Array.isArray(items) && items.map((item) => (
       <li key={item.id}>
         <ListItem data={item} />
       </li>
