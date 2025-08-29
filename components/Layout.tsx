@@ -23,7 +23,7 @@ const Layout = ({
 }: Props) => {
   const router = useRouter();
   const { asPath, locale, locales, defaultLocale } = router;
-  const activeLocale = locale || defaultLocale;
+  const activeLocale = locale || defaultLocale || 'ja';
   const { i18n } = useTranslation();
   // Sync i18n when locale changes
   useEffect(() => {
@@ -42,7 +42,7 @@ const Layout = ({
         <link rel="canonical" href={`${canonicalUrl}${asPath}`} />
         <meta name="google-site-verification" content="-EhP3-SW3r_T1NAGxrnMTt5IgD-pmHbfg3WDPP1Y2qM" />
         {/* Hreflang alternate links for SEO */}
-        {locales?.map((lng) => (
+        {Array.isArray(locales) && locales.map((lng) => (
           <link
             key={lng}
             rel="alternate"
