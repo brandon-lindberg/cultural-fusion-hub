@@ -305,4 +305,15 @@ export default [
     description:
       '',
   },
+  {
+    title: '9月 Meetup！',
+    start: '2025-09-23T10:00:00',
+    end: '2025-09-23T11:30:00',
+    stream: false,
+    location: 'TBA',
+    googleMapsUrl: '',
+    instagramUrl: '',
+    description:
+      '',
+  },
 ];
