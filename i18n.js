@@ -15,16 +15,15 @@ const resources = {
 };
 
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
+  // Apply browser language detection only on the client
+  .use(LanguageDetector)
   .init({
     resources,
     fallbackLng: 'ja',
-    detection: {
-      order: ['path', 'navigator'],
-      lookupFromPathIndex: 0,
-    },
+    detection: { order: ['path', 'navigator'], lookupFromPathIndex: 0 },
     interpolation: { escapeValue: false },
   });
+// Note: on server, the detector will noop, fallbackLng used
 
 export default i18n;
