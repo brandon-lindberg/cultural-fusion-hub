@@ -8,7 +8,8 @@ class MyDocument extends Document {
 
   render() {
     // Use the locale from __NEXT_DATA__ (set by Next.js i18n)
-    const locale = (this.props as any).__NEXT_DATA__.locale || 'en';
+    const nextData = (this.props as any).__NEXT_DATA__;
+    const locale = (nextData && nextData.locale) || 'ja';
     return (
       <Html lang={locale}>
         <Head>

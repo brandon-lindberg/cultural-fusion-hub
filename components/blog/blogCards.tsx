@@ -36,9 +36,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
           <p className="text-gray-700 text-base line-clamp-3 overflow-hidden">{entry}</p>
         </div>
         <div className="px-6 pt-2 pb-4">
-          {tags.map((tag, index) => (
-            <span 
-              key={index} 
+          {Array.isArray(tags) && tags.map((tag, index) => (
+            <span
+              key={index}
               className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer hover:bg-gray-300"
               onClick={(e) => {
                 e.stopPropagation();
@@ -59,9 +59,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
               <SocialShare title={title} url={`https://culturalfusionhub.com/blog/${id}`} />
             </div>
             <div className="mb-4 flex flex-wrap">
-              {tags.map((tag, index) => (
-                <span 
-                  key={index} 
+              {Array.isArray(tags) && tags.map((tag, index) => (
+                <span
+                  key={index}
                   className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer hover:bg-gray-300"
                   onClick={() => {
                     onTagClick(tag);

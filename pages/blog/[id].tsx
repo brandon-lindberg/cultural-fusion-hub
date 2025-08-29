@@ -75,7 +75,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
           {post.entry}
         </div>
         <div className="flex flex-wrap">
-          {post.tags.map(tag => (
+          {Array.isArray(post.tags) && post.tags.map(tag => (
             <span key={tag} className="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer hover:bg-gray-300">
               #{tag}
             </span>
