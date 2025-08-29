@@ -8,13 +8,16 @@ import blogPosts from '../components/blog/entries.json';
 import BlogCard from '../components/blog/blogCards';
 import StructuredData from '../components/StructuredData';
 
+// Ensure blogPosts is always an array
+const safeBlogPosts = Array.isArray(blogPosts) ? blogPosts : [];
+
 const IndexPage = () => {
   const { t } = useTranslation();
 
   const latestTwoPosts = useMemo(() => {
-    return Array.isArray(blogPosts) ? [...blogPosts]
+    return [...safeBlogPosts]
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 2) : [];
+      .slice(0, 2);
   }, []);
 
   const structuredData = {

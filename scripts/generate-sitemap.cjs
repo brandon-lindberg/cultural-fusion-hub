@@ -71,4 +71,4 @@ if (!fs.existsSync(publicDir)) {
 // Write sitemap.xml
 fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapContent);
 
-console.log(`✅ sitemap.xml generated (${pages.length} URLs)`);
+console.log(`✅ sitemap.xml generated (${localizedRoutes.length} URLs for ${pages.length} pages × ${locales.length} locales)`);

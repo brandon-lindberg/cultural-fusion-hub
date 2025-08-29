@@ -10,6 +10,9 @@ import ja from 'date-fns/locale/ja';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+// Ensure eventsData is always an array
+const safeEventsData = Array.isArray(eventsData) ? eventsData : [];
+
 registerLocale('ja', ja);
 setDefaultLocale('ja');
 
@@ -19,7 +22,7 @@ const CalendarComponent = () => {
 
   const handleDateChange = (date: Date) => {
     setStartDate(date);
-    const selectedEventData = eventsData.find(
+    const selectedEventData = safeEventsData.find(
       (event) => new Date(event.start).toDateString() === date.toDateString(),
     );
     if (selectedEventData) {
@@ -31,7 +34,7 @@ const CalendarComponent = () => {
 
   const renderDayContents = (day: number, date: Date) => {
     const formattedDate = format(date, 'yyyy-MM-dd');
-    const eventForThisDay = eventsData.find(
+    const eventForThisDay = safeEventsData.find(
       (event) => format(new Date(event.start), 'yyyy-MM-dd') === formattedDate,
     );
 

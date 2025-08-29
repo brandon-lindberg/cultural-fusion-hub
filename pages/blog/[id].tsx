@@ -6,6 +6,9 @@ import SocialShare from '../../components/blog/SocialShare';
 import StructuredData from '../../components/StructuredData';
 import React from 'react';
 
+// Ensure blogPosts is always an array
+const safeBlogPosts = Array.isArray(blogPosts) ? blogPosts : [];
+
 interface BlogPost {
   id: string;
   title: string;
@@ -87,15 +90,15 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Array.isArray(blogPosts) ? blogPosts.map(post => ({
+  const paths = safeBlogPosts.map(post => ({
     params: { id: post.id },
-  })) : [];
+  }));
 
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = Array.isArray(blogPosts) ? blogPosts.find((p) => p.id === params?.id) : null;
+  const post = safeBlogPosts.find((p) => p.id === params?.id) || null;
   return { props: { post: post || null } };
 };
 

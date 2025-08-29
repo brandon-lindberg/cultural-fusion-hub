@@ -4,12 +4,16 @@ import { initReactI18next } from 'react-i18next';
 import translationEN from './public/locales/en/translation.json';
 import translationJA from './public/locales/ja/translation.json';
 
+// Ensure translation files are objects
+const safeTranslationEN = typeof translationEN === 'object' && translationEN !== null ? translationEN : {};
+const safeTranslationJA = typeof translationJA === 'object' && translationJA !== null ? translationJA : {};
+
 const resources = {
   en: {
-    translation: translationEN,
+    translation: safeTranslationEN,
   },
   ja: {
-    translation: translationJA,
+    translation: safeTranslationJA,
   },
 };
 

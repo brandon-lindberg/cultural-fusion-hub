@@ -5,6 +5,9 @@ import blogPosts from '../components/blog/entries.json';
 import { useTranslation } from 'react-i18next';
 import StructuredData from '../components/StructuredData';
 
+// Ensure blogPosts is always an array
+const safeBlogPosts = Array.isArray(blogPosts) ? blogPosts : [];
+
 const Blog: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,7 +15,7 @@ const Blog: React.FC = () => {
 
   // Sort posts by date
   const sortedPosts = useMemo(() => {
-    return Array.isArray(blogPosts) ? [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [];
+    return [...safeBlogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, []);
 
   // Filter posts based on selected tag and search term
