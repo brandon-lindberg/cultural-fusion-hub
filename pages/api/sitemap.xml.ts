@@ -17,7 +17,10 @@ function createSitemap() {
   const basePages = getAllPages();
   const locales = ['ja', 'en'];
   const defaultLocale = 'ja';
-  const pages = basePages.flatMap((page) =>
+
+  // Ensure basePages is an array before using flatMap
+  const safeBasePages = Array.isArray(basePages) ? basePages : [];
+  const pages = safeBasePages.flatMap((page) =>
     locales.map((lng) => (lng === defaultLocale ? page : `/${lng}${page}`))
   );
 
