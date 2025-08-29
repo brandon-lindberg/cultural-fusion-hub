@@ -87,15 +87,15 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = blogPosts.map(post => ({
+  const paths = Array.isArray(blogPosts) ? blogPosts.map(post => ({
     params: { id: post.id },
-  }));
+  })) : [];
 
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = blogPosts.find((p) => p.id === params?.id);
+  const post = Array.isArray(blogPosts) ? blogPosts.find((p) => p.id === params?.id) : null;
   return { props: { post: post || null } };
 };
 

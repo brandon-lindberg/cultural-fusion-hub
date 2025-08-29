@@ -12,9 +12,9 @@ const IndexPage = () => {
   const { t } = useTranslation();
 
   const latestTwoPosts = useMemo(() => {
-    return [...blogPosts]
+    return Array.isArray(blogPosts) ? [...blogPosts]
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 2);
+      .slice(0, 2) : [];
   }, []);
 
   const structuredData = {

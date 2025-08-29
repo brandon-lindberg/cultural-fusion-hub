@@ -12,7 +12,7 @@ const Blog: React.FC = () => {
 
   // Sort posts by date
   const sortedPosts = useMemo(() => {
-    return [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return Array.isArray(blogPosts) ? [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [];
   }, []);
 
   // Filter posts based on selected tag and search term
