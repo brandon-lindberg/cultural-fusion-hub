@@ -18,8 +18,8 @@ const ImageCarousel = () => {
           <Image
             src="/one.jpg"
             alt="Cultural event showcasing diversity"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
             priority
           />
         </div>
@@ -27,32 +27,32 @@ const ImageCarousel = () => {
           <Image
             src="/two.jpg"
             alt="Community gathering at Cultural Fusion Hub"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
         <div className="relative h-60 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
           <Image
             src="/three.jpg"
             alt="Children participating in cultural activities"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
         <div className="relative h-60 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
           <Image
             src="/four.jpg"
             alt="Multicultural celebration event"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
         <div className="relative h-60 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
           <Image
             src="/five.jpg"
             alt="Diverse group of people at Cultural Fusion Hub"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
       </Carousel>

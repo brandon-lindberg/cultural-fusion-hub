@@ -29,8 +29,8 @@ const AboutPage = () => {
           <Image
             src="/about-banner.jpg"
             alt="Cultural Fusion Hub About Banner"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
         <div className="md-p-9">

@@ -18,6 +18,11 @@ class MyDocument extends Document {
             name="google-site-verification"
             content="f_-HjQPLDKaJupI65Aq-PA2mslm4wMHj2Fdt_amze-w"
           />
+          {/* Font Awesome */}
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          />
         </Head>
         <body>
           <Main />

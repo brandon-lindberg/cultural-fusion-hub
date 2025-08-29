@@ -46,9 +46,8 @@ export default function ProfileCard(props) {
           <Image
             src={props.image}
             alt="pic"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-full"
+            fill
+            className="object-cover rounded-full"
             quality={100}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
