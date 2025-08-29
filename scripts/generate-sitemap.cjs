@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+/* eslint-env node */
+/* eslint-disable no-undef, @typescript-eslint/no-require-imports */
+
 const fs = require('fs');
 const path = require('path');
 
@@ -40,10 +43,17 @@ function traverseDir(dir) {
 
 traverseDir(pagesDir);
 
-// Build XML string
+// Generate locale-specific routes for sitemap
+const locales = ['ja', 'en'];
+const defaultLocale = 'ja';
+const localizedRoutes = pages.flatMap((route) =>
+  locales.map((lng) => (lng === defaultLocale ? route : `/${lng}${route}`))
+);
+
+// Build XML string using localized routes
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
+${localizedRoutes
   .map((route) => `  <url>
     <loc>${siteUrl}${route}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>

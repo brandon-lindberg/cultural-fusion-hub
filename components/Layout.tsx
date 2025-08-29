@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
@@ -21,19 +21,25 @@ const Layout = ({
   image = 'https://www.culturalfusionhub.com/CFH-logo-vector.png', // Ensure this is an absolute URL
   canonicalUrl = 'https://culturalfusionhub.com',
 }: Props) => {
-  const { asPath, locale, locales, defaultLocale } = useRouter();
+  const router = useRouter();
+  const { asPath, locale, locales, defaultLocale } = router;
+  const activeLocale = locale || defaultLocale;
   const { i18n } = useTranslation();
-
+  // Sync i18n when locale changes
+  useEffect(() => {
+    i18n.changeLanguage(activeLocale);
+  }, [activeLocale]);
+  
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    router.push({ pathname: router.pathname, query: router.query }, undefined, { locale: lng });
   };
-
-  const currentLanguage = i18n.language;
+  
+  const currentLanguage = activeLocale;  // use router locale with fallback
 
   return (
-    <div>
+    <div key={activeLocale}>
       <Head>
-        <link rel="canonical" href={canonicalUrl || `https://culturalfusionhub.com${asPath}`} />
+        <link rel="canonical" href={`${canonicalUrl}${asPath}`} />
         <meta name="google-site-verification" content="-EhP3-SW3r_T1NAGxrnMTt5IgD-pmHbfg3WDPP1Y2qM" />
         {/* Hreflang alternate links for SEO */}
         {locales?.map((lng) => (
