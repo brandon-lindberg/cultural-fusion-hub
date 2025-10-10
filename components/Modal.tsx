@@ -4,7 +4,7 @@ import React from 'react';
 import styles from '../styles/Modal.module.scss';
 
 const Modal = ({ isOpen, onClose, onOpenMaps, children, event }) => {
-  if (!isOpen) return null;
+  if (!isOpen || !event) return null;
 
   const handleButtonClick = () => {
     if (event.stream) {

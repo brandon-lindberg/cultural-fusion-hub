@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 interface SocialShareProps {
   title: string;
@@ -26,7 +27,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ title, url }) => {
     <div className="flex space-x-2 items-center mb-2">
       <div className="relative group">
         <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 flex items-center" title="Share on X">
-          <img src="/x-twitter-brands-solid.svg" alt="X" className="w-6 h-6" />
+          <Image src="/x-twitter-brands-solid.svg" alt="X" width={24} height={24} className="w-6 h-6" />
         </a>
         <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           Share on X

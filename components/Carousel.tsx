@@ -20,6 +20,7 @@ const ImageCarousel = () => {
             alt="Cultural event showcasing diversity"
             fill
             className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 896px"
             priority
           />
         </div>
@@ -29,6 +30,7 @@ const ImageCarousel = () => {
             alt="Community gathering at Cultural Fusion Hub"
             fill
             className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 896px"
           />
         </div>
         <div className="relative h-60 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
@@ -37,6 +39,7 @@ const ImageCarousel = () => {
             alt="Children participating in cultural activities"
             fill
             className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 896px"
           />
         </div>
         <div className="relative h-60 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
@@ -45,6 +48,7 @@ const ImageCarousel = () => {
             alt="Multicultural celebration event"
             fill
             className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 896px"
           />
         </div>
         <div className="relative h-60 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
@@ -53,6 +57,7 @@ const ImageCarousel = () => {
             alt="Diverse group of people at Cultural Fusion Hub"
             fill
             className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 896px"
           />
         </div>
       </Carousel>

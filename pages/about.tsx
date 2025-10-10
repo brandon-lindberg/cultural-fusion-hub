@@ -11,17 +11,17 @@ const AboutPage = () => {
       <StructuredData
         type="WebPage"
         data={{
-          name: "About Cultural Fusion Hub",
+          name: 'About Cultural Fusion Hub',
           description: t('CFHmission'),
         }}
       />
       <script type="application/ld+json">
         {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "About Cultural Fusion Hub",
-          "description": t('CFHmission'),
-          "url": "https://culturalfusionhub.com/about"
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: 'About Cultural Fusion Hub',
+          description: t('CFHmission'),
+          url: 'https://culturalfusionhub.com/about',
         })}
       </script>
       <div>
@@ -31,6 +31,8 @@ const AboutPage = () => {
             alt="Cultural Fusion Hub About Banner"
             fill
             className="object-cover"
+            priority
+            sizes="100vw"
           />
         </div>
         <div className="md-p-9">
