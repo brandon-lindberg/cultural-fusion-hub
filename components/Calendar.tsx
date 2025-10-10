@@ -1,140 +1,167 @@
 // Calendar.tsx
 
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Modal from './Modal';
-import eventsData from './events';
+import rawEvents from './events';
 import styles from '../styles/Calendar.module.scss';
-import { format } from 'date-fns';
-import ja from 'date-fns/locale/ja';
+import { format, isBefore, isSameDay, parseISO, startOfDay } from 'date-fns';
+import { ja as jaLocale, enUS } from 'date-fns/locale';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslation } from 'react-i18next';
 
-// Ensure eventsData is always an array with robust error handling
-const safeEventsData = (() => {
-  try {
-    if (!eventsData) return [];
-    if (!Array.isArray(eventsData)) return [];
-    // Filter out any malformed events
-    return eventsData.filter(event =>
-      event &&
-      typeof event === 'object' &&
-      event.start &&
-      event.title &&
-      event.location
-    );
-  } catch (error) {
-    console.error('Error processing events data:', error);
-    return [];
-  }
-})();
+registerLocale('ja', jaLocale);
+registerLocale('en', enUS);
 
-registerLocale('ja', ja);
-setDefaultLocale('ja');
+interface RawCalendarEvent {
+  title: string;
+  start: string;
+  end: string;
+  location: string;
+  stream?: boolean;
+  googleMapsUrl?: string | null;
+  instagramUrl?: string | null;
+  description?: string;
+}
+
+interface CalendarEvent extends RawCalendarEvent {
+  startDate: Date;
+  endDate: Date;
+}
+
+const isCalendarEvent = (event: unknown): event is RawCalendarEvent => {
+  if (!event || typeof event !== 'object') return false;
+
+  const candidate = event as Record<string, unknown>;
+  return (
+    typeof candidate.title === 'string' &&
+    typeof candidate.start === 'string' &&
+    typeof candidate.end === 'string' &&
+    typeof candidate.location === 'string'
+  );
+};
+
+const parseDate = (value: string): Date | null => {
+  const parsed = parseISO(value);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
 
 const CalendarComponent = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const { i18n } = useTranslation();
 
-  const handleDateChange = (date: Date) => {
-    setStartDate(date);
-    try {
-      const selectedEventData = safeEventsData.find((event) => {
-        try {
-          return new Date(event.start).toDateString() === date.toDateString();
-        } catch (error) {
-          console.error('Error parsing event date:', error);
-          return false;
-        }
+  const events = useMemo<CalendarEvent[]>(() => {
+    const eventsArray = Array.isArray(rawEvents) ? rawEvents : [];
+    const result: CalendarEvent[] = [];
+
+    eventsArray.filter(isCalendarEvent).forEach((event) => {
+      const startDate = parseDate(event.start);
+      if (!startDate) return;
+
+      const endDate = parseDate(event.end) ?? startDate;
+
+      result.push({
+        ...event,
+        startDate,
+        endDate,
       });
-      setSelectedEvent(selectedEventData || null);
-    } catch (error) {
-      console.error('Error finding selected event:', error);
-      setSelectedEvent(null);
-    }
+    });
+
+    return result.sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+  }, []);
+
+  const today = startOfDay(new Date());
+  const upcomingEvent = useMemo(
+    () => events.find((event) => !isBefore(event.startDate, today)) ?? null,
+    [events, today],
+  );
+
+  const initialDisplayDate = upcomingEvent?.startDate ?? today;
+
+  const [activeDate, setActiveDate] = useState<Date>(initialDisplayDate);
+  const [selectedEvents, setSelectedEvents] = useState<CalendarEvent[]>([]);
+
+  const datepickerLocaleKey = i18n.language.startsWith('ja') ? 'ja' : 'en';
+  const dateFnsLocale = datepickerLocaleKey === 'ja' ? jaLocale : enUS;
+
+  useEffect(() => {
+    setDefaultLocale(datepickerLocaleKey);
+  }, [datepickerLocaleKey]);
+
+  const handleDateChange = (date: Date | null) => {
+    if (!date) return;
+    setActiveDate(date);
+    const eventsForDate = events.filter((event) => isSameDay(event.startDate, date));
+    setSelectedEvents(eventsForDate);
   };
 
   const renderDayContents = (day: number, date: Date) => {
-    try {
-      const formattedDate = format(date, 'yyyy-MM-dd');
-      const eventForThisDay = safeEventsData.find(      (event) => {
-        try {
-          return format(new Date(event.start), 'yyyy-MM-dd') === formattedDate;
-        } catch {
-          // Silently skip malformed events
-          return false;
-        }
-      });
-
-      if (eventForThisDay) {
-        return (
-          <div className={styles.dayContainer}>
-            {day}
-            <div
-              className={
-                eventForThisDay.stream
-                  ? styles.streamEventIndicator
-                  : styles.eventIndicator
-              }
-            ></div>
-          </div>
-        );
-      }
-      return day;
-    } catch (error) {
-      console.error('Error rendering day contents:', error);
+    const eventsForThisDay = events.filter((event) => isSameDay(event.startDate, date));
+    if (!eventsForThisDay.length) {
       return day;
     }
+
+    const hasStream = eventsForThisDay.some((event) => event.stream);
+
+    return (
+      <div className={styles.dayContainer}>
+        {day}
+        <div
+          className={hasStream ? styles.streamEventIndicator : styles.eventIndicator}
+        ></div>
+      </div>
+    );
   };
 
   return (
     <div className={`${styles.customCalendar} w-full`}>
       <div className={`${styles.calendarLarge} w-full`}>
         <DatePicker
-          selected={startDate}
+          selected={activeDate}
           onChange={handleDateChange}
           inline
           renderDayContents={renderDayContents}
-          locale="ja"
+          locale={datepickerLocaleKey}
           calendarClassName={styles.responsiveCalendar}
         />
         <Modal
-          isOpen={selectedEvent !== null}
-          onClose={() => setSelectedEvent(null)}
-          onOpenMaps={() => window.open(selectedEvent?.googleMapsUrl, '_blank')}
-          event={selectedEvent}
+          isOpen={selectedEvents.length > 0}
+          onClose={() => setSelectedEvents([])}
+          onOpenMaps={() => {
+            const primaryEvent = selectedEvents[0];
+            if (!primaryEvent) return;
+
+            if (primaryEvent.stream && primaryEvent.instagramUrl) {
+              window.open(primaryEvent.instagramUrl, '_blank');
+              return;
+            }
+
+            if (!primaryEvent.stream && primaryEvent.googleMapsUrl) {
+              window.open(primaryEvent.googleMapsUrl, '_blank');
+            }
+          }}
+          event={selectedEvents[0] ?? null}
         >
-          {selectedEvent && (
-            <div>
-              <h2 className="text-center font-bold">{selectedEvent.title || 'Event'}</h2>
+          {selectedEvents.map((event) => (
+            <div key={`${event.start}-${event.title}`}>
+              <h2 className="text-center font-bold">{event.title}</h2>
               <div className="p-1">
-                {selectedEvent.start && (
-                  <p>
-                    <span className="font-bold">Start Time:</span>{' '}
-                    {(() => {
-                      try {
-                        return new Date(selectedEvent.start).toLocaleTimeString([], {
-                          hour: '2-digit',
-                          minute: '2-digit',
-                        });
-                      } catch {
-                        return 'Invalid time';
-                      }
-                    })()}
-                  </p>
-                )}
-                {selectedEvent.location && (
-                  <p>
-                    <span className="font-bold">Location:</span>{' '}
-                    {selectedEvent.location}
-                  </p>
-                )}
+                <p>
+                  <span className="font-bold">Start:</span>{' '}
+                  {format(event.startDate, 'PPP p', { locale: dateFnsLocale })}
+                </p>
+                <p>
+                  <span className="font-bold">End:</span>{' '}
+                  {format(event.endDate, 'PPP p', { locale: dateFnsLocale })}
+                </p>
+                <p>
+                  <span className="font-bold">Location:</span>{' '}
+                  {event.location}
+                </p>
               </div>
-              {selectedEvent.description && (
-                <p className="p-1">{selectedEvent.description}</p>
-              )}
+              {event.description && <p className="p-1">{event.description}</p>}
             </div>
-          )}
+          ))}
         </Modal>
       </div>
     </div>

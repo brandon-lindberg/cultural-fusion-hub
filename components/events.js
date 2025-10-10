@@ -313,7 +313,16 @@ export default [
     location: 'TBA',
     googleMapsUrl: '',
     instagramUrl: '',
-    description:
-      '',
+    description: '',
+  },
+  {
+    title: '10-月 Halloween meet up',
+    start: '2025-10-13T10:00:00',
+    end: '2025-10-13T12:00:00',
+    stream: false,
+    location: '',
+    googleMapsUrl: '',
+    instagramUrl: '',
+    description: '',
   },
 ];

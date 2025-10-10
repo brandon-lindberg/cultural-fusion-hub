@@ -46,13 +46,29 @@ const Navigation = () => {
           ))}
           <div className="flex justify-evenly mt-4">
             <button
-              onClick={() => i18n.changeLanguage('en')}
+              onClick={() => {
+                if (router.locale !== 'en') {
+                  void router.push(router.asPath, undefined, { locale: 'en' });
+                }
+                if (i18n.language !== 'en') {
+                  i18n.changeLanguage('en');
+                }
+                setIsMenuOpen(false);
+              }}
               className="focus:outline-none mr-2 px-1 py-1"
             >
               <span className="flag-icon flag-icon-gb"></span>
             </button>
             <button
-              onClick={() => i18n.changeLanguage('ja')}
+              onClick={() => {
+                if (router.locale !== 'ja') {
+                  void router.push(router.asPath, undefined, { locale: 'ja' });
+                }
+                if (i18n.language !== 'ja') {
+                  i18n.changeLanguage('ja');
+                }
+                setIsMenuOpen(false);
+              }}
               className="focus:outline-none ml-2 px-1 py-1"
             >
               <span className="flag-icon flag-icon-jp"></span>

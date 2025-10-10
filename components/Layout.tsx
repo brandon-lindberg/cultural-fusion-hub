@@ -17,40 +17,60 @@ type Props = {
 const Layout = ({
   children,
   title = 'Cultural Fusion Hub',
-  description = "Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!",
-  image = 'https://www.culturalfusionhub.com/CFH-logo-vector.png', // Ensure this is an absolute URL
+  description =
+    'Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!',
+  image = 'https://www.culturalfusionhub.com/CFH-logo-vector.png',
   canonicalUrl = 'https://culturalfusionhub.com',
 }: Props) => {
   const router = useRouter();
   const { asPath, locale, locales, defaultLocale } = router;
-  const activeLocale = locale || defaultLocale || 'ja';
   const { i18n } = useTranslation();
-  // Sync i18n when locale changes
+
+  const activeLocale = locale || defaultLocale || 'en';
+
   useEffect(() => {
-    i18n.changeLanguage(activeLocale);
-  }, [activeLocale]);
-  
+    if (i18n.language !== activeLocale) {
+      i18n.changeLanguage(activeLocale);
+    }
+  }, [i18n, activeLocale]);
+
   const changeLanguage = (lng: string) => {
-    router.push({ pathname: router.pathname, query: router.query }, undefined, { locale: lng });
+    if (router.locale !== lng) {
+      void router.push(router.asPath, undefined, { locale: lng });
+    }
+    if (i18n.language !== lng) {
+      i18n.changeLanguage(lng);
+    }
   };
-  
-  const currentLanguage = activeLocale;  // use router locale with fallback
+
+  const currentLanguage = activeLocale.split('-')[0];
+  const canonicalBase = (canonicalUrl ?? '').replace(/\/$/, '') || 'https://culturalfusionhub.com';
+  const pathSuffix = asPath === '/' ? '' : asPath || '';
+  const localizedPath =
+    locale && defaultLocale && locale !== defaultLocale
+      ? `/${locale}${pathSuffix}`
+      : pathSuffix;
+  const canonicalHref = `${canonicalBase}${localizedPath}`;
+  const buildAlternateHref = (lng: string) =>
+    `${canonicalBase}${lng === defaultLocale ? '' : `/${lng}`}${pathSuffix}`;
 
   return (
     <div key={activeLocale}>
       <Head>
-        <link rel="canonical" href={`${canonicalUrl}${asPath}`} />
-        <meta name="google-site-verification" content="-EhP3-SW3r_T1NAGxrnMTt5IgD-pmHbfg3WDPP1Y2qM" />
-        {/* Hreflang alternate links for SEO */}
-        {Array.isArray(locales) && locales.map((lng) => (
+        <link rel="canonical" href={canonicalHref} />
+        <meta
+          name="google-site-verification"
+          content="-EhP3-SW3r_T1NAGxrnMTt5IgD-pmHbfg3WDPP1Y2qM"
+        />
+        {locales?.map((lng) => (
           <link
             key={lng}
             rel="alternate"
             hrefLang={lng}
-            href={`${canonicalUrl}/${lng === defaultLocale ? '' : lng}${asPath}`}
+            href={buildAlternateHref(lng)}
           />
         ))}
-        <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+        <link rel="alternate" hrefLang="x-default" href={canonicalBase} />
         <meta name="robots" content="all" />
         <meta name="googlebot" content="all" />
         <meta charSet="utf-8" />
@@ -64,7 +84,7 @@ const Layout = ({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <SocialMetaTags title={title} description={description} image={image} url={canonicalUrl || `https://culturalfusionhub.com${asPath}`} />
+      <SocialMetaTags title={title} description={description} image={image} url={canonicalHref} />
       <div className="flex flex-col min-h-screen">
         <header className="linear-gradient w-full p-4">
           <div className="flex justify-between items-center">
@@ -100,29 +120,17 @@ const Layout = ({
               )}
             </div>
             <div className="rounded-full overflow-hidden">
-              <Image
-                src="/CFH-logo-vector.png"
-                alt={'logo'}
-                width="50"
-                height="50"
-              />
+              <Image src="/CFH-logo-vector.png" alt="logo" width={50} height={50} />
             </div>
           </div>
         </header>
 
-        <main className="flex-grow">
-          {children}
-        </main>
+        <main className="flex-grow">{children}</main>
 
         <footer className="w-full flex justify-between items-center p-4 pin-b linear-gradient2">
           <div className="flex items-center">
             <div className="rounded-full overflow-hidden mr-4">
-              <Image
-                src="/CFH-logo-vector.png"
-                alt={'logo'}
-                width="50"
-                height="50"
-              />
+              <Image src="/CFH-logo-vector.png" alt="logo" width={50} height={50} />
             </div>
             <div className="flex">
               {currentLanguage === 'ja' ? (
