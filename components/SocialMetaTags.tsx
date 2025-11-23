@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 type SocialMetaTagsProps = {
   title: string;
@@ -9,6 +10,10 @@ type SocialMetaTagsProps = {
 };
 
 const SocialMetaTags = ({ title, description, image, url }: SocialMetaTagsProps) => {
+  const { locale, defaultLocale, locales } = useRouter();
+  const activeLocale = locale || defaultLocale || 'ja';
+  const ogLocale = activeLocale === 'ja' ? 'ja_JP' : 'en_US';
+
   return (
     <Head>
       <meta property="og:type" content="website" />
@@ -25,7 +30,16 @@ const SocialMetaTags = ({ title, description, image, url }: SocialMetaTagsProps)
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
       <meta property="og:site_name" content="Cultural Fusion Hub" />
-      <meta property="og:locale" content="ja_JP" />
+      {locales
+        ?.filter((lng) => lng !== activeLocale)
+        .map((lng) => (
+          <meta
+            key={lng}
+            property="og:locale:alternate"
+            content={lng === 'ja' ? 'ja_JP' : 'en_US'}
+          />
+        ))}
+      <meta property="og:locale" content={ogLocale} />
       <meta property="article:author" content="Cultural Fusion Hub" />
     </Head>
   );

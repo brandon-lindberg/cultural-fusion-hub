@@ -4,6 +4,8 @@ import BlogCardList from '../components/blog/BlogCardList';
 import blogPosts from '../components/blog/entries.json';
 import { useTranslation } from 'react-i18next';
 import StructuredData from '../components/StructuredData';
+import { GetStaticProps } from 'next';
+import ensureLocale from '../utils/ensureLocale';
 
 // Ensure blogPosts is always an array with robust error handling
 const safeBlogPosts = (() => {
@@ -85,3 +87,8 @@ const Blog: React.FC = () => {
 };
 
 export default Blog;
+
+export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+  await ensureLocale(locale, defaultLocale);
+  return { props: {} };
+};

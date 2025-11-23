@@ -6,6 +6,7 @@ import { sampleUserData } from '../../utils/sample-data';
 import Layout from '../../components/Layout';
 import List from '../../components/List';
 import StructuredData from '../../components/StructuredData';
+import ensureLocale from '../../utils/ensureLocale';
 
 type Props = {
   items: User[];
@@ -32,7 +33,8 @@ const WithStaticProps = ({ items }: Props) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+  await ensureLocale(locale, defaultLocale);
   // Example for including static props in a Next.js function component page.
   // Don't forget to include the respective types for any props passed into
   // the component.

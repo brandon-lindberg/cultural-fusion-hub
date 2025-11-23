@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 function MyApp({ Component, pageProps }: AppProps) {
   const { i18n } = useTranslation();
   const { locale, defaultLocale } = useRouter();
+  const resolvedLocale = locale || defaultLocale || 'ja';
 
   useEffect(() => {
     if ('serviceWorker' in navigator) {
@@ -32,12 +33,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  // Align i18n language on the server before render (for correct SSR content)
+  if (typeof window === 'undefined' && i18n.language !== resolvedLocale) {
+    void i18n.changeLanguage(resolvedLocale);
+  }
+
   useEffect(() => {
-    const nextLocale = locale || defaultLocale || 'en';
-    if (i18n.language !== nextLocale) {
-      i18n.changeLanguage(nextLocale);
+    if (i18n.language !== resolvedLocale) {
+      void i18n.changeLanguage(resolvedLocale);
     }
-  }, [locale, defaultLocale, i18n]);
+  }, [resolvedLocale, i18n]);
 
   return (
     <>

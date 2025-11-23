@@ -2,6 +2,8 @@ import Layout from '../components/Layout';
 import ContactForm from '../components/ContactForm';
 import { useTranslation } from 'react-i18next';
 import StructuredData from '../components/StructuredData';
+import { GetStaticProps } from 'next';
+import ensureLocale from '../utils/ensureLocale';
 
 const ContactPage = () => {
   const { t } = useTranslation();
@@ -25,3 +27,8 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+
+export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+  await ensureLocale(locale, defaultLocale);
+  return { props: {} };
+};

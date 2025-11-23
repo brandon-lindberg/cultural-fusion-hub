@@ -2,6 +2,8 @@ import Layout from '../components/Layout';
 import ProfileCard from '../components/ProfileCard';
 import { useTranslation } from 'react-i18next';
 import StructuredData from '../components/StructuredData';
+import { GetStaticProps } from 'next';
+import ensureLocale from '../utils/ensureLocale';
 
 const ProfilePage = () => {
   const { t } = useTranslation();
@@ -72,3 +74,8 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
+export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+  await ensureLocale(locale, defaultLocale);
+  return { props: {} };
+};
