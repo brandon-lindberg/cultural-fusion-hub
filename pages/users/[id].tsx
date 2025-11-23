@@ -4,6 +4,7 @@ import { User } from '../../interfaces';
 import { sampleUserData } from '../../utils/sample-data';
 import Layout from '../../components/Layout';
 import ListDetail from '../../components/ListDetail';
+import ensureLocale from '../../utils/ensureLocale';
 
 type Props = {
   item?: User;
@@ -48,8 +49,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries.
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params, locale, defaultLocale }) => {
   try {
+    await ensureLocale(locale, defaultLocale);
     const id = params?.id;
     const item = Array.isArray(sampleUserData) ? sampleUserData.find((data) => data.id === Number(id)) : null;
     // By returning { props: item }, the StaticPropsDetail component

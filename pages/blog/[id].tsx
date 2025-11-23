@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SocialShare from '../../components/blog/SocialShare';
 import StructuredData from '../../components/StructuredData';
 import React from 'react';
+import ensureLocale from '../../utils/ensureLocale';
 
 // Ensure blogPosts is always an array with robust error handling
 const safeBlogPosts = (() => {
@@ -111,8 +112,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params, locale, defaultLocale }) => {
   try {
+    await ensureLocale(locale, defaultLocale);
     const post = safeBlogPosts.find((p) => p.id === params?.id) || null;
     return { props: { post: post || null } };
   } catch (error) {

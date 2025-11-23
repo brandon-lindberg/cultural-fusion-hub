@@ -20,9 +20,10 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
-  fallbackLng: 'en',
+  lng: 'ja',
+  fallbackLng: ['ja', 'en'],
   supportedLngs: ['en', 'ja'],
+  initImmediate: false, // keep init synchronous to avoid SSR/CSR mismatches
   interpolation: {
     escapeValue: false,
   },
