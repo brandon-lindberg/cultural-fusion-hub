@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     const nextData = (this.props as any).__NEXT_DATA__;
-    const locale = (nextData && nextData.locale) || 'en';
+    const locale = (nextData && nextData.locale) || 'ja';
 
     return (
       <Html lang={locale}>

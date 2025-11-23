@@ -23,6 +23,7 @@ i18n.use(initReactI18next).init({
   lng: 'ja',
   fallbackLng: ['ja', 'en'],
   supportedLngs: ['en', 'ja'],
+  initImmediate: false, // keep init synchronous to avoid SSR/CSR mismatches
   interpolation: {
     escapeValue: false,
   },

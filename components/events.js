@@ -316,7 +316,7 @@ export default [
     description: '',
   },
   {
-    title: '10-月 Halloween meet up',
+    title: '10月 Halloween meet up',
     start: '2025-10-13T10:00:00',
     end: '2025-10-13T12:00:00',
     stream: false,
@@ -324,5 +324,15 @@ export default [
     googleMapsUrl: '',
     instagramUrl: '',
     description: '',
+  },
+  {
+    title: '11月 Thanksgiving meet up',
+    start: '2025-11-24T12:30:00',
+    end: '2025-11-24T14:30:00',
+    stream: false,
+    location: '代々木公園',
+    googleMapsUrl: '',
+    instagramUrl: '',
+    description: 'Thanksgiving Potluck Party at Yoyogi Park',
   },
 ];

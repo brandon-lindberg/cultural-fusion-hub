@@ -15,6 +15,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { locale, defaultLocale } = useRouter();
   const resolvedLocale = locale || defaultLocale || 'ja';
 
+  // Ensure i18n is on the requested locale before first render (server + client)
+  if (i18n.language !== resolvedLocale) {
+    i18n.changeLanguage(resolvedLocale);
+  }
+
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       const register = () => {
