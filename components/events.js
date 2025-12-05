@@ -335,4 +335,14 @@ export default [
     instagramUrl: '',
     description: 'Thanksgiving Potluck Party at Yoyogi Park',
   },
+  {
+    title: '12月 Meetup!',
+    start: '2025-12-14T10:00:00',
+    end: '2025-12-14T11:30:00',
+    stream: false,
+    location: '',
+    googleMapsUrl: '',
+    instagramUrl: '',
+    description: '',
+  },
 ];
