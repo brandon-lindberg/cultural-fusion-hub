@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  turbopack: {},
   webpack: (config) => {
     config.resolve.alias['flag-icon-css'] = path.join(
       __dirname,
