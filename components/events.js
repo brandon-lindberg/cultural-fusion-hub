@@ -337,8 +337,8 @@ export default [
   },
   {
     title: '12月 Meetup!',
-    start: '2025-12-14T10:00:00',
-    end: '2025-12-14T11:30:00',
+    start: '2025-12-13T10:00:00',
+    end: '2025-12-13T11:30:00',
     stream: false,
     location: '',
     googleMapsUrl: '',
