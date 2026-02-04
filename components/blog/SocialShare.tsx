@@ -30,7 +30,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ title, url }) => {
           href={twitterShareUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-600 transition-colors flex items-center p-1"
+          className="flex items-center justify-center rounded-full border border-black/10 bg-white/80 p-2 text-muted shadow-sm transition hover:-translate-y-0.5 hover:text-ink"
           title="Share on X"
         >
           <Image src="/x-twitter-brands-solid.svg" alt="X" width={20} height={20} className="w-5 h-5" />
@@ -44,7 +44,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ title, url }) => {
           href={linkedinShareUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-700 hover:text-blue-800 transition-colors flex items-center p-1"
+          className="flex items-center justify-center rounded-full border border-black/10 bg-white/80 p-2 text-muted shadow-sm transition hover:-translate-y-0.5 hover:text-ink"
           title="Share on LinkedIn"
         >
           <Image src="/linkedin.svg" alt="LinkedIn" width={20} height={20} className="w-5 h-5" />
@@ -58,7 +58,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ title, url }) => {
           href={facebookShareUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-700 transition-colors flex items-center p-1"
+          className="flex items-center justify-center rounded-full border border-black/10 bg-white/80 p-2 text-muted shadow-sm transition hover:-translate-y-0.5 hover:text-ink"
           title="Share on Facebook"
         >
           <Image src="/facebook.svg" alt="Facebook" width={20} height={20} className="w-5 h-5" />
@@ -70,7 +70,7 @@ const SocialShare: React.FC<SocialShareProps> = ({ title, url }) => {
       <div className="relative group">
         <button
           onClick={copyToClipboard}
-          className="text-gray-500 hover:text-gray-700 transition-colors flex items-center p-1"
+          className="flex items-center justify-center rounded-full border border-black/10 bg-white/80 p-2 text-muted shadow-sm transition hover:-translate-y-0.5 hover:text-ink"
           title="Copy link"
         >
           <Image src="/copy.svg" alt="Copy" width={20} height={20} className="w-5 h-5" />

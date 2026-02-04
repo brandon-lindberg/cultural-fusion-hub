@@ -6,6 +6,7 @@ import SocialShare from '../../components/blog/SocialShare';
 import StructuredData from '../../components/StructuredData';
 import React from 'react';
 import ensureLocale from '../../utils/ensureLocale';
+import Link from 'next/link';
 
 // Ensure blogPosts is always an array with robust error handling
 const safeBlogPosts = (() => {
@@ -76,25 +77,37 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
   return (
     <Layout title={post.title}>
       <StructuredData type="BlogPosting" data={blogStructuredData} />
-      <article className="max-w-3xl mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-        <div className="flex justify-between items-center mb-2">
-          <p className="text-gray-600">
-            {formattedDate} | {post.author}
+      <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+        <Link href="/blog" className="text-sm font-semibold text-accent">
+          ← {t('back-to-blog')}
+        </Link>
+        <article className="card-surface mt-6 rounded-3xl p-6 md:p-8">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted">
+            {formattedDate} · {post.author}
           </p>
-          <SocialShare title={post.title} url={`https://www.culturalfusionhub.com/blog/${post.id}`} />
-        </div>
-        <div className="prose mb-6 whitespace-pre-wrap"> {/* Preserve whitespace */}
-          {post.entry}
-        </div>
-        <div className="flex flex-wrap">
-          {Array.isArray(post.tags) && post.tags.map(tag => (
-            <span key={tag} className="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer hover:bg-gray-300">
-              #{tag}
-            </span>
-          ))}
-        </div>
-      </article>
+          <h1 className="font-display text-4xl text-ink mt-4">{post.title}</h1>
+          <div className="mt-4">
+            <SocialShare
+              title={post.title}
+              url={`https://www.culturalfusionhub.com/blog/${post.id}`}
+            />
+          </div>
+          <div className="mt-6 text-sm leading-relaxed text-ink opacity-80 whitespace-pre-wrap">
+            {post.entry}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {Array.isArray(post.tags) &&
+              post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex items-center rounded-full bg-black/5 px-3 py-1 text-xs font-semibold text-muted"
+                >
+                  #{tag}
+                </span>
+              ))}
+          </div>
+        </article>
+      </section>
     </Layout>
   );
 };

@@ -30,18 +30,17 @@ const ContactForm = () => {
   const { t} = useTranslation();
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg">
-      <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-6">
+      <div className="grid gap-6 md:grid-cols-2">
+        <div>
           <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted mb-2"
             htmlFor="grid-last-name"
           >
-            {/* Last Name */}
             {t('last-name')}
           </label>
           <input
-            className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            className="w-full rounded-2xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-[color:var(--ring)]"
             id="grid-last-name"
             type="text"
             placeholder="Yamada"
@@ -51,16 +50,15 @@ const ContactForm = () => {
             required
           />
         </div>
-        <div className="w-full md:w-1/2 px-3">
+        <div>
           <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted mb-2"
             htmlFor="grid-first-name"
           >
-            {/* First Name */}
             {t('first-name')}
           </label>
           <input
-            className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            className="w-full rounded-2xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-[color:var(--ring)]"
             id="grid-first-name"
             type="text"
             placeholder="Taro"
@@ -71,34 +69,26 @@ const ContactForm = () => {
           />
         </div>
       </div>
-      <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full px-3">
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-password"
-          >
-            {/* Message */}
-            {t('message')}
-          </label>
-          <textarea
-            className="no-resize appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
-            id="message"
-            value={formState.message}
-            onChange={handleInput}
-            name="message"
-            required
-          ></textarea>
-        </div>
+      <div>
+        <label
+          className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted mb-2"
+          htmlFor="message"
+        >
+          {t('message')}
+        </label>
+        <textarea
+          className="h-48 w-full resize-none rounded-2xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-[color:var(--ring)]"
+          id="message"
+          value={formState.message}
+          onChange={handleInput}
+          name="message"
+          required
+        ></textarea>
       </div>
-      <div className="md:flex md:items-center justify-end">
-        <div className="md:w-1/3">
-          <button
-            className="shadow bg-subGreen hover:bg-subGreen focus:shadow-outline focus:outline-none text-zinc-400 py-2 px-4 rounded"
-            type="submit"
-          >
-            {t('send')}
-          </button>
-        </div>
+      <div className="flex items-center justify-end">
+        <button className="btn-primary" type="submit">
+          {t('send')}
+        </button>
       </div>
     </form>
   );

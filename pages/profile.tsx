@@ -9,7 +9,7 @@ const ProfilePage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout title="Profile">
+    <Layout title={t('profile')}>
       <StructuredData
         type="WebPage"
         data={{
@@ -43,32 +43,33 @@ const ProfilePage = () => {
           ]
         })}
       </script>
-      <div className="md:flex md:justify-center md:items-center md:h-screen">
-        <div className="profile m-3">
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-xs uppercase tracking-[0.4em] text-muted">
+            {t('profile-tagline')}
+          </p>
+          <h1 className="font-display text-4xl text-ink mt-3">{t('profile')}</h1>
+          <p className="mt-4 text-sm leading-relaxed text-muted">
+            {t('profile-intro')}
+          </p>
+        </div>
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
           <ProfileCard
             name="Obikane Yuka"
             image="/profile_one.jpg"
             position={<strong>ファシリテーター</strong>}
             description={t('yuka-description')}
             instagram="https://www.instagram.com/culturalfusionhub/"
-            // twitter="https://twitter.com/"
-            // linkedin="https://www.linkedin.com/"
-            // facebook="https://www.facebook.com/"
           />
-        </div>
-        <div className="profile m-3">
           <ProfileCard
             name="Saho Petersen"
             image="/profile_three.jpg"
             position={<strong>ファシリテーター</strong>}
             description={t('saho-description')}
             instagram="https://www.instagram.com/culturalfusionhub/"
-            // twitter="https://twitter.com/"
-            // linkedin="https://www.linkedin.com/"
-            // facebook="https://www.facebook.com/"
           />
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };

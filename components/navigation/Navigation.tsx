@@ -18,9 +18,29 @@ const Navigation = () => {
 
   return (
     <nav className="relative">
+      <div className="hidden items-center gap-6 text-sm font-semibold md:flex">
+        {navItems.map((item) => {
+          const isActive = router.pathname === item.href;
+          return (
+            <Link
+              href={item.href}
+              key={item.href}
+              className={`transition ${
+                isActive ? 'text-accent' : 'text-muted hover:text-ink'
+              }`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+      </div>
       <button
-        className="text-gray-500 focus:outline-none"
+        className="rounded-full border border-black/10 bg-white/80 p-2 text-muted shadow-sm transition hover:text-ink md:hidden"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-expanded={isMenuOpen}
+        aria-controls="mobile-menu"
+        aria-label="Toggle navigation menu"
       >
         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           {isMenuOpen ? (
@@ -31,20 +51,28 @@ const Navigation = () => {
         </svg>
       </button>
       {isMenuOpen && (
-        <div className="absolute top-full left-0 bg-white shadow-md z-10">
-          {navItems.map((item) => (
-            <Link
-              href={item.href}
-              key={item.href}
-              className={`block py-2 px-4 text-sm text-gray-500 hover:bg-gray-100 ${
-                router.pathname === item.href ? 'text-green-500' : ''
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="flex justify-evenly mt-4">
+        <div
+          id="mobile-menu"
+          className="absolute right-0 top-full z-20 mt-3 w-64 rounded-2xl border border-black/10 bg-white/95 p-4 shadow-xl backdrop-blur"
+        >
+          <div className="flex flex-col gap-1">
+            {navItems.map((item) => {
+              const isActive = router.pathname === item.href;
+              return (
+                <Link
+                  href={item.href}
+                  key={item.href}
+                  className={`rounded-lg px-3 py-2 text-sm font-medium transition ${
+                    isActive ? 'bg-accent/10 text-accent' : 'text-muted hover:bg-black/5'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+          <div className="mt-4 flex items-center gap-2">
             <button
               onClick={() => {
                 if (router.locale !== 'en') {
@@ -55,9 +83,9 @@ const Navigation = () => {
                 }
                 setIsMenuOpen(false);
               }}
-              className="focus:outline-none mr-2 px-1 py-1"
+              className="btn-ghost flex-1 border border-black/10 text-sm"
             >
-              <span className="flag-icon flag-icon-gb"></span>
+              English
             </button>
             <button
               onClick={() => {
@@ -69,9 +97,9 @@ const Navigation = () => {
                 }
                 setIsMenuOpen(false);
               }}
-              className="focus:outline-none ml-2 px-1 py-1"
+              className="btn-ghost flex-1 border border-black/10 text-sm"
             >
-              <span className="flag-icon flag-icon-jp"></span>
+              日本語
             </button>
           </div>
         </div>

@@ -48,7 +48,7 @@ const parseDate = (value: string): Date | null => {
 };
 
 const CalendarComponent = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const events = useMemo<CalendarEvent[]>(() => {
     const eventsArray = Array.isArray(rawEvents) ? rawEvents : [];
@@ -147,15 +147,15 @@ const CalendarComponent = () => {
               <h2 className="text-center font-bold">{event.title}</h2>
               <div className="p-1">
                 <p>
-                  <span className="font-bold">Start:</span>{' '}
+                  <span className="font-bold">{t('start')}:</span>{' '}
                   {format(event.startDate, 'PPP p', { locale: dateFnsLocale })}
                 </p>
                 <p>
-                  <span className="font-bold">End:</span>{' '}
+                  <span className="font-bold">{t('end')}:</span>{' '}
                   {format(event.endDate, 'PPP p', { locale: dateFnsLocale })}
                 </p>
                 <p>
-                  <span className="font-bold">Location:</span>{' '}
+                  <span className="font-bold">{t('location')}:</span>{' '}
                   {event.location}
                 </p>
               </div>

@@ -8,7 +8,7 @@ import ensureLocale from '../utils/ensureLocale';
 const ContactPage = () => {
   const { t } = useTranslation();
   return (
-    <Layout title="Contact">
+    <Layout title={t('contact')}>
       <StructuredData
         type="WebPage"
         data={{
@@ -16,12 +16,37 @@ const ContactPage = () => {
           description: "Contact form for Cultural Fusion Hub",
         }}
       />
-      <div className="p-5 pb-0">
-        <h1 className="text-center">{t('contact-form')}</h1>
-        <div className="flex items-center justify-center p-5">
-          <ContactForm />
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr,1.1fr] lg:items-start">
+          <div className="space-y-6">
+            <p className="text-xs uppercase tracking-[0.4em] text-muted">
+              {t('contact-tagline')}
+            </p>
+            <h1 className="font-display text-4xl text-ink">{t('contact')}</h1>
+            <p className="text-sm leading-relaxed text-muted">{t('contact-intro')}</p>
+            <div className="card-surface rounded-3xl p-6">
+              <h2 className="font-display text-2xl text-ink">{t('contact-details')}</h2>
+              <div className="mt-4 space-y-3 text-sm text-muted">
+                <p>
+                  <span className="font-semibold text-ink">{t('email')}:</span>{' '}
+                  culturalfusionhub@gmail.com
+                </p>
+                <p>
+                  <span className="font-semibold text-ink">{t('follow-us')}:</span>{' '}
+                  Instagram @culturalfusionhub
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="card-surface rounded-3xl p-6 md:p-8">
+            <h2 className="font-display text-2xl text-ink">{t('contact-form')}</h2>
+            <p className="mt-2 text-sm text-muted">{t('contact-form-intro')}</p>
+            <div className="mt-6">
+              <ContactForm />
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };

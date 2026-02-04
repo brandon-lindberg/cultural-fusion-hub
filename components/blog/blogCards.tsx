@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import SocialShare from './SocialShare';
+import { useTranslation } from 'react-i18next';
 
 interface BlogCardProps {
   title: string;
@@ -14,6 +15,7 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, id, onTagClick }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const { t } = useTranslation();
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { 
@@ -26,63 +28,73 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, author, entry, tags, date, i
 
   return (
     <>
-      <div 
-        className="w-full rounded-lg overflow-hidden shadow-lg bg-white flex flex-col cursor-pointer hover:shadow-xl transition-shadow duration-300"
+      <div
+        className="card-surface reveal group flex h-full cursor-pointer flex-col rounded-3xl p-6 transition duration-300 hover:-translate-y-1"
         onClick={() => setIsPopupOpen(true)}
       >
-        <div className="px-6 py-4 flex-grow">
-          <h2 className="font-bold text-xl mb-2 text-gray-800">{title}</h2>
-          <p className="text-gray-600 text-sm mb-2">{formatDate(date)} | {author}</p>
-          <p className="text-gray-700 text-base line-clamp-3 overflow-hidden">{entry}</p>
+        <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-muted">
+          <span>{formatDate(date)}</span>
+          <span className="rounded-full bg-accent/10 px-3 py-1 text-[10px] font-semibold text-accent">
+            {author}
+          </span>
         </div>
-        <div className="px-6 pt-2 pb-4">
-          {Array.isArray(tags) && tags.map((tag, index) => (
-            <span
-              key={index}
-              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer hover:bg-gray-300"
-              onClick={(e) => {
-                e.stopPropagation();
-                onTagClick(tag);
-              }}
-            >
-              #{tag}
-            </span>
-          ))}
+        <h2 className="font-display text-2xl text-ink mt-4 mb-2">{title}</h2>
+        <p className="text-sm leading-relaxed text-muted line-clamp-3">{entry}</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {Array.isArray(tags) &&
+            tags.map((tag, index) => (
+              <span
+                key={index}
+                className="inline-flex items-center rounded-full bg-black/5 px-3 py-1 text-xs font-semibold text-muted transition hover:bg-accent/10 hover:text-accent"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onTagClick(tag);
+                }}
+              >
+                #{tag}
+              </span>
+            ))}
+        </div>
+        <div className="mt-6 flex items-center text-sm font-semibold text-accent transition group-hover:translate-x-1">
+          {t('read-story')}
+          <span className="ml-2">→</span>
         </div>
       </div>
       {isPopupOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <h2 className="text-2xl font-bold mb-4">{title}</h2>
-            <div className="flex justify-between">
-              <p className="text-gray-600 mb-2">{formatDate(date)} | {author}</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <div className="card-surface w-full max-w-2xl rounded-3xl p-6 md:p-8">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-1">
+                <p className="text-xs uppercase tracking-[0.2em] text-muted">
+                  {formatDate(date)} · {author}
+                </p>
+                <h2 className="font-display text-3xl text-ink">{title}</h2>
+              </div>
               <SocialShare title={title} url={`https://culturalfusionhub.com/blog/${id}`} />
-            </div>
-            <div className="mb-4 flex flex-wrap">
-              {Array.isArray(tags) && tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer hover:bg-gray-300"
-                  onClick={() => {
-                    onTagClick(tag);
-                    setIsPopupOpen(false);
-                  }}
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-            <p className="text-gray-800 mb-6 whitespace-pre-wrap">{entry}</p>
-            <div className="flex justify-between">
-              <Link href={`/blog/${id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                View Full Post
-              </Link>
-              <button 
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => setIsPopupOpen(false)}
-              >
-                Close
-              </button>
+              <div className="flex flex-wrap gap-2">
+                {Array.isArray(tags) &&
+                  tags.map((tag, index) => (
+                    <button
+                      key={index}
+                      className="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold text-muted transition hover:bg-accent/10 hover:text-accent"
+                      onClick={() => {
+                        onTagClick(tag);
+                        setIsPopupOpen(false);
+                      }}
+                    >
+                      #{tag}
+                    </button>
+                  ))}
+              </div>
+              <p className="text-sm leading-relaxed text-ink opacity-80 whitespace-pre-wrap">{entry}</p>
+              <div className="flex flex-wrap gap-3">
+                <Link href={`/blog/${id}`} className="btn-primary">
+                  {t('view-full-post')}
+                </Link>
+                <button className="btn-secondary" onClick={() => setIsPopupOpen(false)}>
+                  {t('close')}
+                </button>
+              </div>
             </div>
           </div>
         </div>
