@@ -174,3 +174,53 @@ body {
     border: 1px solid rgba(31, 122, 109, 0.12);
   }
 }
+
+@media (max-width: 640px) {
+  .page-shell::before,
+  .page-shell::after {
+    filter: blur(80px);
+    opacity: 0.5;
+  }
+
+  .page-shell header {
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  .card-surface {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 22px 55px -42px rgba(24, 48, 43, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(18px) saturate(150%);
+  }
+
+  .card-surface::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.7), transparent 45%),
+      linear-gradient(120deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .card-surface > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-secondary,
+  .btn-ghost {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px) saturate(150%);
+  }
+}
