@@ -61,7 +61,7 @@ const IndexPage = () => {
 
   return (
     <Layout 
-      title="Cultural Fusion Hub - Home"
+      title={t('home')}
       description={t('greeting')}
       image="/path-to-home-image.jpg"
     >

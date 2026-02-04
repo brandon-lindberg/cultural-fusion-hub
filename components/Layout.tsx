@@ -27,6 +27,15 @@ const Layout = ({
   const { asPath, locale, locales, defaultLocale } = router;
   const { i18n } = useTranslation();
 
+  const brandName = 'Cultural Fusion Hub';
+  const normalizedTitle = (title ?? '').trim();
+  const titleHasBrand = normalizedTitle.toLowerCase().includes(brandName.toLowerCase());
+  const documentTitle = normalizedTitle
+    ? titleHasBrand
+      ? normalizedTitle
+      : `${normalizedTitle} | ${brandName}`
+    : brandName;
+
   const activeLocale = locale || defaultLocale || 'en';
 
   useEffect(() => {
@@ -58,6 +67,7 @@ const Layout = ({
   return (
     <div key={activeLocale} className="page-shell">
       <Head>
+        <title>{documentTitle}</title>
         <link rel="canonical" href={canonicalHref} />
         <meta
           name="google-site-verification"
@@ -85,7 +95,12 @@ const Layout = ({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <SocialMetaTags title={title} description={description} image={image} url={canonicalHref} />
+      <SocialMetaTags
+        title={documentTitle}
+        description={description}
+        image={image}
+        url={canonicalHref}
+      />
       <div className="relative z-10 flex min-h-screen flex-col">
         <header className="sticky top-0 z-40 border-b border-black/5 bg-white/70 backdrop-blur-xl">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
