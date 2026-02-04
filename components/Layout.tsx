@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Navigation from './navigation/Navigation';
 import SocialMetaTags from './SocialMetaTags';
 
@@ -55,7 +56,7 @@ const Layout = ({
     `${canonicalBase}${lng === defaultLocale ? '' : `/${lng}`}${pathSuffix}`;
 
   return (
-    <div key={activeLocale}>
+    <div key={activeLocale} className="page-shell">
       <Head>
         <link rel="canonical" href={canonicalHref} />
         <meta
@@ -85,23 +86,38 @@ const Layout = ({
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <SocialMetaTags title={title} description={description} image={image} url={canonicalHref} />
-      <div className="flex flex-col min-h-screen">
-        <header className="linear-gradient w-full p-4">
-          <div className="flex justify-between items-center">
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <header className="sticky top-0 z-40 border-b border-black/5 bg-white/70 backdrop-blur-xl">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="rounded-full border border-black/10 bg-white/90 p-1 shadow-sm overflow-hidden">
+                <Image
+                  src="/CFH-logo-vector.png"
+                  alt="logo"
+                  width={44}
+                  height={44}
+                  className="rounded-full object-contain"
+                />
+              </div>
+              <div className="leading-tight">
+                <span className="text-[11px] uppercase tracking-[0.3em] text-muted">
+                  Community
+                </span>
+                <p className="font-display text-lg text-ink">Cultural Fusion Hub</p>
+              </div>
+            </Link>
             <Navigation />
-            <div className="flex-1 text-center">
-              <span className="font-semibold text-gray-500 text-lg">Cultural Fusion Hub</span>
-            </div>
-            <div className="hidden sm:flex mr-2">
+            <div className="hidden items-center gap-2 sm:flex">
               {currentLanguage === 'ja' ? (
                 <div className="relative group">
                   <button
                     onClick={() => changeLanguage('en')}
-                    className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg"
+                    className="h-10 w-10 rounded-full border border-black/10 bg-white/80 text-lg text-muted shadow-sm transition hover:text-accent"
+                    aria-label="Change language to English"
                   >
                     <span className="flag-icon flag-icon-gb"></span>
                   </button>
-                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+                  <span className="pointer-events-none absolute top-full left-1/2 z-50 mt-2 w-max -translate-x-1/2 rounded bg-black px-2 py-1 text-xs text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     Change language to English
                   </span>
                 </div>
@@ -109,64 +125,66 @@ const Layout = ({
                 <div className="relative group">
                   <button
                     onClick={() => changeLanguage('ja')}
-                    className="text-gray-500 hover:text-green-500 p-2 text-lg"
+                    className="h-10 w-10 rounded-full border border-black/10 bg-white/80 text-lg text-muted shadow-sm transition hover:text-accent"
+                    aria-label="言語を日本語に変更"
                   >
                     <span className="flag-icon flag-icon-jp"></span>
                   </button>
-                  <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+                  <span className="pointer-events-none absolute top-full left-1/2 z-50 mt-2 w-max -translate-x-1/2 rounded bg-black px-2 py-1 text-xs text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     言語を日本語に変更
                   </span>
                 </div>
               )}
-            </div>
-            <div className="rounded-full overflow-hidden">
-              <Image src="/CFH-logo-vector.png" alt="logo" width={50} height={50} />
             </div>
           </div>
         </header>
 
         <main className="flex-grow">{children}</main>
 
-        <footer className="w-full flex justify-between items-center p-4 pin-b linear-gradient2">
-          <div className="flex items-center">
-            <div className="rounded-full overflow-hidden mr-4">
-              <Image src="/CFH-logo-vector.png" alt="logo" width={50} height={50} />
+        <footer className="border-t border-black/5 bg-white/70">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="flex items-center gap-4">
+              <div className="rounded-full border border-black/10 bg-white/90 p-1 shadow-sm overflow-hidden">
+                <Image
+                  src="/CFH-logo-vector.png"
+                  alt="logo"
+                  width={44}
+                  height={44}
+                  className="rounded-full object-contain"
+                />
+              </div>
+              <div>
+                <p className="font-display text-lg text-ink">Cultural Fusion Hub</p>
+                <p className="text-sm text-muted">Growing together across cultures.</p>
+              </div>
             </div>
-            <div className="flex">
+            <div className="flex items-center gap-3">
               {currentLanguage === 'ja' ? (
-                <div className="relative group">
-                  <button
-                    onClick={() => changeLanguage('en')}
-                    className="mr-2 text-gray-500 hover:text-green-500 p-2 text-lg"
-                  >
-                    <span className="flag-icon flag-icon-gb"></span>
-                  </button>
-                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
-                    Change language to English
-                  </span>
-                </div>
+                <button
+                  onClick={() => changeLanguage('en')}
+                  className="btn-ghost border border-black/10 text-sm"
+                >
+                  English
+                </button>
               ) : (
-                <div className="relative group">
-                  <button
-                    onClick={() => changeLanguage('ja')}
-                    className="text-gray-500 hover:text-green-500 p-2 text-lg"
-                  >
-                    <span className="flag-icon flag-icon-jp"></span>
-                  </button>
-                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
-                    言語を日本語に変更
-                  </span>
-                </div>
+                <button
+                  onClick={() => changeLanguage('ja')}
+                  className="btn-ghost border border-black/10 text-sm"
+                >
+                  日本語
+                </button>
               )}
+              <a
+                href="https://www.instagram.com/culturalfusionhub/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-sm"
+              >
+                <i className="fa fa-instagram mr-2"></i>
+                Instagram
+              </a>
             </div>
           </div>
-          <a
-            href="https://www.instagram.com/culturalfusionhub/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fa fa-instagram text-zinc-400"> Instagram</i>
-          </a>
         </footer>
       </div>
     </div>

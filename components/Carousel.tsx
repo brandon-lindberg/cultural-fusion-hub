@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const ImageCarousel = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full">
       <Carousel
         autoPlay
         interval={2000}

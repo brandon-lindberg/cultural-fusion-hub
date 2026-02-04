@@ -22,18 +22,15 @@
 }
 
 .eventIndicator {
-  background-color: #aafbdc;
+  background-color: rgb(var(--accent));
 }
 
 .streamEventIndicator {
-  background-color: #ffc8d2;
+  background-color: rgb(var(--accent-2));
 }
 
-@media (min-width: 1024px) {
-  .calendarLarge {
-    width: 60%; // Adjust this as needed
-
-  }
+.calendarLarge {
+  width: 100%;
 }
 
 .customCalendar {
@@ -69,12 +66,12 @@
     flex: 1 !important;
     margin: 0 !important;
     max-width: calc(100% / 7) !important;
-    min-height: 4.5em !important;
-    line-height: 4.5em !important;
+    min-height: 3.2em !important;
+    line-height: 3.2em !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     position: relative;
-    height: 2.5rem !important;
+    height: 2.4rem !important;
   }
 }

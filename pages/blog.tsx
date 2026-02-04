@@ -56,32 +56,42 @@ const Blog: React.FC = () => {
           description: "Blog posts from Cultural Fusion Hub",
         }}
       />
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6 text-zinc-400">{t('blog')}</h1>
-        <div className="mb-6">
-          <input
-            type="text"
-            placeholder={t('search')}
-            className="w-full p-2 border rounded bg-gray-50 text-gray-700 focus:outline-none focus:border-blue-500"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.4em] text-muted">
+              {t('blog-tagline')}
+            </p>
+            <h1 className="font-display text-4xl text-ink mt-3">{t('blog')}</h1>
+            <p className="mt-4 text-sm leading-relaxed text-muted">{t('blog-intro')}</p>
+          </div>
+          <div className="w-full md:w-80">
+            <input
+              type="text"
+              placeholder={t('search')}
+              className="w-full rounded-2xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-[color:var(--ring)]"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </div>
         </div>
         {selectedTag && (
-          <div className="mb-4">
-            <span className="text-sm text-zinc-400">{t('filtered-by')}: </span>
-            <span className="bg-subGreen text-zinc-400 px-2 py-1 rounded text-sm">
-              {selectedTag}
-              <button className="ml-2 font-bold" onClick={() => setSelectedTag(null)}>×</button>
-            </span>
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+            <span>{t('filtered-by')}:</span>
+            <span>{selectedTag}</span>
+            <button className="ml-1 text-base" onClick={() => setSelectedTag(null)}>
+              ×
+            </button>
           </div>
         )}
-        {filteredPosts.length > 0 ? (
-          <BlogCardList posts={filteredPosts} onTagClick={handleTagClick} />
-        ) : (
-          <p className="text-center text-zinc-400">{t('no-posts-found')}</p>
-        )}
-      </div>
+        <div className="mt-8">
+          {filteredPosts.length > 0 ? (
+            <BlogCardList posts={filteredPosts} onTagClick={handleTagClick} />
+          ) : (
+            <p className="text-center text-muted">{t('no-posts-found')}</p>
+          )}
+        </div>
+      </section>
     </Layout>
   );
 };

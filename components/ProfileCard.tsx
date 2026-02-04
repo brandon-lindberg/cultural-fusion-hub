@@ -39,45 +39,63 @@ export default function ProfileCard(props) {
   }, []);
 
   return (
-    <div className="card bg-gray-50 shadow rounded-lg p-6 max-w-xs mx-auto md:max-w-md lg:max-w-lg xl:max-w-xl">
-      <div className="flex flex-col items-center">
-        <div className="relative h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 xl:h-64 xl:w-64 max-w-full max-h-full">
+    <div className="card-surface reveal rounded-3xl p-6 md:p-8">
+      <div className="flex flex-col items-center text-center">
+        <div className="relative h-44 w-44 md:h-52 md:w-52 lg:h-60 lg:w-60">
+          <div className="absolute inset-0 rounded-[32px] bg-accent/10"></div>
           <Image
             src={props.image}
-            alt="pic"
+            alt="Profile portrait"
             fill
-            className="rounded-full object-cover"
+            className="rounded-[32px] object-cover ring-1 ring-black/5"
             quality={100}
-            sizes="(max-width: 768px) 160px, (max-width: 1024px) 192px, 256px"
+            sizes="(max-width: 768px) 176px, (max-width: 1024px) 208px, 240px"
           />
         </div>
-        <h1 className="text-lg mt-2 md:text-xl lg:text-2xl">{props.name}</h1>
+        <h1 className="font-display text-2xl mt-4 text-ink">{props.name}</h1>
+        <div className="mt-2 inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent">
+          {props.position}
+        </div>
       </div>
-      <h3 className="title text-center mb-2 md:text-lg lg:text-xl">{props.position}</h3>
-      <div className="border-t border-gray-200 mt-2 mb-4"></div>
+      <div className="border-t border-black/5 mt-4 mb-4"></div>
 
-      <div ref={descriptionRef} className="mx-4 text-justify text-center overflow-auto max-h-48 no-scrollbar">
+      <div
+        ref={descriptionRef}
+        className="mx-2 text-justify text-sm leading-relaxed text-muted overflow-auto max-h-52 no-scrollbar"
+      >
         {props.description && (
           <div dangerouslySetInnerHTML={{ __html: props.description }} />
         )}
       </div>
 
-      <div className="flex justify-center items-center mt-4 relative">
-        <a href={props.instagram} target="_blank" rel="noreferrer" className="z-10">
-          <i className="fa fa-instagram text-mainPink"></i>
+      <div className="flex justify-center items-center mt-5 relative">
+        <a
+          href={props.instagram}
+          target="_blank"
+          rel="noreferrer"
+          className="btn-secondary text-sm"
+        >
+          <i className="fa fa-instagram mr-2"></i>
+          Instagram
         </a>
-        <div className="absolute right-0 flex flex-col items-center">
+        <div className="absolute right-0 flex flex-col items-center gap-2">
           {canScrollUp && (
-            <i
-              className="fa fa-arrow-up text-gray-400 animate-bounce cursor-pointer"
+            <button
+              className="h-8 w-8 rounded-full border border-black/10 bg-white/80 text-muted shadow-sm transition hover:text-ink"
               onClick={handleScrollUp}
-            ></i>
+              aria-label="Scroll up"
+            >
+              <i className="fa fa-arrow-up"></i>
+            </button>
           )}
           {canScrollDown && (
-            <i
-              className="fa fa-arrow-down text-gray-400 animate-bounce cursor-pointer"
+            <button
+              className="h-8 w-8 rounded-full border border-black/10 bg-white/80 text-muted shadow-sm transition hover:text-ink"
               onClick={handleScrollDown}
-            ></i>
+              aria-label="Scroll down"
+            >
+              <i className="fa fa-arrow-down"></i>
+            </button>
           )}
         </div>
       </div>
