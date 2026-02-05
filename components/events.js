@@ -347,12 +347,12 @@ export default [
   },
   {
     title: '02月 Meetup!',
-    start: '2026-11-13T10:00:00',
-    end: '2026-11-13T11:30:00',
+    start: '2026-02-11T10:00:00',
+    end: '2026-02-11T11:30:00',
     stream: false,
     location: '',
     googleMapsUrl: '',
     instagramUrl: '',
-    description: '',
+    description: 'Valentine\'s Day meet up',
   },
 ];
