@@ -345,4 +345,14 @@ export default [
     instagramUrl: '',
     description: '',
   },
+  {
+    title: '02月 Meetup!',
+    start: '2026-11-13T10:00:00',
+    end: '2026-11-13T11:30:00',
+    stream: false,
+    location: '',
+    googleMapsUrl: '',
+    instagramUrl: '',
+    description: '',
+  },
 ];
