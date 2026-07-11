@@ -26,21 +26,24 @@ const Blog: React.FC = () => {
 
   // Sort posts by date
   const sortedPosts = useMemo(() => {
-    return [...safeBlogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return [...safeBlogPosts].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    );
   }, []);
 
   // Filter posts based on selected tag and search term
   const filteredPosts = useMemo(() => {
-    return sortedPosts.filter(post => 
-      (!selectedTag || post.tags.includes(selectedTag)) &&
-      (post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       post.entry.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       post.author.toLowerCase().includes(searchTerm.toLowerCase()))
+    return sortedPosts.filter(
+      (post) =>
+        (!selectedTag || post.tags.includes(selectedTag)) &&
+        (post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.entry.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.author.toLowerCase().includes(searchTerm.toLowerCase())),
     );
   }, [sortedPosts, selectedTag, searchTerm]);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTag(prevTag => (prevTag === tag ? null : tag));
+    setSelectedTag((prevTag) => (prevTag === tag ? null : tag));
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,12 +51,14 @@ const Blog: React.FC = () => {
   };
 
   return (
-    <Layout title={t('blog')}>
+    <Layout title={t('blog')} description={t('blog-intro')}>
       <StructuredData
         type="WebPage"
+        localizeUrl
         data={{
           name: t('blog'),
-          description: "Blog posts from Cultural Fusion Hub",
+          description: t('blog-intro'),
+          url: 'https://culturalfusionhub.com/blog',
         }}
       />
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -63,7 +68,9 @@ const Blog: React.FC = () => {
               {t('blog-tagline')}
             </p>
             <h1 className="font-display text-4xl text-ink mt-3">{t('blog')}</h1>
-            <p className="mt-4 text-sm leading-relaxed text-muted">{t('blog-intro')}</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              {t('blog-intro')}
+            </p>
           </div>
           <div className="w-full md:w-80">
             <input
@@ -79,7 +86,10 @@ const Blog: React.FC = () => {
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
             <span>{t('filtered-by')}:</span>
             <span>{selectedTag}</span>
-            <button className="ml-1 text-base" onClick={() => setSelectedTag(null)}>
+            <button
+              className="ml-1 text-base"
+              onClick={() => setSelectedTag(null)}
+            >
               ×
             </button>
           </div>
@@ -98,7 +108,10 @@ const Blog: React.FC = () => {
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+export const getStaticProps: GetStaticProps = async ({
+  locale,
+  defaultLocale,
+}) => {
   await ensureLocale(locale, defaultLocale);
   return { props: {} };
 };

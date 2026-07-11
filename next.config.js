@@ -13,11 +13,24 @@ module.exports = {
   async headers() {
     return [
       {
+        source: '/',
+        headers: [
+          {
+            key: 'Link',
+            value: '</llms.txt>; rel="describedby"; type="text/plain"',
+          },
+        ],
+      },
+      {
         source: '/:path*',
         headers: [
           {
             key: 'X-Robots-Tag',
             value: 'index, follow',
+          },
+          {
+            key: 'Content-Signal',
+            value: 'ai-train=no, search=yes, ai-input=yes',
           },
         ],
       },

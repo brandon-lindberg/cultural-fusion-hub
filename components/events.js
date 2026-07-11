@@ -1,6 +1,6 @@
 //events.js
 
-export default [
+const events = [
   // {
   //   title: 'Event Example Title',
   //   start: '2023-07-22T14:00:00',
@@ -159,8 +159,7 @@ export default [
     location: '代田区民センター　第１会議室',
     googleMapsUrl: 'https://maps.app.goo.gl/4idweMhM7DjT2NZN9',
     instagramUrl: '',
-    description:
-      'ミックスの子供たちと両親で交流しましょう！',
+    description: 'ミックスの子供たちと両親で交流しましょう！',
   },
   {
     title: 'Cultural Fusion Hub Meet Up',
@@ -196,15 +195,15 @@ export default [
       '※各自、飲み物、ランチ、マットをお持ちください。※当日、詳しい場所をお知らせしますので、事前予約をお願いします。※雨天時は、都内の屋内施設で遊びます',
   },
   {
-    "title": "Meetup！",
-    "start": "2024-06-29T10:00:00",
-    "end": "2024-06-29T11:30:00",
-    "stream": false,
-    "location": "池尻会館　2階　第二会議室",
-    "googleMapsUrl": "https://maps.app.goo.gl/auGpAFa9tnuLeYE47",
-    "instagramUrl": "",
-    "description":
-      "今月のテーマは、躾についてです。国によって躾の仕方が違ったり、各家庭によっても違ったり。。。皆さんで共有してみましょう！また皆さんにお会いできるのを楽しみにしています！！DMお待ちしております 一家族２名迄５００円、３名以降は＋２００円 ※お菓子、飲み物あり ※事前予約要"
+    title: 'Meetup！',
+    start: '2024-06-29T10:00:00',
+    end: '2024-06-29T11:30:00',
+    stream: false,
+    location: '池尻会館　2階　第二会議室',
+    googleMapsUrl: 'https://maps.app.goo.gl/auGpAFa9tnuLeYE47',
+    instagramUrl: '',
+    description:
+      '今月のテーマは、躾についてです。国によって躾の仕方が違ったり、各家庭によっても違ったり。。。皆さんで共有してみましょう！また皆さんにお会いできるのを楽しみにしています！！DMお待ちしております 一家族２名迄５００円、３名以降は＋２００円 ※お菓子、飲み物あり ※事前予約要',
   },
   {
     title: 'Meetup！',
@@ -247,8 +246,7 @@ export default [
     location: '代田区民センター　第一会議室',
     googleMapsUrl: 'https://maps.app.goo.gl/sghKukSKwP5Gb3G87',
     instagramUrl: '',
-    description:
-      '',
+    description: '',
   },
   {
     title: '10月 Meetup！ Halloween Costume Party',
@@ -269,8 +267,7 @@ export default [
     location: '代々木公園',
     googleMapsUrl: '',
     instagramUrl: '',
-    description:
-      'Thanksgiving Potluck Party',
+    description: 'Thanksgiving Potluck Party',
   },
   {
     title: 'クリスマスパーティーを開催します！🎅🎁',
@@ -302,8 +299,7 @@ export default [
     location: '池尻会館　第4会議室',
     googleMapsUrl: 'https://maps.app.goo.gl/auGpAFa9tnuLeYE47',
     instagramUrl: '',
-    description:
-      '',
+    description: '',
   },
   {
     title: '9月 Meetup！',
@@ -353,6 +349,8 @@ export default [
     location: '',
     googleMapsUrl: '',
     instagramUrl: '',
-    description: 'Valentine\'s Day meet up',
+    description: "Valentine's Day meet up",
   },
 ];
+
+export default events;

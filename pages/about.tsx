@@ -35,23 +35,20 @@ const AboutPage = () => {
   ];
 
   return (
-    <Layout title={t('about')}>
+    <Layout
+      title={t('about')}
+      description={t('mission-statement-one')}
+      image="/about-banner.jpg"
+    >
       <StructuredData
         type="WebPage"
+        localizeUrl
         data={{
           name: 'About Cultural Fusion Hub',
           description: t('CFHmission'),
+          url: 'https://culturalfusionhub.com/about',
         }}
       />
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'WebPage',
-          name: 'About Cultural Fusion Hub',
-          description: t('CFHmission'),
-          url: 'https://culturalfusionhub.com/about',
-        })}
-      </script>
       <section className="relative">
         <div className="absolute inset-0">
           <Image
@@ -100,7 +97,9 @@ const AboutPage = () => {
                 </div>
                 <h3 className="font-display text-xl text-ink">{item.title}</h3>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                {item.body}
+              </p>
             </div>
           ))}
         </div>
@@ -111,7 +110,10 @@ const AboutPage = () => {
 
 export default AboutPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+export const getStaticProps: GetStaticProps = async ({
+  locale,
+  defaultLocale,
+}) => {
   await ensureLocale(locale, defaultLocale);
   return { props: {} };
 };

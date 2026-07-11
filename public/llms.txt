@@ -1,0 +1,33 @@
+# Cultural Fusion Hub
+
+> A Tokyo-based community where mixed-heritage children and their families connect, exchange information, and grow together across cultures.
+
+Cultural Fusion Hub organizes family meetups, workshops, seminars, cultural exchange activities, and community support. The website is available in Japanese and English. Public pages may be indexed for search and used as real-time AI input, but permission is not granted for AI model training.
+
+## Primary pages
+
+- [Home — Japanese](https://culturalfusionhub.com/): Community overview, upcoming events, and recent stories.
+- [Home — English](https://culturalfusionhub.com/en): English community overview.
+- [Mission — Japanese](https://culturalfusionhub.com/about): Mission and support goals.
+- [Mission — English](https://culturalfusionhub.com/en/about): English mission and support goals.
+- [Blog — Japanese](https://culturalfusionhub.com/blog): Community stories and parenting resources.
+- [Blog — English](https://culturalfusionhub.com/en/blog): English blog index.
+- [Facilitators — Japanese](https://culturalfusionhub.com/profile): Community facilitator profiles.
+- [Facilitators — English](https://culturalfusionhub.com/en/profile): English facilitator profiles.
+- [Contact — Japanese](https://culturalfusionhub.com/contact): Contact and participation information.
+- [Contact — English](https://culturalfusionhub.com/en/contact): English contact information.
+
+## Discovery
+
+- [XML sitemap](https://culturalfusionhub.com/sitemap.xml)
+- [Robots and content-use policy](https://culturalfusionhub.com/robots.txt)
+- [Instagram](https://www.instagram.com/culturalfusionhub/)
+
+## Agent access
+
+Request any public HTML page with `Accept: text/markdown` to receive a concise Markdown representation. Japanese is the default language; English pages use the `/en` prefix.
+
+## Contact
+
+- Email: culturalfusionhub@gmail.com
+- Organization: Cultural Fusion Hub

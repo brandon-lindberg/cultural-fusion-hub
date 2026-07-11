@@ -14,26 +14,22 @@ export default function ProfileCard(props) {
     descriptionRef.current?.scrollBy({ top: -100, behavior: 'smooth' });
   };
 
-  const checkScrollPosition = () => {
-    const node = descriptionRef.current;
-    if (!node) {
-      setCanScrollUp(false);
-      setCanScrollDown(false);
-      return;
-    }
-
-    setCanScrollUp(node.scrollTop > 0);
-    setCanScrollDown(node.scrollHeight - node.scrollTop !== node.clientHeight);
-  };
-
   useEffect(() => {
     const node = descriptionRef.current;
     if (!node) return;
 
+    const checkScrollPosition = () => {
+      setCanScrollUp(node.scrollTop > 0);
+      setCanScrollDown(
+        node.scrollHeight - node.scrollTop !== node.clientHeight,
+      );
+    };
+
     node.addEventListener('scroll', checkScrollPosition);
-    checkScrollPosition();
+    const animationFrame = requestAnimationFrame(checkScrollPosition);
 
     return () => {
+      cancelAnimationFrame(animationFrame);
       node.removeEventListener('scroll', checkScrollPosition);
     };
   }, []);

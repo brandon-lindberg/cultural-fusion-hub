@@ -7,6 +7,7 @@ import StructuredData from '../../components/StructuredData';
 import React from 'react';
 import ensureLocale from '../../utils/ensureLocale';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 // Ensure blogPosts is always an array with robust error handling
 const safeBlogPosts = (() => {
@@ -35,6 +36,7 @@ interface BlogPostProps {
 
 const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
   const { t } = useTranslation();
+  const { locale, defaultLocale } = useRouter();
 
   if (!post) {
     return <p>{t('no-posts-found')}</p>;
@@ -48,34 +50,39 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
   });
 
   // Create structured data for BlogPosting
+  const localizedPath = locale && locale !== defaultLocale ? `/${locale}` : '';
+  const postUrl = `https://culturalfusionhub.com${localizedPath}/blog/${post.id}`;
+  const description = post.entry.replace(/\s+/g, ' ').trim().substring(0, 160);
   const blogStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "author": {
-      "@type": "Person",
-      "name": post.author
+    headline: post.title,
+    author: {
+      '@type': 'Person',
+      name: post.author,
     },
-    "datePublished": post.date,
-    "dateModified": post.date,
-    "description": post.entry.substring(0, 160), // Short description
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://www.culturalfusionhub.com/blog/${post.id}`
+    datePublished: post.date,
+    dateModified: post.date,
+    description: description,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Cultural Fusion Hub",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.culturalfusionhub.com/logo.png"
-      }
+    publisher: {
+      '@type': 'Organization',
+      name: 'Cultural Fusion Hub',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://culturalfusionhub.com/CFH-logo-vector.png',
+      },
     },
-    "image": "https://www.culturalfusionhub.com/path-to-blog-image.jpg" // Replace with actual image URL
+    image: 'https://culturalfusionhub.com/about-banner.jpg',
   };
 
   return (
-    <Layout title={post.title}>
+    <Layout
+      title={post.title}
+      description={description}
+      image="/about-banner.jpg"
+    >
       <StructuredData type="BlogPosting" data={blogStructuredData} />
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
         <Link href="/blog" className="text-sm font-semibold text-accent">
@@ -87,10 +94,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
           </p>
           <h1 className="font-display text-4xl text-ink mt-4">{post.title}</h1>
           <div className="mt-4">
-            <SocialShare
-              title={post.title}
-              url={`https://www.culturalfusionhub.com/blog/${post.id}`}
-            />
+            <SocialShare title={post.title} url={postUrl} />
           </div>
           <div className="mt-6 text-sm leading-relaxed text-ink opacity-80 whitespace-pre-wrap">
             {post.entry}
@@ -114,9 +118,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const paths = safeBlogPosts.map(post => ({
-      params: { id: post.id },
-    }));
+    const paths = safeBlogPosts.flatMap((post) =>
+      ['ja', 'en'].map((locale) => ({
+        params: { id: post.id },
+        locale,
+      })),
+    );
 
     return { paths, fallback: false };
   } catch (error) {
@@ -125,7 +132,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, locale, defaultLocale }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  locale,
+  defaultLocale,
+}) => {
   try {
     await ensureLocale(locale, defaultLocale);
     const post = safeBlogPosts.find((p) => p.id === params?.id) || null;

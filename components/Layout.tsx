@@ -18,9 +18,8 @@ type Props = {
 const Layout = ({
   children,
   title = 'Cultural Fusion Hub',
-  description =
-    'Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!',
-  image = 'https://www.culturalfusionhub.com/CFH-logo-vector.png',
+  description = 'Cultural Fusion Hubは、ミックスの子供たちやその両親が情報交換やサポートを通じて共に成長するコミュニティです。情報提供やイベント、ワークショップやセミナー、交流会を定期的に行っています。ぜひご参加ください!',
+  image = 'https://culturalfusionhub.com/about-banner.jpg',
   canonicalUrl = 'https://culturalfusionhub.com',
 }: Props) => {
   const router = useRouter();
@@ -29,7 +28,9 @@ const Layout = ({
 
   const brandName = 'Cultural Fusion Hub';
   const normalizedTitle = (title ?? '').trim();
-  const titleHasBrand = normalizedTitle.toLowerCase().includes(brandName.toLowerCase());
+  const titleHasBrand = normalizedTitle
+    .toLowerCase()
+    .includes(brandName.toLowerCase());
   const documentTitle = normalizedTitle
     ? titleHasBrand
       ? normalizedTitle
@@ -54,8 +55,10 @@ const Layout = ({
   };
 
   const currentLanguage = activeLocale.split('-')[0];
-  const canonicalBase = (canonicalUrl ?? '').replace(/\/$/, '') || 'https://culturalfusionhub.com';
-  const pathSuffix = asPath === '/' ? '' : asPath || '';
+  const canonicalBase =
+    (canonicalUrl ?? '').replace(/\/$/, '') || 'https://culturalfusionhub.com';
+  const pathname = (asPath || '/').split(/[?#]/, 1)[0] || '/';
+  const pathSuffix = pathname === '/' ? '' : pathname.replace(/\/$/, '');
   const localizedPath =
     locale && defaultLocale && locale !== defaultLocale
       ? `/${locale}${pathSuffix}`
@@ -75,23 +78,46 @@ const Layout = ({
         />
         {locales?.map((lng) => (
           <link
-            key={lng}
+            key={`alternate-${lng}`}
             rel="alternate"
             hrefLang={lng}
             href={buildAlternateHref(lng)}
           />
         ))}
-        <link rel="alternate" hrefLang="x-default" href={canonicalBase} />
+        <link
+          key="alternate-x-default"
+          rel="alternate"
+          hrefLang="x-default"
+          href={buildAlternateHref(defaultLocale || 'ja')}
+        />
         <meta name="robots" content="all" />
         <meta name="googlebot" content="all" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={description} />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="mask-icon" href="../public/safari-pinned-tab.svg" color="#5bbad5" />
+        <link
+          rel="mask-icon"
+          href="../public/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
@@ -118,7 +144,9 @@ const Layout = ({
                 <span className="text-[11px] uppercase tracking-[0.3em] text-muted">
                   Community
                 </span>
-                <p className="font-display text-lg text-ink">Cultural Fusion Hub</p>
+                <p className="font-display text-lg text-ink">
+                  Cultural Fusion Hub
+                </p>
               </div>
             </Link>
             <Navigation />
@@ -169,8 +197,12 @@ const Layout = ({
                 />
               </div>
               <div>
-                <p className="font-display text-lg text-ink">Cultural Fusion Hub</p>
-                <p className="text-sm text-muted">Growing together across cultures.</p>
+                <p className="font-display text-lg text-ink">
+                  Cultural Fusion Hub
+                </p>
+                <p className="text-sm text-muted">
+                  Growing together across cultures.
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-3">

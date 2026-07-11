@@ -9,46 +9,40 @@ const ProfilePage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout title={t('profile')}>
+    <Layout title={t('profile')} description={t('profile-intro')}>
       <StructuredData
         type="WebPage"
+        localizeUrl
         data={{
-          name: "Cultural Fusion Hub Profiles",
-          description: "Profiles of Cultural Fusion Hub facilitators",
-        }}
-      />
-      {/* JSON-LD for SEO */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Cultural Fusion Hub Profiles",
-          "description": "Profiles of Cultural Fusion Hub facilitators",
-          "url": "https://culturalfusionhub.com/profile",
-          "mainEntity": [
+          name: 'Cultural Fusion Hub Profiles',
+          description: t('profile-intro'),
+          url: 'https://culturalfusionhub.com/profile',
+          mainEntity: [
             {
-              "@type": "Person",
-              "name": "Obikane Yuka",
-              "image": "https://culturalfusionhub.com/profile_one.jpg",
-              "jobTitle": "ファシリテーター",
-              "sameAs": "https://www.instagram.com/culturalfusionhub/"
+              '@type': 'Person',
+              name: 'Obikane Yuka',
+              image: 'https://culturalfusionhub.com/profile_one.jpg',
+              jobTitle: 'ファシリテーター',
+              sameAs: 'https://www.instagram.com/culturalfusionhub/',
             },
             {
-              "@type": "Person",
-              "name": "Saho Petersen",
-              "image": "https://culturalfusionhub.com/profile_three.jpg",
-              "jobTitle": "ファシリテーター",
-              "sameAs": "https://www.instagram.com/culturalfusionhub/"
-            }
-          ]
-        })}
-      </script>
+              '@type': 'Person',
+              name: 'Saho Petersen',
+              image: 'https://culturalfusionhub.com/profile_three.jpg',
+              jobTitle: 'ファシリテーター',
+              sameAs: 'https://www.instagram.com/culturalfusionhub/',
+            },
+          ],
+        }}
+      />
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-muted">
             {t('profile-tagline')}
           </p>
-          <h1 className="font-display text-4xl text-ink mt-3">{t('profile')}</h1>
+          <h1 className="font-display text-4xl text-ink mt-3">
+            {t('profile')}
+          </h1>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             {t('profile-intro')}
           </p>
@@ -76,7 +70,10 @@ const ProfilePage = () => {
 
 export default ProfilePage;
 
-export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+export const getStaticProps: GetStaticProps = async ({
+  locale,
+  defaultLocale,
+}) => {
   await ensureLocale(locale, defaultLocale);
   return { props: {} };
 };

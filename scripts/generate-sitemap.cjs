@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 /* eslint-env node */
-/* eslint-disable no-undef */
 
 // Generate a clean hreflang-enabled sitemap using the build manifest
 const fs = require('fs');
@@ -8,7 +7,11 @@ const path = require('path');
 
 const siteUrl = process.env.SITE_URL || 'https://culturalfusionhub.com';
 const publicDir = path.join(process.cwd(), 'public');
-const manifestPath = path.join(process.cwd(), '.next', 'prerender-manifest.json');
+const manifestPath = path.join(
+  process.cwd(),
+  '.next',
+  'prerender-manifest.json',
+);
 
 const nextConfig = require('../next.config');
 const i18n = nextConfig?.i18n || {};
@@ -16,7 +19,9 @@ const locales = i18n.locales || ['ja', 'en'];
 const defaultLocale = i18n.defaultLocale || 'ja';
 
 if (!fs.existsSync(manifestPath)) {
-  console.error('❌ Missing .next/prerender-manifest.json. Run `next build` first.');
+  console.error(
+    '❌ Missing .next/prerender-manifest.json. Run `next build` first.',
+  );
   process.exit(1);
 }
 
@@ -27,7 +32,9 @@ const basePaths = new Set(['/']);
 for (const route of Object.keys(manifest.routes || {})) {
   const segments = route.split('/').filter(Boolean);
   const hasLocalePrefix = segments[0] && locales.includes(segments[0]);
-  const pathWithoutLocale = hasLocalePrefix ? `/${segments.slice(1).join('/')}` : route;
+  const pathWithoutLocale = hasLocalePrefix
+    ? `/${segments.slice(1).join('/')}`
+    : route;
   const normalized = pathWithoutLocale === '' ? '/' : pathWithoutLocale;
 
   if (normalized.startsWith('/users')) continue; // exclude demo user pages from sitemap
@@ -62,16 +69,13 @@ ${urls
   .map(
     ({ loc, alternates }) => `  <url>
     <loc>${loc}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
 ${alternates
   .map(
     (alt) =>
-      `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}"/>`
+      `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}"/>`,
   )
   .join('\n')}
-  </url>`
+  </url>`,
   )
   .join('\n')}
 </urlset>`;
@@ -83,7 +87,6 @@ if (!fs.existsSync(publicDir)) {
 const sitemapPath = path.join(publicDir, 'sitemap.xml');
 fs.writeFileSync(sitemapPath, sitemapContent);
 
-const secondarySitemapPath = path.join(publicDir, 'sitemap-0.xml');
-fs.writeFileSync(secondarySitemapPath, sitemapContent);
-
-console.log(`✅ sitemap.xml generated with ${urls.length} localized URLs and hreflang alternates`);
+console.log(
+  `✅ sitemap.xml generated with ${urls.length} localized URLs and hreflang alternates`,
+);

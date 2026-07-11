@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import Calendar from '../components/Calendar';
@@ -27,6 +27,7 @@ const safeBlogPosts = (() => {
 
 const IndexPage = () => {
   const { t, i18n } = useTranslation();
+  const [today] = useState(() => startOfDay(new Date()));
 
   const latestTwoPosts = useMemo(() => {
     return [...safeBlogPosts]
@@ -35,7 +36,6 @@ const IndexPage = () => {
   }, []);
 
   const upcomingEvents = useMemo(() => {
-    const today = startOfDay(new Date());
     if (!Array.isArray(rawEvents)) return [];
     return rawEvents
       .filter((event) => event && typeof event.start === 'string')
@@ -49,26 +49,40 @@ const IndexPage = () => {
       .filter((event) => !isBefore(event.startDate, today))
       .sort((a, b) => a.startDate.getTime() - b.startDate.getTime())
       .slice(0, 2);
-  }, []);
+  }, [today]);
 
   const dateLocale = i18n.language.startsWith('ja') ? jaLocale : enUS;
 
   const structuredData = {
-    name: "Cultural Fusion Hub",
+    name: 'Cultural Fusion Hub',
     description: t('greeting'),
-    url: "https://culturalfusionhub.com/",
+    url: 'https://culturalfusionhub.com/',
   };
 
   return (
-    <Layout 
+    <Layout
       title={t('home')}
       description={t('greeting')}
-      image="/path-to-home-image.jpg"
+      image="/about-banner.jpg"
     >
       <StructuredData
-        type="WebPage"
-        data={structuredData}
+        type="WebSite"
+        data={{
+          name: 'Cultural Fusion Hub',
+          alternateName: 'CFH',
+          url: 'https://culturalfusionhub.com/',
+        }}
       />
+      <StructuredData
+        type="Organization"
+        data={{
+          name: 'Cultural Fusion Hub',
+          url: 'https://culturalfusionhub.com/',
+          logo: 'https://culturalfusionhub.com/CFH-logo-vector.png',
+          sameAs: ['https://www.instagram.com/culturalfusionhub/'],
+        }}
+      />
+      <StructuredData type="WebPage" data={structuredData} localizeUrl />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl"></div>
@@ -124,7 +138,9 @@ const IndexPage = () => {
         <div className="mx-auto grid max-w-6xl items-start gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1.3fr,0.7fr]">
           <div className="card-surface rounded-3xl p-6 md:p-8">
             <div className="flex flex-col gap-3">
-              <h2 className="font-display text-3xl text-ink">{t('events-calendar')}</h2>
+              <h2 className="font-display text-3xl text-ink">
+                {t('events-calendar')}
+              </h2>
               <p className="text-sm text-muted">{t('events-intro')}</p>
             </div>
             <div className="mt-6">
@@ -132,7 +148,9 @@ const IndexPage = () => {
             </div>
             <div className="mt-6 rounded-2xl border border-black/5 bg-white/70 p-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-sm font-semibold text-ink">{t('upcoming-events')}</h3>
+                <h3 className="text-sm font-semibold text-ink">
+                  {t('upcoming-events')}
+                </h3>
                 <div className="flex flex-wrap gap-2 text-xs font-semibold text-muted">
                   <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">
                     {t('event-type-meetup')}
@@ -153,13 +171,23 @@ const IndexPage = () => {
                       className="rounded-xl border border-black/5 bg-white/80 p-3"
                     >
                       <div className="flex items-center justify-between text-xs text-muted">
-                        <span>{format(event.startDate, 'PPP', { locale: dateLocale })}</span>
+                        <span>
+                          {format(event.startDate, 'PPP', {
+                            locale: dateLocale,
+                          })}
+                        </span>
                         <span className="rounded-full bg-accent/10 px-3 py-1 text-[10px] font-semibold text-accent">
-                          {event.stream ? t('event-type-live') : t('event-type-meetup')}
+                          {event.stream
+                            ? t('event-type-live')
+                            : t('event-type-meetup')}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm font-semibold text-ink">{event.title}</p>
-                      <p className="mt-1 text-xs text-muted">{event.location}</p>
+                      <p className="mt-2 text-sm font-semibold text-ink">
+                        {event.title}
+                      </p>
+                      <p className="mt-1 text-xs text-muted">
+                        {event.location}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -185,8 +213,12 @@ const IndexPage = () => {
           </div>
           <div className="flex flex-col gap-4">
             <div className="card-surface rounded-3xl p-6">
-              <h2 className="font-display text-2xl text-ink">{t('latest-posts')}</h2>
-              <p className="mt-2 text-sm text-muted">{t('latest-posts-intro')}</p>
+              <h2 className="font-display text-2xl text-ink">
+                {t('latest-posts')}
+              </h2>
+              <p className="mt-2 text-sm text-muted">
+                {t('latest-posts-intro')}
+              </p>
               <div className="mt-6 flex flex-col gap-4">
                 {latestTwoPosts.map((post) => (
                   <BlogCard
@@ -216,7 +248,10 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+export const getStaticProps: GetStaticProps = async ({
+  locale,
+  defaultLocale,
+}) => {
   await ensureLocale(locale, defaultLocale);
   return { props: {} };
 };

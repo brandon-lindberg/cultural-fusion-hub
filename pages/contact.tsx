@@ -8,12 +8,14 @@ import ensureLocale from '../utils/ensureLocale';
 const ContactPage = () => {
   const { t } = useTranslation();
   return (
-    <Layout title={t('contact')}>
+    <Layout title={t('contact')} description={t('contact-intro')}>
       <StructuredData
         type="WebPage"
+        localizeUrl
         data={{
-          name: "Contact Cultural Fusion Hub",
-          description: "Contact form for Cultural Fusion Hub",
+          name: 'Contact Cultural Fusion Hub',
+          description: t('contact-intro'),
+          url: 'https://culturalfusionhub.com/contact',
         }}
       />
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -23,23 +25,31 @@ const ContactPage = () => {
               {t('contact-tagline')}
             </p>
             <h1 className="font-display text-4xl text-ink">{t('contact')}</h1>
-            <p className="text-sm leading-relaxed text-muted">{t('contact-intro')}</p>
+            <p className="text-sm leading-relaxed text-muted">
+              {t('contact-intro')}
+            </p>
             <div className="card-surface rounded-3xl p-6">
-              <h2 className="font-display text-2xl text-ink">{t('contact-details')}</h2>
+              <h2 className="font-display text-2xl text-ink">
+                {t('contact-details')}
+              </h2>
               <div className="mt-4 space-y-3 text-sm text-muted">
                 <p>
                   <span className="font-semibold text-ink">{t('email')}:</span>{' '}
                   culturalfusionhub@gmail.com
                 </p>
                 <p>
-                  <span className="font-semibold text-ink">{t('follow-us')}:</span>{' '}
+                  <span className="font-semibold text-ink">
+                    {t('follow-us')}:
+                  </span>{' '}
                   Instagram @culturalfusionhub
                 </p>
               </div>
             </div>
           </div>
           <div className="card-surface rounded-3xl p-6 md:p-8">
-            <h2 className="font-display text-2xl text-ink">{t('contact-form')}</h2>
+            <h2 className="font-display text-2xl text-ink">
+              {t('contact-form')}
+            </h2>
             <p className="mt-2 text-sm text-muted">{t('contact-form-intro')}</p>
             <div className="mt-6">
               <ContactForm />
@@ -53,7 +63,10 @@ const ContactPage = () => {
 
 export default ContactPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+export const getStaticProps: GetStaticProps = async ({
+  locale,
+  defaultLocale,
+}) => {
   await ensureLocale(locale, defaultLocale);
   return { props: {} };
 };
